@@ -2,20 +2,17 @@
 /**
  * Module dependencies.
  */
-
 var express = require('express'),
   http = require('http'),
   path = require('path'),
   app = express();
-  app.mongoose = require('mongoose');
-var config = require('./config.js')(app, express);
-
-// DB Model -- Not used yet
+var mongoose = require('mongoose');
+var config = require('./config.js')(app, express, mongoose);
 var models = {};
-models.measures = require('./models/measure')(app.mongoose).model;
+models.measures = require('./models/measure')(mongoose);
 
 // Routes
-var scale = require('./routes/cgi-bin'),
+var scale = require('./routes/cgi-bin')(models.measures),
   routes = require('./routes');
 
 // Client
