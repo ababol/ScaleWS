@@ -1,5 +1,30 @@
 extends layout
-
 block content
-  h1= title
-  p Welcome to #{title}
+
+  #measureapp
+    header
+      h1 Measures
+
+    section#main
+      ul#measure-list
+
+    footer
+      #measure-count
+
+block bodyscripts
+
+  script#item-template(type="text/template")
+    |<div class="view">
+    |  <input class="toggle" type="checkbox" <%= done ? 'checked="checked"' : '' %> />
+    |  <label><%= title %></label>
+    |  <a class="destroy"></a>
+    |</div>
+    |<input class="edit" type="text" value="<%= title %>" />
+
+  script#stats-template(type="text/template")
+    |<% if (done) { %>
+    |  <a id="clear-completed">Clear <%= done %> completed <%= done == 1 ? 'item' : 'items' %></a>
+    |<% } %>
+    |<div class="measure-count"><b><%= remaining %></b> <%= remaining == 1 ? 'item' : 'items' %> left</div>
+
+  script(type="text/javascript", src="javascripts/measures.js")
