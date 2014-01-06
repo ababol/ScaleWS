@@ -3,3 +3,17 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+  div
+    h2 Measures
+    table
+      tr
+        th id
+        th value
+        th type
+        th date
+      each measure in measures
+        tr
+          td #{measure._id}
+          td #{measure.value}
+          td #{measure.type}
+          td #{measure.date}

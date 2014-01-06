@@ -8,15 +8,14 @@ var express = require('express'),
   app = express();
 var mongoose = require('mongoose');
 var config = require('./config.js')(app, express, mongoose);
-var models = {};
-models.measures = require('./models/measure')(mongoose);
+var measures = require('./models/measure')(mongoose);
 
 // Routes
-var scale = require('./routes/cgi-bin')(models.measures),
-  routes = require('./routes');
+var scale = require('./routes/cgi-bin')(measures),
+  routes = require('./routes')(measures);
 
 // Client
-app.get('/', routes.index);
+app.get('/', routes);
 // Scale
 app.post('/cgi-bin/:page', scale);
 app.post('/cgi-bin/:version/:page', scale);

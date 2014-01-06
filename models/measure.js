@@ -12,18 +12,18 @@ module.exports = function(mongoose) {
   this.model = mongoose.model(collection, schema);
 
   // Public methods
-  this.create = function(value, type, date) {
+  this.model.create = function(value, type, date) {
     if (typeof(date) === 'undefined')
       date = new Date();
 
-    new this.model({
+    new this({
       value: value,
       type: type,
       date: date
     }).save( function( err, comment, count ){
         console.log("save");
-      });
+    });
   };
 
-  return this;
+  return this.model;
 };
