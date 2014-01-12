@@ -12,10 +12,10 @@ var measures = require('./models/measure')(mongoose);
 
 // Routes
 var scale = require('./routes/cgi-bin')(measures),
-  routes = require('./routes')(measures);
+  routes = require('./routes');
 
 // Client
-app.get('/', routes);
+routes.init(app, model);
 // Scale
 app.post('/cgi-bin/:page', scale);
 app.post('/cgi-bin/:version/:page', scale);

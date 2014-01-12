@@ -1,5 +1,5 @@
 module.exports = function(mongoose) {
-  var collection = 'measures';
+  var collection = 'measure';
   var Schema = mongoose.Schema;
   var ObjectId = Schema.ObjectId;
 

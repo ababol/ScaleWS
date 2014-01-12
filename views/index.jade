@@ -1,19 +1,18 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  div
-    h2 Measures
-    table
-      tr
-        th id
-        th value
+    header
+      h1 Measures
+
+    section#main
+      table#measure-list
         th type
+        th value
         th date
-      each measure in measures
-        tr
-          td #{measure._id}
-          td #{measure.value}
-          td #{measure.type}
-          td #{measure.date}
+
+block bodyscripts
+  script#item-template(type="text/template")
+    <td><%= type %></td>
+    <td><%= value %></td>
+    <td><%= date %></td>
+  script(type="text/javascript", src="javascripts/measures.js")
