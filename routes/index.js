@@ -6,11 +6,19 @@ exports.index = function(req, res){
 
 exports.measures = function (req, res) {
       //console.log('list', req.body);
-      Measure.find({}, function (err, result) {
-        if (!err) {
-          res.send(result);
-        } else {
-          res.send(errMsg(err));
-        }
-      });
+	var id;
+	if (req.params.id){
+		id = {'id' : req.params.id};
+	}else{
+		id = {};
+	}
+	console.log(id);
+	Measure.find(id, function (err, result) {
+		if (!err) {
+		  res.send(result);
+		} else {
+		  res.send(errMsg(err));
+		}
+	});	
+	
 };
