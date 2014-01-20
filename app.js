@@ -29,5 +29,5 @@ var scale = require('./routes/cgi-bin')(measures),
 // Client
 routes.init(app, model);
 // Scale
-app.get('/cgi-bin/:page', scale);
+app.post('/cgi-bin/:page', scale);
 app.post('/cgi-bin/:version/:page', scale);
