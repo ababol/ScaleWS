@@ -1,4 +1,4 @@
-module.exports = function(mongoose) {
+module.exports = function(mongoose, sockets) {
   var collection = 'measure';
   var Schema = mongoose.Schema;
   var ObjectId = Schema.ObjectId;
@@ -16,13 +16,15 @@ module.exports = function(mongoose) {
     if (typeof(date) === 'undefined')
       date = new Date();
 
-    new this({
+    newMeasure = new this({
       value: value,
       type: type,
       date: date
-    }).save( function( err, comment, count ){
+    });
+    newMeasure.save( function( err, comment, count ){
         console.log("save");
     });
+    sockets.emit("newMeasure", JSON.stringify(newMeasure));
   };
 
   return this.model;

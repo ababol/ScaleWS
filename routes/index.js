@@ -5,7 +5,7 @@
   var crudUtils = require('../utils/crudUtils');
 
   function index(req, res) {
-    res.render('index', { 'title': 'Backbone.js, Node.js, MongoDB Todos' });
+    res.render('index', { 'title': 'Scale WS' });
   }
 
   exports.init = function (app, model) {
