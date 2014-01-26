@@ -86,6 +86,7 @@ $(function ($, _, Backbone) {
   
 
   var socket = io.connect('http://localhost');
+
   socket.on('newMeasure', function (data) {
     console.log(data);
     app.addOne(new Measure(JSON.parse(data)));
@@ -94,4 +95,13 @@ $(function ($, _, Backbone) {
   socket.on('news', function (data) {
     console.log(data);
   });
+  socket.on('Create', function (data) {
+    console.log("Create !! ");
+    console.log(data);
+  });
+  socket.on('Error', function (data) {
+    console.log("Error !! ");
+    console.log(data);
+  });
+  window.socket = socket;
 }(jQuery, _, Backbone));

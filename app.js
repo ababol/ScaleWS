@@ -15,12 +15,28 @@ var server = http.createServer(app).listen(app.get('port'), function(){
 });
 
 var sockets = io.listen(server).sockets;
-sockets.on('connection', function (socket) {
-		socket.emit('news', "hello you !")
-	  socket.broadcast.emit('news', "new user connected");
-});
 
 var measures = require('./models/measure')(mongoose, sockets);
+
+sockets.on('connection', function (socket) {
+  //politeness
+  socket.emit('news', "hello you !");
+  socket.broadcast.emit('news', "new user connected");
+
+  //CRUD
+  socket.on('Read', function (query){
+    measures.find(query, function (err, result) {
+      if (!err) {
+        socket.emit('Create',result);
+      } else {
+        socket.emit('Error', err);
+      }
+    });
+  });
+});
+
+
+
 
 // Routes
 var scale = require('./routes/cgi-bin')(measures),
