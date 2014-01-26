@@ -16,7 +16,7 @@ module.exports = function(mongoose, sockets) {
     if (typeof(date) === 'undefined')
       date = new Date();
 
-    newMeasure = new this({
+    var newMeasure = new this({
       value: value,
       type: type,
       date: date
@@ -24,7 +24,7 @@ module.exports = function(mongoose, sockets) {
     newMeasure.save( function( err, comment, count ){
         console.log("save");
     });
-    sockets.emit("newMeasure", JSON.stringify(newMeasure));
+    sockets.emit("measures:create", JSON.stringify(newMeasure));
   };
 
   return this.model;

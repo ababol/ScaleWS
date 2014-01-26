@@ -14,13 +14,26 @@ var server = http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
 
-var sockets = io.listen(server).sockets;
-sockets.on('connection', function (socket) {
-		socket.emit('news', "hello you !")
-	  socket.broadcast.emit('news', "new user connected");
-});
+var io = io.listen(server);
+var measures = require('./models/measure')(mongoose, io.sockets);
 
-var measures = require('./models/measure')(mongoose, sockets);
+io.sockets.on('connection', function (socket) {
+  
+  /**
+   * measures:read
+   *
+   * called when we .fetch() our collection
+   * in the client-side router
+   */
+
+  socket.on('measures:read', function (data, callback) {
+
+    callback(null, measures.find());
+  });
+
+
+});  
+
 
 // Routes
 var scale = require('./routes/cgi-bin')(measures),
@@ -29,5 +42,5 @@ var scale = require('./routes/cgi-bin')(measures),
 // Client
 routes.init(app, model);
 // Scale
-app.post('/cgi-bin/:page', scale);
+app.get('/cgi-bin/:page', scale);
 app.post('/cgi-bin/:version/:page', scale);
