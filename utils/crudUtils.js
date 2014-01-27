@@ -28,6 +28,21 @@
   }
 
   //------------------------------
+  // List
+  //
+  function getListTypeController(type, model) {
+    return function (req, res) {
+      model.find({type: type}, function (err, result) {
+        if (!err) {
+          res.send(result);
+        } else {
+          res.send(errMsg(err));
+        }
+      });
+    };
+  }
+
+  //------------------------------
   // Create
   //
   function getCreateController(model) {
@@ -120,6 +135,11 @@
 
     app.get(path, getListController(model));
     app.post(path, getCreateController(model));
+    app.get(path+'/weight', getListTypeController(1, model));
+    app.get(path+'/heart', getListTypeController(11, model));
+    app.get(path+'/temperature', getListTypeController(12, model));
+    app.get(path+'/fat', getListTypeController(16, model));
+    app.get(path+'/airquality', getListTypeController(35, model));
     app.get(pathWithId, getReadController(model));
     app.put(pathWithId, getUpdateController(model));
     app.del(pathWithId, getDeleteController(model));
