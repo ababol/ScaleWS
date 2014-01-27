@@ -18,20 +18,69 @@ var sockets = io.listen(server).sockets;
 
 var measures = require('./models/measure')(mongoose, sockets);
 
+//CRUD functions
+var create = function (socket, query) {
+  measures.find(query, function (err, result) {
+    if (!err) {
+      socket.emit('create-answer',result);
+    } else {
+      socket.emit('error', err);
+    }
+  });        
+};
+
+var read = function (socket, query) {
+  measures.find(query, function (err, result) {
+    if (!err) {
+      socket.emit('read-answer',result);
+    } else {
+      socket.emit('error', err);
+    }
+  });        
+};
+
+var update = function (socket, query) {
+  measures.find(query, function (err, result) {
+    if (!err) {
+      socket.emit('update-answer',result);
+    } else {
+      socket.emit('error', err);
+    }
+  });        
+};
+
+var destroy = function (socket, query) {
+  measures.find(query, function (err, result) {
+    if (!err) {
+      socket.emit('delete-answer',result);
+    } else {
+      socket.emit('error', err);
+    }
+  });        
+};
+
+
+
+
+
+
 sockets.on('connection', function (socket) {
   //politeness
   socket.emit('news', "hello you !");
   socket.broadcast.emit('news', "new user connected");
 
   //CRUD
-  socket.on('Read', function (query){
-    measures.find(query, function (err, result) {
-      if (!err) {
-        socket.emit('Create',result);
-      } else {
-        socket.emit('Error', err);
-      }
-    });
+  socket.on('create', function (query){
+    create(socket,query);
+  });
+  socket.on('read', function (query){
+    read(socket,query);
+  });
+  socket.on('update', function (query){
+    update(socket,query);
+  });
+  socket.on('delete', function (query){
+    destroy(socket,query);
   });
 });
 
