@@ -59,12 +59,14 @@ $(function ($, _, Backbone) {
   // ---------------
 
   AppView = Backbone.View.extend({
+
     initialize: function () {
       Measures.bind('add', this.addOne, this);
       Measures.bind('reset', this.addAll, this);
       Measures.bind('all', this.render, this);
 
       Measures.fetch();
+
     },
 
     addOne: function (measure) {
@@ -76,8 +78,30 @@ $(function ($, _, Backbone) {
     addAll: function () {
       Measures.each(this.addOne);
     }
+
+
   });
 
-  new AppView();
+  var app = new AppView();
+  
 
+  var socket = io.connect('http://localhost');
+
+  socket.on('newMeasure', function (data) {
+    console.log(data);
+    app.addOne(new Measure(JSON.parse(data)));
+  });
+  
+  socket.on('news', function (data) {
+    console.log(data);
+  });
+  socket.on('Create', function (data) {
+    console.log("Create !! ");
+    console.log(data);
+  });
+  socket.on('Error', function (data) {
+    console.log("Error !! ");
+    console.log(data);
+  });
+  window.socket = socket;
 }(jQuery, _, Backbone));

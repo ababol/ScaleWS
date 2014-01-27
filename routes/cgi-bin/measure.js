@@ -1,4 +1,5 @@
 module.exports = function(req, res, measure){
+  // measure.create(Math.floor(100*Math.random()), Math.floor(10000*Math.random()));
   var measureScale = JSON.parse(req.body.measuregrps).measuregrps;
   for (var m in measureScale) {
     for (var n in measureScale[m].measures) {
