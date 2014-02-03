@@ -1,21 +1,13 @@
-define([
-  "jquery",
-  "underscore",
-  "backbone"
-], function(
-  $,
-  _,
-  Backbone
-) {
-  return Backbone.Model.extend({
-    idAttribute: "_id",
+var Backbone = require("backbone");
 
-    defaults: function () {
-      return {
-        value: 0,
-        type: 0,
-        date: new Date()
-      };
-    }
-  });
+module.exports = Backbone.Model.extend({
+  idAttribute: "_id",
+
+  defaults: function () {
+    return {
+      value: 0,
+      type: 0,
+      date: new Date()
+    };
+  }
 });

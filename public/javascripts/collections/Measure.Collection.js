@@ -1,15 +1,7 @@
-define([
-  "jquery",
-  "underscore",
-  "backbone",
-  "app/models/Measure.Model"
-], function(
-  $,
-  _,
-  Backbone,
-  MeasureModel
-) {
-  return Backbone.Collection.extend({
+var Backbone = require("backbone"),
+  MeasureModel = require('../models/Measure.Model');
+
+module.exports = Backbone.Collection.extend({
     model: MeasureModel,
 
     url: function () {
@@ -20,5 +12,4 @@ define([
     comparator: function (measure) {
       return measure.get('date');
     }
-  });
 });

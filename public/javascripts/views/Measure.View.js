@@ -1,21 +1,16 @@
-define([
-  "jquery",
-  "underscore",
-  "backbone"
-], function(
-  $,
-  _,
-  Backbone
-) {
-  return Backbone.View.extend({
-    tagName:  "tr",
+var $ = require("jquery"),
+  _ = require("underscore"),
+  Backbone = require("backbone");
+Backbone.$ = $;
 
-    // Cache the template function for a single item.
-    template: _.template($('#item-template').html()),
+module.exports = Backbone.View.extend({
+  tagName:  "tr",
 
-    render: function () {
-      this.$el.html(this.template(this.model.toJSON()));
-      return this;
-    }
-  });
+  // Cache the template function for a single item.
+  template: _.template($('#item-template').html()),
+
+  render: function () {
+    this.$el.html(this.template(this.model.toJSON()));
+    return this;
+  }
 });
