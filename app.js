@@ -6,7 +6,7 @@ var express = require('express'),
   http = require('http'),
   path = require('path'),
   app = express(),
-  io = require('socket.io')
+  io = require('socket.io');
 var mongoose = require('mongoose');
 var config = require('./config.js')(app, express, mongoose);
 
