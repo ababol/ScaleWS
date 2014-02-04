@@ -1,5 +1,5 @@
 node_modules
 .idea
-public/javascripts/bundle.js
-public/stylesheets/css/*.css
+public/scripts/*.js
+public/styles/*.css
 .sass-cache

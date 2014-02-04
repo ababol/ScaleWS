@@ -15,7 +15,7 @@ var server = http.createServer(app).listen(app.get('port'), function(){
 
 var sockets = io.listen(server).sockets;
 
-var measures = require('./models/measure')(mongoose, sockets);
+var measures = require('./app/models/measure')(mongoose, sockets);
 
 //CRUD functions
 var create = function (socket, query) {
@@ -87,8 +87,8 @@ sockets.on('connection', function (socket) {
 
 
 // Routes
-var scale = require('./routes/cgi-bin')(measures),
-  routes = require('./routes');
+var scale = require('./app/routes/cgi-bin')(measures),
+  routes = require('./app/routes');
 
 // Client
 routes.init(app, model);

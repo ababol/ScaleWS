@@ -7,25 +7,21 @@ module.exports = function(grunt) {
           style: 'expanded'
         },
         files: {
-          'public/stylesheets/css/style.css': 'public/stylesheets/sass/style.scss'
+          'public/styles/style.css': 'client/styles/style.scss'
         }
       }
     },
     browserify: {
       dist: {
         files: {
-          'public/javascripts/bundle.js': "public/javascripts/main.js"
+          'public/scripts/bundle.js': "client/src/main.js"
         }
       }
     },
     watch: {
       sass: {
-        files: '/public/stylesheets/style/style.css',
+        files: '/client/styles/style.css',
         tasks: ['sass:dist']
-      },
-      browserify: {
-        files: 'public/javascripts/bundle.js',
-        tasks: ['browserify:dist']
       }
     }
   })
