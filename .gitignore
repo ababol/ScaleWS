@@ -1,5 +1,3 @@
 node_modules
 .idea
-public/scripts/*.js
-public/styles/*.css
 .sass-cache

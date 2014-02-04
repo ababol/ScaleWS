@@ -7,14 +7,14 @@ module.exports = function(grunt) {
           style: 'expanded'
         },
         files: {
-          'public/styles/style.css': 'client/styles/style.scss'
+          'public/css/style.css': 'client/styles/style.scss'
         }
       }
     },
     browserify: {
       dist: {
         files: {
-          'public/scripts/bundle.js': "client/src/main.js"
+          'public/js/bundle.js': "client/scripts/main.js"
         }
       }
     },
