@@ -55,9 +55,19 @@ module.exports = function(grunt) {
         options: {
           script: 'app.js'
         }
+      },
+      release: {
+        options: {
+          script: 'app.js',
+          background: false
+        }
       }
     },
     uglify: {
+      options: {
+        compress: true,
+        report: 'gzip'
+      },
       my_target: {
         files: {
           'public/js/bundle.js': "public/js/bundle.js"
@@ -76,5 +86,5 @@ module.exports = function(grunt) {
 
   grunt.registerTask('validate', ['jshint']);
   grunt.registerTask('dev', ['sass', 'browserify', 'express:dev', 'watch']);
-  grunt.registerTask('release', ['sass', 'browserify', 'uglify', 'express']);
+  grunt.registerTask('release', ['sass', 'browserify', 'uglify', 'express:release']);
 }
