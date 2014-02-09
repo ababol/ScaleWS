@@ -1,14 +1,28 @@
 module.exports = function(grunt) {
+  ['grunt-browserify',
+    'grunt-contrib-jshint',
+    'grunt-contrib-sass',
+    'grunt-contrib-uglify',
+    'grunt-contrib-watch',
+    'grunt-express-server',
+    'grunt-concurrent'].forEach(grunt.loadNpmTasks);
+
+  var open = true;
 
   grunt.initConfig({
+    jshint: {
+      files: '**/*.js',
+      options: { jshintrc: '.jshintrc' }
+    },
     sass: {
       dist: {
-        options: {
-          style: 'expanded'
-        },
-        files: {
-          'public/css/style.css': 'client/styles/style.scss'
-        }
+        files: [{
+          expand: true,
+          cwd: 'client/styles',
+          src: ['*.scss'],
+          dest: 'public/css',
+          ext: '.css'
+        }]
       }
     },
     browserify: {
@@ -19,16 +33,51 @@ module.exports = function(grunt) {
       }
     },
     watch: {
-      sass: {
-        files: '/client/styles/style.css',
-        tasks: ['sass:dist']
+      scriptsClient: {
+        files: ['client/**/*.js'],
+        tasks: 'browserify'
+      },
+      scriptsApp: {
+        files: ['app/**/*.js'],
+        tasks: 'express',
+        options: {
+          spawn: false // Without this option specified express won't be reloaded
+        }
+      },
+      styles: {
+        files: '**/*.scss',
+        tasks: 'sass'
+      }
+    },
+    express: {
+      options: {
+        port: 3000,
+        background: false
+      },
+      dev: {
+        options: {
+          script: 'app.js'
+        }
+      }
+    },
+    uglify: {
+      my_target: {
+        files: {
+          'public/js/bundle.js': "public/js/bundle.js"
+        }
+      }
+    },
+    concurrent: {
+      target: {
+        tasks: ['express', 'watch'],
+        options: {
+          logConcurrentOutput: true
+        }
       }
     }
-  })
+  });
 
-  grunt.loadNpmTasks('grunt-contrib-sass');
-  grunt.loadNpmTasks('grunt-browserify');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-
-  grunt.registerTask('default', ['sass:dist', 'browserify:dist']);
+  grunt.registerTask('validate', ['jshint']);
+  grunt.registerTask('dev', ['sass', 'browserify', 'concurrent']);
+  grunt.registerTask('release', ['sass', 'browserify', 'uglify', 'express']);
 }

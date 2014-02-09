@@ -13,7 +13,9 @@ var server = http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
 
-var sockets = io.listen(server).sockets;
+var socketio = io.listen(server);
+socketio.set('log level', 1);
+var sockets= socketio.sockets;
 
 var measures = require('./app/models/measure')(mongoose, sockets);
 

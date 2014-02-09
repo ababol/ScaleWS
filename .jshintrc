@@ -1,0 +1,18 @@
+{
+  "indent" : 2,
+  "jquery": true,
+  "latedef" : true,   // true: Require variables to be defined before use
+                      // (helps avoid hoisting bugs)
+
+  "node" : true,      // Node.js
+  "trailing" : false, // true: Prohibit trailing whitespaces
+  "undef" : true,     // true: Require all non-global variables to be
+                      // declared (prevents global leaks)
+  "unused" : "vars",  // vars: Require all defined variables be used, but not
+                      //       function parameters
+
+  "globals": {
+    "module": false,
+    "require": false
+  }
+}
