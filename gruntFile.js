@@ -7,8 +7,6 @@ module.exports = function(grunt) {
     'grunt-express-server',
     'grunt-concurrent'].forEach(grunt.loadNpmTasks);
 
-  var open = true;
-
   grunt.initConfig({
     jshint: {
       files: '**/*.js',
@@ -38,8 +36,8 @@ module.exports = function(grunt) {
         tasks: 'browserify'
       },
       scriptsApp: {
-        files: ['app/**/*.js'],
-        tasks: 'express',
+        files: ['*.js', 'app/**/*.js', '!gruntFile.js'],
+        tasks:  [ 'express:dev'],
         options: {
           spawn: false // Without this option specified express won't be reloaded
         }
@@ -51,8 +49,7 @@ module.exports = function(grunt) {
     },
     express: {
       options: {
-        port: 3000,
-        background: false
+        port: 3000
       },
       dev: {
         options: {
@@ -78,6 +75,6 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('validate', ['jshint']);
-  grunt.registerTask('dev', ['sass', 'browserify', 'concurrent']);
+  grunt.registerTask('dev', ['sass', 'browserify', 'express:dev', 'watch']);
   grunt.registerTask('release', ['sass', 'browserify', 'uglify', 'express']);
 }
