@@ -24,10 +24,17 @@ Backbone.sync = function (method, model, options) {
 
   var update = function () {
     socket.emit('update',model.attributes);
+    socket.once('update-answer', function(data){
+      consolo.log("update");
+    });
   };
 
   var destroy = function () {
+    console.log("delete1");
     socket.emit('delete',model.attributes._id);
+    socket.once('delete-answer', function(data){
+      console.log("delete");
+    });
   };
 
   switch (method) {
@@ -41,7 +48,6 @@ Backbone.sync = function (method, model, options) {
       update();
       break;
     case 'delete':
-      destroy();
       break;
   }
 };

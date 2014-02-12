@@ -45,6 +45,8 @@ var update = function (socket, element) {
   measures.db.collections.measures.save(element, function(err, result){
     if(err){
       socket.emit('error', err);
+    }else{
+      socket.emit('update-answer',result);
     }
   });
 };
@@ -53,6 +55,8 @@ var destroy = function (socket, id) {
   measures.db.collections.measures.remove({_id : id},function(err, result){
     if(err){
       socket.emit('error', err);
+    }else{
+      socket.emit('delete-answer',result);
     }
   }); 
 };
