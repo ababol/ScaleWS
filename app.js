@@ -18,16 +18,17 @@ socketio.set('log level', 1);
 var sockets= socketio.sockets;
 
 var measures = require('./app/models/measure')(mongoose, sockets);
+// measures.db.collections.measures.find({}, function(message, result){
+//   console.log(result);
+// });
 
 //CRUD functions
-var create = function (socket, query) {
-  measures.find(query, function (err, result) {
-    if (!err) {
-      socket.emit('create-answer',result);
-    } else {
-      socket.emit('error', err);
-    }
-  });        
+var create = function (socket, data) {
+  try{
+    measures.create(data.value, data.type); //emit a newMeasure to the client
+  }catch(err){
+    socket.emit('error', err);
+  }
 };
 
 var read = function (socket, query) {
@@ -40,24 +41,20 @@ var read = function (socket, query) {
   });        
 };
 
-var update = function (socket, query) {
-  measures.find(query, function (err, result) {
-    if (!err) {
-      socket.emit('update-answer',result);
-    } else {
+var update = function (socket, element) {
+  measures.db.collections.measures.save(element, function(err, result){
+    if(err){
       socket.emit('error', err);
     }
-  });        
+  });
 };
 
-var destroy = function (socket, query) {
-  measures.find(query, function (err, result) {
-    if (!err) {
-      socket.emit('delete-answer',result);
-    } else {
+var destroy = function (socket, id) {
+  measures.db.collections.measures.remove({_id : id},function(err, result){
+    if(err){
       socket.emit('error', err);
     }
-  });        
+  }); 
 };
 
 

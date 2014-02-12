@@ -12,10 +12,7 @@ Backbone.sync = function (method, model, options) {
   var socket = window.socket;
 
   var create = function () {
-    socket.emit('create',{});
-    socket.once('create-answer', function(data){
-      options.success(data);
-    });
+    socket.emit('create',model.attributes);
   };
 
   var read = function () {
@@ -26,17 +23,11 @@ Backbone.sync = function (method, model, options) {
   };
 
   var update = function () {
-    socket.emit('update',{});
-    socket.once('update-answer', function(data){
-      options.success(data);
-    });
+    socket.emit('update',model.attributes);
   };
 
   var destroy = function () {
-    socket.emit('delete',{});
-    socket.once('delete-answer', function(data){
-      options.success(data);
-    });
+    socket.emit('delete',model.attributes._id);
   };
 
   switch (method) {
@@ -58,6 +49,7 @@ Backbone.sync = function (method, model, options) {
 var app = new AppView({
   collection: new MeasureCollection()
 });
+window.app = app;
 
 //Updates collection when a new measure is added to the database
 socket.on('newMeasure', function (data) {
