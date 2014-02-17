@@ -1,4 +1,51 @@
+@import url(http://fonts.googleapis.com/css?family=Raleway:400,300);
+* {
+  margin: 0px;
+  padding: 0px; }
+
 body {
   font: 14px helvetica;
-  color: #f0f0f0;
-  background-color: #333; }
+  color: black;
+  background-color: white;
+  text-align: center; }
+  body #main {
+    text-align: center; }
+
+header {
+  position: relative;
+  width: 100%;
+  padding-top: 4%;
+  padding-bottom: 4%;
+  margin-bottom: 3%;
+  background-color: #34495D;
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+  color: white; }
+  header h1 {
+    font-size: 400%;
+    margin-bottom: 2%; }
+  header h2 {
+    font-size: 100%; }
+
+table {
+  border: 1px solid #d3d3d3;
+  background: #fefefe;
+  display: inline-table;
+  width: 70%;
+  -moz-border-radius: 5px;
+  /* FF1+ */
+  -webkit-border-radius: 5px;
+  /* Saf3-4 */
+  border-radius: 5px;
+  -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2); }
+  table th, table td {
+    padding: 18px 28px 18px;
+    text-align: center; }
+  table th {
+    padding-top: 22px;
+    text-shadow: 1px 1px 1px #fff;
+    background: #e8eaeb; }
+  table td {
+    border-top: 1px solid #e0e0e0;
+    border-right: 1px solid #e0e0e0; }
