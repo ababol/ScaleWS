@@ -34,7 +34,7 @@ var create = function (socket, data) {
 var read = function (socket, query) {
   measures.find(query, function (err, result) {
     if (!err) {
-      socket.emit('read-answer',result);
+      socket.emit('answer',result);
     } else {
       socket.emit('error', err);
     }
@@ -46,7 +46,7 @@ var update = function (socket, element) {
     if(err){
       socket.emit('error', err);
     }else{
-      socket.emit('update-answer',result);
+      socket.emit('answer',result);
     }
   });
 };
@@ -56,7 +56,7 @@ var destroy = function (socket, id) {
     if(err){
       socket.emit('error', err);
     }else{
-      socket.emit('delete-answer',result);
+      socket.emit('answer',result);
     }
   }); 
 };
@@ -65,26 +65,37 @@ var destroy = function (socket, id) {
 
 
 
-
-sockets.on('connection', function (socket) {
+socketio.of('/politness').on('connection', function (socket) {
   //politeness
   socket.emit('news', "hello you !");
   socket.broadcast.emit('news', "new user connected");
 
-  //CRUD
-  socket.on('create', function (query){
+});
+
+socketio.of('/create').on('connection', function(socket){
+  socket.on('ask', function (query){
     create(socket,query);
   });
-  socket.on('read', function (query){
+});
+
+socketio.of('/read').on('connection', function(socket){
+  socket.on('ask', function (query){
     read(socket,query);
   });
-  socket.on('update', function (query){
+});
+
+socketio.of('/update').on('connection', function(socket){
+   socket.on('ask', function (query){
     update(socket,query);
   });
-  socket.on('delete', function (query){
+});
+
+socketio.of('/delete').on('connection', function(socket){
+  socket.on('ask', function (query){
     destroy(socket,query);
   });
 });
+
 
 
 

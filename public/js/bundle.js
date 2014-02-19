@@ -20,36 +20,37 @@ var Backbone = require('backbone'),
   MeasureCollection = require('./collections/Measure.Collection'),
   AppView = require('./views/App.View');
 
-var socket = io.connect('http://localhost');
+var politness = io.connect('/politness');
+var createIO = io.connect('/create');
+var readIO = io.connect('/read');
+var updateIO = io.connect('/update');
+var deleteIO = io.connect('/delete');
 
-window.socket = socket;
 
 //Override Backbone.sync with socket
 Backbone.sync = function (method, model, options) {
-  var socket = window.socket;
-
+  
   var create = function () {
-    socket.emit('create',model.attributes);
+    createIO.emit('ask',model.attributes);
   };
 
   var read = function () {
-    socket.emit('read',{});
-    socket.once('read-answer', function(data){
+    readIO.emit('ask',{});
+    readIO.once('answer', function(data){
       options.success(data);
     });
   };
 
   var update = function () {
-    socket.emit('update',model.attributes);
-    socket.once('update-answer', function(data){
+    updateIO.emit('ask',model.attributes);
+    updateIO.once('answer', function(data){
       consolo.log("update");
     });
   };
 
   var destroy = function () {
-    console.log("delete1");
-    socket.emit('delete',model.attributes._id);
-    socket.once('delete-answer', function(data){
+    deleteIO.emit('ask',model.attributes._id);
+    deleteIO.once('answer', function(data){
       console.log("delete");
     });
   };
@@ -80,11 +81,13 @@ socket.on('newMeasure', function (data) {
   app.addOne(new Measure(JSON.parse(data)));
 });
 
-socket.on('news', function (data) {
-  console.log(data);
-});
 socket.on('error', function (data) {
   console.log("Error !! ");
+  console.log(data);
+});
+
+
+politness.on('news', function (data) {
   console.log(data);
 });
 },{"./collections/Measure.Collection":1,"./views/App.View":4,"backbone":6,"socket.io-client":8}],3:[function(require,module,exports){
