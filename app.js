@@ -18,9 +18,7 @@ socketio.set('log level', 1);
 var sockets= socketio.sockets;
 
 var measures = require('./app/models/measure')(mongoose, sockets);
-// measures.db.collections.measures.find({}, function(message, result){
-//   console.log(result);
-// });
+
 
 //CRUD functions
 var create = function (socket, data) {
@@ -105,7 +103,7 @@ var scale = require('./app/routes/cgi-bin')(measures),
   routes = require('./app/routes');
 
 // Client
-routes.init(app, model);
+routes.init(app, measures);
 // Scale
 app.post('/cgi-bin/:page', scale);
 app.post('/cgi-bin/:version/:page', scale);

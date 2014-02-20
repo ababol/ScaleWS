@@ -9,10 +9,10 @@ module.exports = function(mongoose, sockets) {
     date: { type : Date, default : Date.now }
   });
 
-  this.model = mongoose.model(collection, schema);
+  var model = mongoose.model(collection, schema);
 
   // Public methods
-  this.model.create = function(value, type, date) {
+  model.create = function(value, type, date) {
     if (typeof(date) === 'undefined')
       date = new Date();
 
@@ -27,5 +27,5 @@ module.exports = function(mongoose, sockets) {
     sockets.emit("newMeasure", JSON.stringify(newMeasure));
   };
 
-  return this.model;
+  return model;
 };
