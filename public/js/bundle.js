@@ -25,7 +25,7 @@ var createIO = io.connect('/create');
 var readIO = io.connect('/read');
 var updateIO = io.connect('/update');
 var deleteIO = io.connect('/delete');
-
+window.update = updateIO;
 
 //Override Backbone.sync with socket
 Backbone.sync = function (method, model, options) {
@@ -44,7 +44,7 @@ Backbone.sync = function (method, model, options) {
   var update = function () {
     updateIO.emit('ask',model.attributes);
     updateIO.once('answer', function(data){
-      consolo.log("update");
+      console.log("update");
     });
   };
 
@@ -76,15 +76,15 @@ var app = new AppView({
 window.app = app;
 
 //Updates collection when a new measure is added to the database
-socket.on('newMeasure', function (data) {
-  console.log(data);
-  app.addOne(new Measure(JSON.parse(data)));
-});
+// socket.on('newMeasure', function (data) {
+//   console.log(data);
+//   app.addOne(new Measure(JSON.parse(data)));
+// });
 
-socket.on('error', function (data) {
-  console.log("Error !! ");
-  console.log(data);
-});
+// socket.on('error', function (data) {
+//   console.log("Error !! ");
+//   console.log(data);
+// });
 
 
 politness.on('news', function (data) {
