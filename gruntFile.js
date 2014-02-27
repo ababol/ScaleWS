@@ -1,6 +1,5 @@
 module.exports = function(grunt) {
-  ['grunt-browserify',
-    'grunt-contrib-jshint',
+  ['grunt-contrib-jshint',
     'grunt-contrib-sass',
     'grunt-contrib-uglify',
     'grunt-contrib-watch',
@@ -15,25 +14,14 @@ module.exports = function(grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: 'client/styles',
+          cwd: 'public/styles',
           src: ['*.scss'],
-          dest: 'public/css',
+          dest: 'public/styles',
           ext: '.css'
         }]
       }
     },
-    browserify: {
-      dist: {
-        files: {
-          'public/js/bundle.js': "client/scripts/main.js"
-        }
-      }
-    },
     watch: {
-      scriptsClient: {
-        files: ['client/**/*.js'],
-        tasks: 'browserify'
-      },
       scriptsApp: {
         files: ['*.js', 'app/**/*.js', '!gruntFile.js'],
         tasks:  ['express:dev'],
@@ -42,7 +30,7 @@ module.exports = function(grunt) {
         }
       },
       styles: {
-        files: 'client/styles/**/*.scss',
+        files: 'public/styles/**/*.scss',
         tasks: ['sass:dist']
       }
     },
@@ -76,6 +64,6 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('validate', ['jshint']);
-  grunt.registerTask('dev', ['sass', 'browserify', 'express:dev', 'watch']);
-  grunt.registerTask('release', ['sass', 'browserify', 'uglify', 'express:release']);
+  grunt.registerTask('dev', ['sass', 'express:dev', 'watch']);
+  grunt.registerTask('release', ['sass', 'uglify', 'express:release']);
 }
