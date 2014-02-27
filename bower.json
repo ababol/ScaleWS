@@ -1,0 +1,11 @@
+{
+  "name": "ScaleWS",
+  "version": "0.0.1",
+  "dependencies": {
+    "jquery": "~2.1.0",
+    "underscore": "~1.6.0",
+    "backbone": "~1.1.2",
+    "d3": "~3.4.2",
+    "requirejs": "~2.1.11"
+  }
+}
