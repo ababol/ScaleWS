@@ -88,12 +88,16 @@ require([
   });
   window.app = app;
 
-  app.collection.add({
-    "value": 80924,
-    "type": 1,
-    "_id": "52b219517201188b0a0004558",
-    "__v": 0,
-    "date": "2014-06-16T21:53:21.736Z"});
+  //Updates collection when a new measure is added to the database
+  // socket.on('newMeasure', function (data) {
+  //   console.log(data);
+  //   app.addOne(new Measure(JSON.parse(data)));
+  // });
+
+  // socket.on('error', function (data) {
+  //   console.log("Error !! ");
+  //   console.log(data);
+  // });
 
 
   politness.on('news', function (data) {
