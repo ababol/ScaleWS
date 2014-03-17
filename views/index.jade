@@ -6,14 +6,18 @@ block content
     h2 Get and process data acquired from the scale (Withings WS50)
 
   section#main
+    div#chart
+      div.value
     table#measure-list
       th type
       th value
       th date
+      th id
 
 block bodyscripts
   script#item-template(type="text/template")
     <td><%= type %></td>
     <td><%= value %></td>
     <td><%= date %></td>
+    <td><%= _id %></td>
   <script data-main="js/main.js" src="bower_components/requirejs/require.js"></script>
