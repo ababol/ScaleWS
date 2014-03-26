@@ -28,7 +28,6 @@ module.exports = function(app, path, Backbone, _, categoriesMasks){
 
             for (i in categoriesMasks){
                 app.get(path+'/' +i, _.bind(function(req, res){
-                    console.log("test : " +i);
                     httpCallback.call({req : req, res: res},null,_this.collection.where(categoriesMasks[i])); 
                     // httpCallback.call({req : req, res: res},null,_.where(this.collection.models, categoriesMasks[i])); 
                 }, this));

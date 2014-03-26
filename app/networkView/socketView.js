@@ -54,7 +54,7 @@ module.exports = function(socketio, Backbone, _){
       },this));
     },
     all : function(event, model, collection){
-      console.log(event);
+      // console.log(event);
       // this.main.send("change", this.collection.toJSON());
     }
   });
