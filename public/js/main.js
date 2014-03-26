@@ -48,7 +48,7 @@ require([
     };
 
     var read = function () {
-      readIO.emit('ask',{});
+      readIO.emit('ask',{type:1});
       readIO.once('answer', function(data){
         options.success(data);
       });

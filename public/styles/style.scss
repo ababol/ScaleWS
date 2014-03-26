@@ -35,33 +35,30 @@ header{
 }
 
 table {
-    border:1px solid #d3d3d3;
-    background:#fefefe;
-    display: inline-table;
-    width:70%;
-    -moz-border-radius:5px; /* FF1+ */
-    -webkit-border-radius:5px; /* Saf3-4 */
-    border-radius:5px;
-    -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
-    -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
-    
-    th, td {
-      padding:18px 28px 18px; 
-      text-align:center; 
-    }
-    
-    th {
-      padding-top:22px; 
-      text-shadow: 1px 1px 1px #fff; 
-      background:#e8eaeb;
-    }
+  border:1px solid #d3d3d3;
+  background:#fefefe;
+  display: inline-table;
+  width:70%;
+  -moz-border-radius:5px; /* FF1+ */
+  -webkit-border-radius:5px; /* Saf3-4 */
+  border-radius:5px;
+  -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
 
-    
-    td {
-      border-top:1px solid #e0e0e0;
-      border-right:1px solid #e0e0e0;
-    }
+  th, td {
+    padding:18px 28px 18px;
+    text-align:center;
   }
-  
-    
-  
+
+  th {
+    padding-top:22px;
+    text-shadow: 1px 1px 1px #fff;
+    background:#e8eaeb;
+  }
+
+
+  td {
+    border-top:1px solid #e0e0e0;
+    border-right:1px solid #e0e0e0;
+  }
+}
