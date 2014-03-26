@@ -1,58 +1,58 @@
-module.exports = function(controller, socketio){
-  
-  socketio.of('/politness').on('connection', function (socket) {
-    //politeness
-    socket.emit('news', "hello you !");
-    socket.broadcast.emit('news', "new user connected");
+module.exports = function(socketio, Backbone, _){
 
-  });
+  return Backbone.ServerView.extend({    
+    initialize :  function () {
+      // this.collection.bind('add', this.addOne, this);
+      // this.collection.bind('reset', this.addAll, this);
+      // this.collection.bind('all', this.render, this);
+      this.collection.bind('change', this.change, this);
 
-  socketio.of('/create').on('connection', function(socket){
-    socket.on('ask', function (query){
-      controller.create(query, function (err, result) {
-        if (!err) {
-          socket.emit('answer',result);
-        } else {
-          socket.emit('error', err);
-        }
+      //Init socket listners
+      var pol = socketio.of('/politness');
+      pol.on('connection', function (socket) {
+        //politeness
+        socket.emit('news', "hello you !");
+        socket.broadcast.emit('news', "new user connected");
+
       });
-    });
-  });
 
-  socketio.of('/read').on('connection', function(socket){
-    socket.on('ask', function (query){
-      controller.read(query, function (err, result) {
-        if (!err) {
-          socket.emit('answer',result);
-        } else {
-          socket.emit('error', err);
-        }
-      });
-    });
-  });
+      socketio.of('/create').on('connection', _.bind(function(socket){
+        socket.on('ask', _.bind(
+          function (obj){
+            this.collection.add(obj, function (result) {
+              socket.emit('answer', result);
+            });
+          }, {collection: this.collection}) 
+        )
+      },this));
+      
+      socketio.of('/read').on('connection', _.bind(function(socket){
+        socket.on('ask', _.bind(
+          function (query){
+            socket.emit('answer', this.collection.toJSON());
+          }, {collection: this.collection}) 
+        )
+      },this));
 
-  socketio.of('/update').on('connection', function(socket){
-     socket.on('ask', function (query){
-      controller.update(query, function (err, result) {
-        if (!err) {
-          socket.emit('answer',result);
-        } else {
-          socket.emit('error', err);
-        }
-      });
-    });
-  });
+      socketio.of('/update').on('connection',_.bind(function(socket){
+        socket.on('ask', _.bind(
+          function (query){
+            socket.emit('answer',this.collection.set(query));
+          }, {collection: this.collection}) 
+        )
+      },this));
 
-  socketio.of('/delete').on('connection', function(socket){
-    socket.on('ask', function (query){
-      controller.delete(query, function (err, result) {
-        if (!err) {
-          socket.emit('answer',result);
-        } else {
-          socket.emit('error', err);
-        }
-      });
-    });
+      socketio.of('/delete').on('connection',_.bind(function(socket){
+        socket.on('ask', _.bind(
+          function (query){
+            socket.emit('answer',this.collection.remove(query));
+          }, {collection: this.collection}) 
+        )
+      },this));
+    },
+    change : function(){
+
+    }
   });
 
 }; 

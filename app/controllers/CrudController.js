@@ -1,5 +1,4 @@
 module.exports = function(model){
-  
 
   //------------------------------
   // Create
@@ -33,7 +32,7 @@ module.exports = function(model){
   // Delete
   //
   this.delete = function(obj, callback) {
-    model.findById(obj.id, function (err, result) {
+    model.findById(obj._id, function (err, result) {
         result.remove();
         result.save(callback);
     });

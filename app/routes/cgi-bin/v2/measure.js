@@ -1,4 +1,4 @@
-module.exports = function(req, res, measure){
+module.exports = function(req, res, view){
   var measureScale = JSON.parse(req.body.measuregrps);
   console.log(measureScale);
   for (var m in measureScale) {
@@ -7,7 +7,7 @@ module.exports = function(req, res, measure){
       var value = Math.round(tmp.data.mantissa*Math.pow(10, tmp.data.exponent)*100)/100;
       var type = tmp.type;
       var time = Date(measureScale[m].meastime);
-      measure.create(value, type, time);
+      view.addMeasure(value, type, time);
       // type 12 => temperature
       // type 35 => 655 => qualité air, taux CO2 en ppm
     }

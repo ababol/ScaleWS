@@ -1,62 +1,64 @@
-module.exports = function(controller, app, path){
-    var pathWithId;
-    
-    var errMsg = function(msg) {
-        return {'error': {'message': msg.toString()}};
-    };
+module.exports = function(app, path, Backbone, _){
 
-    var httpCallback = function (err, result) {
-        if (!err) {
-          res.send(result);
-        } else {
-          res.send(errMsg(err));
+    return Backbone.ServerView.extend({    
+
+        initialize :  function () {
+
+            var pathWithId = path + '/:id';
+
+            httpCallback = function (err, result) {
+                errMsg = function(msg) {
+                    return {'error': {'message': msg.toString()}};
+                };
+
+                if (!err) {
+                    this.res.send(result);
+                } else {
+                    this.res.send(errMsg(err));
+                }
+            };
+
+            app.post(path, _.bind(function(req, res){
+                httpCallback.call({req : req, res: res},null,this.collection.create(req.body));
+            }, this));
+
+            app.get(path, _.bind(function(req, res){
+                httpCallback.call({req : req, res: res},null,this.collection.toJSON());
+            }, this));
+
+            app.get(path+'/weight', _.bind(function(req, res){
+                httpCallback.call({req : req, res: res},null,this.collection.where({type : 1})); // 74892
+            }, this));
+
+            app.get(path+'/heart', _.bind(function(req, res){
+                httpCallback.call({req : req, res: res},null,this.collection.where({type : 11})); 
+            }, this));
+
+            app.get(path+'/temperature', _.bind(function(req, res){
+                httpCallback.call({req : req, res: res},null,this.collection.where({type : 12})); 
+            }, this));
+
+            app.get(path+'/fat', _.bind(function(req, res){
+                httpCallback.call({req : req, res: res},null,this.collection.where({type : 16})); 
+            }, this));
+
+            app.get(path+'/airquality', _.bind(function(req, res){
+                httpCallback.call({req : req, res: res},null,this.collection.where({type : 35})); 
+            }, this));
+
+            app.get(pathWithId, _.bind(function(req, res){
+                console.log(req.params.id);
+                httpCallback.call({req : req, res: res},null,this.collection.where({_id: req.params.id}));
+            }, this));
+
+            app.put(pathWithId, _.bind(function(req, res){
+                httpCallback.call({req : req, res: res},null,this.collection.add(req.body));
+            }, this));
+
+            app.del(pathWithId, _.bind(function(req, res){
+                httpCallback.call({req : req, res: res},null,this.collection.remove({_id: req.params.id}));
+            }, this));
         }
-    };
-    
-    if (!app || !controller || !path) {
-      return;
-    }
 
-    pathWithId = path + '/:id';
-
-
-    app.get(path, function(req,res){
-        controller.read({},function (err, result) {
-            if (!err) {
-              res.send(result);
-            } else {
-              res.send(errMsg(err));
-            }
-        });
-    });
-
-    app.post(path, function(req,res){
-        controller.create(req.body, httpCallback);
-    });
-
-     app.get(path+'/weight', function(req,res){
-        controller.read({type : 1}, httpCallback);
-    });
-
-    app.get(path+'/heart', function(req,res){
-        controller.read({type: 11}, httpCallback);
-    });
-    app.get(path+'/temperature', function(req,res){
-        controller.read({type: 12}, httpCallback);
-    });
-    app.get(path+'/fat', function(req,res){
-        controller.read({type: 16}, httpCallback);
-    });
-    app.get(path+'/airquality', function(req,res){
-        controller.read({type: 16}, httpCallback);
-    });
-    app.get(pathWithId, function(req,res){
-        controller.read({_id: req.params.id}, httpCallback);
-    });
-    app.put(pathWithId, function(req,res){
-        controller.update(req.body,  httpCallback);
-    });
-    app.del(pathWithId, function(req,res){
-        controller.delete({_id: req.params.id}, httpCallback);
     });
 };

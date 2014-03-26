@@ -7,6 +7,7 @@ define([
 
   return Backbone.View.extend({
     initialize: function () {
+      console.log(this);
       this.collection.bind('add', this.addOne, this);
       this.collection.bind('reset', this.addAll, this);
       this.collection.bind('all', this.render, this);

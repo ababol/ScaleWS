@@ -1,5 +1,5 @@
 (function (exports) {
-  var model;
+  var view;
   var router = function() {
     return function (req, res) {
       var page = req.params.page,
@@ -20,7 +20,7 @@
 
         if( func ) {
           res.setHeader('Content-Type', 'text/plain');
-          func(req,res,model);
+          func(req,res,view);
         }
       }
 
@@ -30,8 +30,8 @@
     }
   }
 
-  exports.init = function (app, model) {
-    this.model = model;
+  exports.init = function (app, scaleView) {
+    this.view = scaleView;
     app.post('/cgi-bin/:page', router);
     app.post('/cgi-bin/:version/:page', router);
   };
