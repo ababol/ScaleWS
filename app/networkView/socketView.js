@@ -2,14 +2,14 @@ module.exports = function(socketio, Backbone, _){
 
   return Backbone.ServerView.extend({    
     initialize :  function () {
-      // this.collection.bind('add', this.addOne, this);
+      // this.collection.bind('add', this.change, this);
       // this.collection.bind('reset', this.addAll, this);
       // this.collection.bind('all', this.render, this);
-      this.collection.bind('change', this.change, this);
+      this.collection.bind('all', this.all, this);
 
       //Init socket listners
-      var pol = socketio.of('/politness');
-      pol.on('connection', function (socket) {
+      this.main = socketio.of('/main');
+      this.main.on('connection', function (socket) {
         //politeness
         socket.emit('news', "hello you !");
         socket.broadcast.emit('news', "new user connected");
@@ -37,7 +37,10 @@ module.exports = function(socketio, Backbone, _){
       socketio.of('/update').on('connection',_.bind(function(socket){
         socket.on('ask', _.bind(
           function (query){
-            socket.emit('answer',this.collection.set(query));
+            // socket.emit('answer', this.collection.add(query));
+            console.log("update");
+            this.collection.remove(this.collection.at(query._id));
+            this.collection.add(query);
           }, {collection: this.collection}) 
         )
       },this));
@@ -50,8 +53,9 @@ module.exports = function(socketio, Backbone, _){
         )
       },this));
     },
-    change : function(){
-
+    all : function(event, model, collection){
+      console.log(event);
+      // this.main.send("change", this.collection.toJSON());
     }
   });
 

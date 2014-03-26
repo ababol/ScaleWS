@@ -33,7 +33,7 @@ require([
   "js/collections/Measure.Collection",
   "js/views/App.View"
 ], function($, _, Backbone, d3, io, MeasureCollection, AppView) {
-  var politness = io.connect('/politness');
+  var mainIO = io.connect('/main');
   var createIO = io.connect('/create');
   var readIO = io.connect('/read');
   var updateIO = io.connect('/update');
@@ -88,19 +88,12 @@ require([
   });
   window.app = app;
 
-  //Updates collection when a new measure is added to the database
-  // socket.on('newMeasure', function (data) {
-  //   console.log(data);
-  //   app.addOne(new Measure(JSON.parse(data)));
-  // });
-
-  // socket.on('error', function (data) {
-  //   console.log("Error !! ");
-  //   console.log(data);
-  // });
 
 
-  politness.on('news', function (data) {
+  mainIO.on('news', function (data) {
     console.log(data);
   });
+  mainIO.on('change', function(data){
+    console.log(data);
+  })
 });

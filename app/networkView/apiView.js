@@ -1,4 +1,4 @@
-module.exports = function(app, path, Backbone, _){
+module.exports = function(app, path, Backbone, _, categoriesMasks){
 
     return Backbone.ServerView.extend({    
 
@@ -19,32 +19,20 @@ module.exports = function(app, path, Backbone, _){
             };
 
             app.post(path, _.bind(function(req, res){
-                httpCallback.call({req : req, res: res},null,this.collection.create(req.body));
+                httpCallback.call({req : req, res: res},null,this.collection.add(req.body));
             }, this));
 
             app.get(path, _.bind(function(req, res){
                 httpCallback.call({req : req, res: res},null,this.collection.toJSON());
             }, this));
 
-            app.get(path+'/weight', _.bind(function(req, res){
-                httpCallback.call({req : req, res: res},null,this.collection.where({type : 1})); // 74892
-            }, this));
-
-            app.get(path+'/heart', _.bind(function(req, res){
-                httpCallback.call({req : req, res: res},null,this.collection.where({type : 11})); 
-            }, this));
-
-            app.get(path+'/temperature', _.bind(function(req, res){
-                httpCallback.call({req : req, res: res},null,this.collection.where({type : 12})); 
-            }, this));
-
-            app.get(path+'/fat', _.bind(function(req, res){
-                httpCallback.call({req : req, res: res},null,this.collection.where({type : 16})); 
-            }, this));
-
-            app.get(path+'/airquality', _.bind(function(req, res){
-                httpCallback.call({req : req, res: res},null,this.collection.where({type : 35})); 
-            }, this));
+            for (i in categoriesMasks){
+                app.get(path+'/' +i, _.bind(function(req, res){
+                    console.log("test : " +i);
+                    httpCallback.call({req : req, res: res},null,_this.collection.where(categoriesMasks[i])); 
+                    // httpCallback.call({req : req, res: res},null,_.where(this.collection.models, categoriesMasks[i])); 
+                }, this));
+            }
 
             app.get(pathWithId, _.bind(function(req, res){
                 console.log(req.params.id);

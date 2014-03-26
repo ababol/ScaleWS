@@ -10,7 +10,7 @@ module.exports = function(Backbone){
       if (typeof(date) === 'undefined')
         date = new Date();
       
-      this.collection.create({
+      this.collection.add({
         value: value,
         type: type,
         date: date

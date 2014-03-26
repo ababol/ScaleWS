@@ -43,7 +43,7 @@ collection.fetch(); //Sync the collection with the db
 require('./app/networkView/ServerBackboneView')(Backbone, _);
 //extend from Backbone.ServerView
 var socketView = new (require('./app/networkView/socketView')(socketio, Backbone, _))({collection: collection});
-var apiView  = new (require('./app/networkView/apiView')(app, "/"+model.getCollectionName(), Backbone, _))({collection: collection});
+var apiView  = new (require('./app/networkView/apiView')(app, "/"+model.getCollectionName(), Backbone, _, model.getCategoriesMasks))({collection: collection});
 var scaleView  = new (require('./app/networkView/scaleView')(Backbone))({collection: collection});
 
 
