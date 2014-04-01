@@ -7,7 +7,6 @@ define([
   'use strict';
 
   return Backbone.View.extend({
-    // Cache the template function for a single item.
     template: _.template(TooltipFormTemplate),
     events: {
       'click #updateValue': 'update',

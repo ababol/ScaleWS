@@ -5,21 +5,16 @@ block content
     h1 ScaleWS
     h2 Get and process data acquired from the scale (Withings WS50)
 
-  div#tooltip
-
   section#main
+    // ToolTipForm View //
+    div#tooltip
+    // HighChart Views //
     div#chart-weight
     div#chart-temperature
     div#chart-air
     div#chart-pulse
-    table#measure-list
-      th type
-      th value
-      th date
+    // MeasureView //
+    table#text-weight
 
 block bodyscripts
-  script#item-template(type="text/template")
-    td <%= type %>
-    td <%= value %>
-    td <%= date %>
   script(data-main="js/main.js" src="bower_components/requirejs/require.js")

@@ -26,14 +26,13 @@ require.config({
 });
 
 require([
-  "jquery",
-  "underscore",
-  "backbone",
-  "d3",
-  "socketio",
-  "js/collections/Measure.Collection",
-  "js/views/App.View"
-], function($, _, Backbone, d3, io, MeasureCollection, AppView) {
+  'jquery',
+  'underscore',
+  'backbone',
+  'socketio',
+  'js/collections/Measure.Collection',
+  'js/views/App.View'
+], function($, _, Backbone, io, MeasureCollection, AppView) {
   var mainIO = io.connect('/main');
   var createIO = io.connect('/create');
   var readIO = io.connect('/read');
