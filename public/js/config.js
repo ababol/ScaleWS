@@ -6,34 +6,43 @@ define([], function () {
     chartLineColor = "#3e6288";
 
   return {
-    chart: {
-      0: {
-        el: "chart-weight",
-        title: "Weight Chart",
-        backgroundColor: chartBgColor,
-        chartLineColor: chartLineColor,
-        type: 1
+    views: {
+      chart: {
+        0: {
+          el: "chart-weight",
+          title: "Weight Chart",
+          backgroundColor: chartBgColor,
+          chartLineColor: chartLineColor,
+          type: 1
+        },
+        1: {
+          el: "chart-temperature",
+          title: "Temperature Chart",
+          backgroundColor: chartBgColor,
+          chartLineColor: chartLineColor,
+          type: 12
+        },
+        2: {
+          el: "chart-air",
+          title: "Air Chart",
+          backgroundColor: chartBgColor,
+          chartLineColor: chartLineColor,
+          type: 35
+        },
+        3: {
+          el: "chart-pulse",
+          title: "Pulse Chart",
+          backgroundColor: chartBgColor,
+          chartLineColor: chartLineColor,
+          type: 11
+        }
       },
-      1: {
-        el: "chart-temperature",
-        title: "Temperature Chart",
-        backgroundColor: chartBgColor,
-        chartLineColor: chartLineColor,
-        type: 12
-      },
-      2: {
-        el: "chart-air",
-        title: "Air Chart",
-        backgroundColor: chartBgColor,
-        chartLineColor: chartLineColor,
-        type: 35
-      },
-      3: {
-        el: "chart-pulse",
-        title: "Pulse Chart",
-        backgroundColor: chartBgColor,
-        chartLineColor: chartLineColor,
-        type: 11
+      text: {
+        0: {
+          el: "text-weight",
+          title: "Weight Table",
+          type: 1
+        }
       }
     }
   };

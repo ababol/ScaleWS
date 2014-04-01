@@ -3,16 +3,15 @@ define([
   'backbone',
   'underscore',
   'highstock',
+  'js/views/measure/Measure.Abstract.View',
   'js/views/TooltipForm.View.js'
-], function ($, Backbone, _, Highcharts, TooltipFormView) {
+], function ($, Backbone, _, Highcharts, AbstractMeasureView, TooltipFormView) {
   'use strict';
 
-  return Backbone.View.extend({
+  return AbstractMeasureView.extend({
 
-    constructor : function (chartConf, collection) {
-      this.type = chartConf.type;
-      this.el = chartConf.el;
-      this.collection = collection;
+    constructor : function (conf, collection) {
+      AbstractMeasureView.prototype.constructor.call(this, conf, collection);
 
       var self = this,
         tooltip = $('#tooltip');
@@ -21,7 +20,7 @@ define([
           renderTo: this.el,
           zoomType: 'x',
           type: 'line',
-          backgroundColor: chartConf.backgroundColor,
+          backgroundColor: conf.backgroundColor,
           events: {
             click: function(e) {
               var x = new Date(e.xAxis[0].value).toISOString(),
@@ -34,9 +33,6 @@ define([
                 "value": y
               });
 
-            },
-            drilldown: function (e) {
-              console.log(e);
             }
           }
         },
@@ -44,7 +40,7 @@ define([
           gridLineColor: 'rgba(255,255,255, 0.03)'
         },
         title: {
-          text: chartConf.title
+          text: conf.title
         },
         tooltip: {
           useHTML: true,
@@ -102,7 +98,7 @@ define([
             'stroke-width': 0,
             r: 8,
             style: {
-              color: chartConf.chartLineColor,
+              color: conf.chartLineColor,
               fontWeight: 'bold'
             },
             states: {
@@ -113,7 +109,7 @@ define([
                 }
               },
               select: {
-                fill: chartConf.chartLineColor,
+                fill: conf.chartLineColor,
                 style: {
                   fillColor: '#F00',
                   enabled: 'true'
@@ -126,7 +122,7 @@ define([
           inputBoxWidth: 120,
           inputBoxHeight: 18,
           inputStyle: {
-            color: chartConf.chartLineColor,
+            color: conf.chartLineColor,
             fontWeight: 'bold'
           },
           labelStyle: {
@@ -140,7 +136,7 @@ define([
         series:
           [{
             name: 'Valeur',
-            color: chartConf.chartLineColor,
+            color: conf.chartLineColor,
             animation: {
               duration: 2000
             },
@@ -160,18 +156,22 @@ define([
     },
 
 
-    refresh: function (measure) {
+    addOne: function (measure) {
+      if (!this.rightType(measure.get("type"))) return;
+
       var date = new Date(measure.get("date")).getTime();
       this.chart.series[0].addPoint({id: measure.cid, x: date,y: measure.get("value")},true, false, true);
-      //this.chart.redraw(true);
     },
 
-    remove: function(id) {
-      console.log(id);
-      this.chart.get(id).remove();
+    remove: function(measure) {
+      if (!this.rightType(measure.get("type"))) return;
+
+      this.chart.get(measure.cid).remove();
     },
 
     update: function(measure) {
+      if (!this.rightType(measure.get("type"))) return;
+
       var date = new Date(measure.get("date")).getTime(),
         value = parseInt(measure.get("value"));
       this.chart.get(measure.cid).update({x: date,y: value}, true, true);

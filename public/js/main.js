@@ -26,13 +26,13 @@ require.config({
 });
 
 require([
-  "jquery",
-  "underscore",
-  "backbone",
-  "socketio",
-  "js/backboneSocketSync",
-  "js/collections/Measure.Collection",
-  "js/views/App.View"
+  'jquery',
+  'underscore',
+  'backbone',
+  'socketio',
+  'js/backboneSocketSync',
+  'js/collections/Measure.Collection',
+  'js/views/App.View'
 ], function($, _, Backbone, io, backboneSocketSync, MeasureCollection, AppView) {
 
   $(document).ready(function() {

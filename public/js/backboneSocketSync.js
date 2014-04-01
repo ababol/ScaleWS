@@ -17,7 +17,7 @@ define([
       };
 
       var read = function () {
-        readIO.emit('ask',{type:1});
+        readIO.emit('ask',{});
         readIO.once('answer', function(data){
           options.success(data);
         });
