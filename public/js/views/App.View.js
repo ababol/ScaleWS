@@ -1,41 +1,68 @@
 define([
   'jquery',
+  'underscore',
   'backbone',
   'd3',
   'js/views/Measure.View.js',
-  'js/views/Chart.View.js'
-], function ($, Backbone, d3, MeasureView, ChartView) {
+  'js/views/HighChart.View.js',
+  'js/config.js'
+], function ($, _, Backbone, d3, MeasureView, HighChartView, Config) {
   'use strict';
 
   return Backbone.View.extend({
     initialize: function () {
-      console.log(this);
-      this.chart = new ChartView();
-      this.collection.bind('add', this.addOne, this);
-      this.collection.bind('reset', this.addAll, this);
-      this.collection.bind('all', this.render, this);
+      this.initCharts();
+      this.collection.on('add', this.addOne, this);
+      this.collection.on('reset', this.addAll, this);
+      this.collection.on('all', this.render, this);
+      this.collection.on('remove', this.remove, this);
+      this.collection.on('change', this.update, this);
 
       this.collection.fetch();
     },
 
+    initCharts: function() {
+      this.chart = [];
+      _.each(Config.chart, function(c, i) {
+        this.chart[i] = new HighChartView(c, this.collection);
+      }, this);
+    },
+
+    addChartMeasure: function(measure) {
+      _.each(this.chart, function(c) {
+        if (measure.get("type") == c.type) {
+          c.refresh(measure);
+        }
+      }, this);
+    },
+
     addOne: function (measure) {
-      console.log("addOne");
       var view = new MeasureView({model: measure});
       $("#measure-list").append(view.render().el);
 
-      this.chart.refresh(this.collection.models);
-
-//      app.collection.add({
-//        "value": 92924,
-//        "type": 1,
-//        "_id": "52b219517201188b0a0004554",
-//        "__v": 0,
-//        "date": "2014-03-16T21:53:21.736Z"});
+      this.addChartMeasure(measure);
     },
 
     // Add all items in the **Measures** collection at once.
     addAll: function () {
       this.collection.each(this.addOne);
+    },
+
+    remove: function(measure) {
+      console.log(measure);
+      _.each(this.chart, function(c) {
+        if (measure.get("type") == c.type) {
+          c.remove(measure.cid);
+        }
+      }, this);
+    },
+
+    update: function(measure) {
+      _.each(this.chart, function(c) {
+        if (measure.get("type") == c.type) {
+          c.update(measure);
+        }
+      }, this);
     }
   });
 });
