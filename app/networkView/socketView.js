@@ -1,11 +1,17 @@
 module.exports = function(socketio, Backbone, _){
 
   return Backbone.ServerView.extend({    
+    
     initialize :  function () {
-      // this.collection.bind('add', this.change, this);
-      // this.collection.bind('reset', this.addAll, this);
-      // this.collection.bind('all', this.render, this);
-      this.collection.bind('all', this.all, this);
+
+      if(!this.collection){
+        console.log("APIView can't access to the collection");
+      }
+
+      this.collection.on('add', this.add, this);
+      this.collection.on('remove', this.remove, this);
+      this.collection.on('change', this.change, this);
+      // this.collection.on('all', this.all, this);
 
       //Init socket listners
       this.main = socketio.of('/main');
@@ -37,11 +43,10 @@ module.exports = function(socketio, Backbone, _){
       socketio.of('/update').on('connection',_.bind(function(socket){
         socket.on('ask', _.bind(
           function (query){
-            // socket.emit('answer', this.collection.add(query));
-            console.log("update");
-            this.collection.remove(this.collection.at(query._id));
+            console.log("update", query);
+            this.collection.remove(this.collection.get(query._id));
             this.collection.add(query);
-          }, {collection: this.collection}) 
+          }, this) 
         )
       },this));
 
@@ -53,10 +58,24 @@ module.exports = function(socketio, Backbone, _){
         )
       },this));
     },
+    
     all : function(event, model, collection){
-      // console.log(event);
-      // this.main.send("change", this.collection.toJSON());
+      console.log(event);
+    },
+
+    change: function(model, collection){
+      console.log("change");
+      this.main.emit("change", model.toJSON());
+    },
+
+    add: function(model, collection){
+      this.main.emit("remove", model.toJSON());
+    },
+
+    remove: function(model, collection){
+      this.main.emit("remove", model.toJSON());
     }
+
   });
 
 }; 

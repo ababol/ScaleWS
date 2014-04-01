@@ -30,58 +30,14 @@ require([
   "backbone",
   "d3",
   "socketio",
+  "js/backboneSocketSync",
   "js/collections/Measure.Collection",
   "js/views/App.View"
-], function($, _, Backbone, d3, io, MeasureCollection, AppView) {
+], function($, _, Backbone, d3, io, backboneSocketSync, MeasureCollection, AppView) {
   var mainIO = io.connect('/main');
-  var createIO = io.connect('/create');
-  var readIO = io.connect('/read');
-  var updateIO = io.connect('/update');
-  var deleteIO = io.connect('/delete');
-  window.update = updateIO;
 
   //Override Backbone.sync with socket
-  Backbone.sync = function (method, model, options) {
-
-    var create = function () {
-      createIO.emit('ask',model.attributes);
-    };
-
-    var read = function () {
-      readIO.emit('ask',{type:1});
-      readIO.once('answer', function(data){
-        options.success(data);
-      });
-    };
-
-    var update = function () {
-      updateIO.emit('ask',model.attributes);
-      updateIO.once('answer', function(data){
-        console.log("update");
-      });
-    };
-
-    var destroy = function () {
-      deleteIO.emit('ask',model.attributes._id);
-      deleteIO.once('answer', function(data){
-        console.log("delete");
-      });
-    };
-
-    switch (method) {
-      case 'create':
-        create();
-        break;
-      case 'read':
-        read();
-        break;
-      case 'update':
-        update();
-        break;
-      case 'delete':
-        break;
-    }
-  };
+  Backbone.sync = backboneSocketSync;
 
   var app = new AppView({
     collection: new MeasureCollection()
@@ -95,5 +51,11 @@ require([
   });
   mainIO.on('change', function(data){
     console.log(data);
-  })
+  });
+  mainIO.on('add', function(data){
+    console.log(data);
+  });
+  mainIO.on('remove', function(data){
+    console.log(data);
+  });
 });

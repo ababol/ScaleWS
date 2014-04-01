@@ -7,13 +7,15 @@ module.exports = function (modelDb) {
   return function (method, model, options) {
 
     var create = function () {
-      crudController.create(model.attributes, function(){
+      crudController.create(model.attributes, function(err, data){
         console.log("create backboneSyncServer");
+        options.success(data);
       });
     };
 
     var read = function () {
       crudController.read({}, function(err, data){
+        console.log("read backboneSyncServer");
         options.success(data);
       });
     };
@@ -21,12 +23,14 @@ module.exports = function (modelDb) {
     var update = function () {
       crudController.update(model.attributes, function(err, data){
         console.log("update backboneSyncServer");
+        options.success(data);
       });
     };
 
     var destroy = function () {
       crudController.delete(model.attributes, function(err, data){
         console.log("delete backboneSyncServer");
+        options.success(data);
       });
     };
 
