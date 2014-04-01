@@ -13,11 +13,11 @@ module.exports = function (MeasureModel) {
 
   MeasureModel.getCategoriesMasks = function(){
     return {
-      weight : {type : 1}, //74892
+      weight : {type : 74892}, //74892
       heart : {type : 11},
       temperature: {type : 12},
       fat : {type : 16},
-      airquality : {type : 35},
+      airquality : {type : 35}
     };
   };
   return MeasureModel;
