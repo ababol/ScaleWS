@@ -7,9 +7,12 @@ define([
   'use strict';
 
   return Backbone.View.extend({
-    initialize: function() {
+
+    constructor : function (chartConf) {
       var self = this;
-      this.svg = d3.select("#chart").append("svg:svg")
+      this.type = chartConf.type;
+      this.el = chartConf.el;
+      this.svg = d3.select(this.el).append("svg:svg")
         .attr("width", Config.d3.width)
         .attr("height", Config.d3.height);
 
@@ -75,26 +78,46 @@ define([
     },
 
     renderData: function(data) {
+      console.log("renderData");
       var self = this;
-      var circles = this.svg.selectAll("circle").data(data);
+      var gAll = this.svg.selectAll("g.circle").data(data, function(d) { return d.id; });
+      // _.data.sort(date) // faire itérateur avant après
 
+      var g = gAll.enter().append("svg:g")
+        .attr("class", "circle")
+        .on("click", function(d) {
+          d3.select("#chart .value").text("Date: " + d.get('date') + " value: " + d.get('value'))
+        });
+
+      var circle = g.append("svg:circle")
+        .attr("r", 4)
+        .attr("cx", function(d) { return self.x(self.dateFn(d)) })
+        .attr("cy", function(d) { return self.y(self.valueFn(d)) });
+
+      var line = g.append("svg:line")
+        .style("stroke", "black")
+        .attr("x1", function(d,i) { return i > 0 ? self.x(self.dateFn(data[i-1])) : self.x(self.dateFn(d)); })
+        .attr("y1", function(d,i) { return i > 0 ? self.y(self.valueFn(data[i-1])) : self.y(self.valueFn(d)); })
+        .attr("x2", function(d) { return self.x(self.dateFn(d)) })
+        .attr("y2", function(d) { return self.y(self.valueFn(d)) });
+
+      gAll.exit().remove();
+
+      var circles = this.svg.selectAll("circle");
       circles.transition()
         .attr("cx", function(d) { return self.x(self.dateFn(d)) })
         .attr("cy", function(d) { return self.y(self.valueFn(d)) });
 
-      circles.enter()
-        .append("svg:circle")
-        .attr("r", 4)
-        .attr("cx", function(d) { return self.x(self.dateFn(d)) })
-        .attr("cy", function(d) { return self.y(self.valueFn(d)) })
-        .attr("cid", function(d) { return d.cid })
-        .attr("date", function(d) { return d.get('date'); })
-        .on("click", function(d) {
-          d3.select("#chart .value").text("Date: " + d.get('date') + " value: " + d.get('value'))
-        });
+      var lines = this.svg.selectAll("g.circle line");
+      lines.transition()
+        .attr("x1", function(d,i) { return i > 0 ? self.x(self.dateFn(data[i-1])) : self.x(self.dateFn(d)); })
+        .attr("y1", function(d,i) { return i > 0 ? self.y(self.valueFn(data[i-1])) : self.y(self.valueFn(d)); })
+        .attr("x2", function(d) { return self.x(self.dateFn(d)) })
+        .attr("y2", function(d) { return self.y(self.valueFn(d)) });
     },
 
     refresh: function (data) {
+      data = data.where({type: this.type});
       this.renderDomains(data);
       this.renderAxes();
       this.renderData(data);

@@ -2,11 +2,44 @@
 'use strict';
 
 define([], function () {
+  var chartBgColor = "#101214",
+    chartLineColor = "#3e6288";
+
   return {
     d3: {
       m: {right: 50, bottom: 20},
       width: 800,
       height: 200
+    },
+    chart: {
+      0: {
+        el: "chart-weight",
+        title: "Weight Chart",
+        backgroundColor: chartBgColor,
+        chartLineColor: chartLineColor,
+        type: 1
+      },
+      1: {
+        el: "chart-temperature",
+        title: "Temperature Chart",
+        backgroundColor: chartBgColor,
+        chartLineColor: chartLineColor,
+        type: 12
+      },
+      2: {
+        el: "chart-air",
+        title: "Air Chart",
+        backgroundColor: chartBgColor,
+        chartLineColor: chartLineColor,
+        type: 35
+      },
+      3: {
+        el: "chart-pulse",
+        title: "Pulse Chart",
+        backgroundColor: chartBgColor,
+        chartLineColor: chartLineColor,
+        type: 11
+      }
     }
   };
 });

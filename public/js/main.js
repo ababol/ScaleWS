@@ -1,25 +1,30 @@
 require.config({
   baseUrl: "..",
   paths: {
-    "underscore": "bower_components/underscore/underscore",
-    "backbone": "bower_components/backbone/backbone",
-    "d3": "bower_components/d3/d3",
-    "jquery": "bower_components/jquery/dist/jquery",
-    "socketio": "/socket.io/socket.io"
+    underscore: "bower_components/underscore/underscore",
+    backbone: "bower_components/backbone/backbone",
+    d3: "bower_components/d3/d3",
+    jquery: "bower_components/jquery/dist/jquery",
+    text: 'bower_components/requirejs-text/text',
+    socketio: "/socket.io/socket.io",
+    highstock: "bower_components/highstock/highstock"
   },
   shim: {
-    "underscore": {
+    underscore: {
       exports: "_"
     },
-    "backbone": {
+    backbone: {
       deps: ["underscore", "jquery"],
       exports: "Backbone"
     },
-    "d3": {
+    d3: {
       exports: "d3"
     },
-    "socketio": {
+    socketio: {
       exports: "io"
+    },
+    highstock: {
+      exports: "Highcharts"
     }
   }
 });
@@ -42,13 +47,14 @@ require([
 
   //Override Backbone.sync with socket
   Backbone.sync = function (method, model, options) {
-
+    console.log("sync");
     var create = function () {
+      console.log("createEmit");
       createIO.emit('ask',model.attributes);
     };
 
     var read = function () {
-      readIO.emit('ask',{type:1});
+      readIO.emit('ask',{});
       readIO.once('answer', function(data){
         options.success(data);
       });
@@ -83,10 +89,12 @@ require([
     }
   };
 
-  var app = new AppView({
-    collection: new MeasureCollection()
+  $(document).ready(function() {
+    var app = new AppView({
+      collection: new MeasureCollection()
+    });
+    window.app = app;
   });
-  window.app = app;
 
 
 
