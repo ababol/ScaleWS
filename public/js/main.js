@@ -34,31 +34,35 @@ require([
   "js/collections/Measure.Collection",
   "js/views/App.View"
 ], function($, _, Backbone, io, backboneSocketSync, MeasureCollection, AppView) {
-  var mainIO = io.connect('/main');
-
-  //Override Backbone.sync with socket
-
-  Backbone.sync = backboneSocketSync;
 
   $(document).ready(function() {
+    
+    var mainIO = io.connect('/main');
+    //Override Backbone.sync with socket
+    Backbone.sync = backboneSocketSync;
+    var collection = new MeasureCollection();
     var app = new AppView({
-      collection: new MeasureCollection()
+      collection: collection
     });
     window.app = app;
+  
+
+    mainIO.on('news', function (data) {
+      console.log(data);
+    });
+    mainIO.on('change', function(data){
+      console.log(data);
+    });
+    mainIO.on('add', function(data){
+      collection.add(data);
+    });
+    mainIO.on('remove', function(data){
+      collection.remove(data);
+    });
+
+
   });
 
 
 
-  mainIO.on('news', function (data) {
-    console.log(data);
-  });
-  mainIO.on('change', function(data){
-    console.log(data);
-  });
-  mainIO.on('add', function(data){
-    console.log(data);
-  });
-  mainIO.on('remove', function(data){
-    console.log(data);
-  });
 });
