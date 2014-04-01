@@ -6,11 +6,6 @@ define([], function () {
     chartLineColor = "#3e6288";
 
   return {
-    d3: {
-      m: {right: 50, bottom: 20},
-      width: 800,
-      height: 200
-    },
     chart: {
       0: {
         el: "chart-weight",

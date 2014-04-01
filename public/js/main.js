@@ -3,7 +3,6 @@ require.config({
   paths: {
     underscore: "bower_components/underscore/underscore",
     backbone: "bower_components/backbone/backbone",
-    d3: "bower_components/d3/d3",
     jquery: "bower_components/jquery/dist/jquery",
     text: 'bower_components/requirejs-text/text',
     socketio: "/socket.io/socket.io",
@@ -16,9 +15,6 @@ require.config({
     backbone: {
       deps: ["underscore", "jquery"],
       exports: "Backbone"
-    },
-    d3: {
-      exports: "d3"
     },
     socketio: {
       exports: "io"
