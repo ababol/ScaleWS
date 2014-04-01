@@ -29,12 +29,11 @@ require([
   "jquery",
   "underscore",
   "backbone",
-  "d3",
   "socketio",
   "js/backboneSocketSync",
   "js/collections/Measure.Collection",
   "js/views/App.View"
-], function($, _, Backbone, d3, io, backboneSocketSync, MeasureCollection, AppView) {
+], function($, _, Backbone, io, backboneSocketSync, MeasureCollection, AppView) {
   var mainIO = io.connect('/main');
 
   //Override Backbone.sync with socket

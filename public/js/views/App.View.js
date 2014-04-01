@@ -2,11 +2,10 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'd3',
   'js/views/Measure.View.js',
   'js/views/HighChart.View.js',
   'js/config.js'
-], function ($, _, Backbone, d3, MeasureView, HighChartView, Config) {
+], function ($, _, Backbone, MeasureView, HighChartView, Config) {
   'use strict';
 
   return Backbone.View.extend({
