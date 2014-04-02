@@ -13,6 +13,7 @@ define([
 
     constructor : function (conf, collection) {
       AbstractMeasureView.prototype.constructor.call(this, conf, collection);
+      // METTRE CA DANS UN CONSTRUCTEUR BIS A INIT
       this.el = $('#'+this.el);
       this.el.html(this.template({"title": conf.title}));
     },
@@ -34,7 +35,7 @@ define([
       if (!this.rightType(measure.get("type"))) return;
 
       var date = measure.get("date"),
-        value = parseInt(measure.get("value")),
+        value = measure.get("value"),
         el = this.el.find('#text-cid-'+measure.cid);
 
       el.find('.date').html(date);

@@ -1,5 +1,6 @@
 $body_background_color: #101214;
-$text_color: black;
+$text_color: rgba(255, 255, 255, 0.5);
+$trans-white: rgba(255,255,255, 0.03);
 
 
 body {
@@ -19,7 +20,7 @@ header{
   padding-bottom: 4%;
   margin-bottom : 3%;
   background-color : #34495D;
-  font-family : 'Raleway', sans-serif;
+  font-family : 'Helvetica', sans-serif;
   text-align: center;
   color: white;
   h1{
@@ -33,14 +34,12 @@ header{
 
 table {
   border:1px solid #d3d3d3;
-  background:#fefefe;
+  background:$body_background_color;
   display: inline-table;
   width:70%;
   -moz-border-radius:5px; /* FF1+ */
   -webkit-border-radius:5px; /* Saf3-4 */
   border-radius:5px;
-  -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
-  -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
 
   th, td {
     padding:18px 28px 18px;
@@ -49,14 +48,14 @@ table {
 
   th {
     padding-top:22px;
-    text-shadow: 1px 1px 1px #fff;
-    background:#e8eaeb;
+    text-shadow: 1px 1px 1px $text-color;
+    background:$trans-white;
   }
 
 
   td {
-    border-top:1px solid #e0e0e0;
-    border-right:1px solid #e0e0e0;
+    border-top:1px solid $trans-white;
+    border-right:1px solid $trans-white;
   }
 }
 

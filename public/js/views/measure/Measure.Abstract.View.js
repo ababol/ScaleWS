@@ -15,6 +15,11 @@ define([
       this.collection.on('all', this.render, this);
       this.collection.on('remove', this.remove, this);
       this.collection.on('change', this.update, this);
+      //this.constructorbis();
+    },
+
+    constructorbis: function() {
+      throw 'OVERRIDE!0';
     },
 
     rightType: function(type) {

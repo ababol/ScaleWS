@@ -14,13 +14,14 @@ define([
       AbstractMeasureView.prototype.constructor.call(this, conf, collection);
 
       var self = this,
-        tooltip = $('#tooltip');
+        tooltip = $('#tooltip'),
+        theme = conf.theme;
       this.chart = new Highcharts.StockChart({
         chart: {
           renderTo: this.el,
           zoomType: 'x',
           type: 'line',
-          backgroundColor: conf.backgroundColor,
+          backgroundColor: theme.bgColor,
           events: {
             click: function(e) {
               var x = new Date(e.xAxis[0].value).toISOString(),
@@ -37,7 +38,7 @@ define([
           }
         },
         yAxis: {
-          gridLineColor: 'rgba(255,255,255, 0.03)'
+          gridLineColor: theme.yAxisColor
         },
         title: {
           text: conf.title
@@ -63,91 +64,26 @@ define([
 //            }
           }
         },
-        scrollbar: {
-          barBackgroundColor: 'gray',
-          barBorderRadius: 7,
-          barBorderWidth: 0,
-          buttonBackgroundColor: 'gray',
-          buttonBorderWidth: 0,
-          buttonArrowColor: 'yellow',
-          buttonBorderRadius: 7,
-          rifleColor: 'yellow',
-          trackBackgroundColor: 'white',
-          trackBorderWidth: 1,
-          trackBorderColor: 'silver',
-          trackBorderRadius: 7
-        },
-        rangeSelector: {
-          selected: 1,
-          inputDateFormat: '%d-%m-%Y',
-          buttons: [{
-            count: 1,
-            type: 'week',
-            text: '1w'
-          }, {
-            type: 'month',
-            count: 1,
-            text: '1m'
-          }, {
-            type: 'all',
-            text: 'All'
-          }],
-          buttonTheme: { // styles for the buttons
-            fill: 'none',
-            stroke: 'none',
-            'stroke-width': 0,
-            r: 8,
-            style: {
-              color: conf.chartLineColor,
-              fontWeight: 'bold'
-            },
-            states: {
-              hover: {
-                fill: 'none',
-                style: {
-                  color: 'white'
-                }
-              },
-              select: {
-                fill: conf.chartLineColor,
-                style: {
-                  fillColor: '#F00',
-                  enabled: 'true'
-                }
-              },
-              fillColor:  '#00dddddF'
-            }
-          },
-          inputBoxBorderColor: 'gray',
-          inputBoxWidth: 120,
-          inputBoxHeight: 18,
-          inputStyle: {
-            color: conf.chartLineColor,
-            fontWeight: 'bold'
-          },
-          labelStyle: {
-            color: 'silver',
-            fontWeight: 'bold'
-          }
-        },
+        scrollbar: theme.scrollbar,
+        rangeSelector: theme.rangeSelector,
         navigator: {
           adaptToUpdatedData: true
         },
         series:
           [{
             name: 'Valeur',
-            color: conf.chartLineColor,
+            color: theme.lineColor,
             animation: {
-              duration: 2000
+              duration: theme.animationDuration
             },
             data : [],
             cursor: 'pointer',
             point: {
               events: {
                 click: function(e) {
-                  tooltip.show();
                   var view = new TooltipFormView({model: self.collection.get(e.currentTarget.id)});
                   tooltip.html(view.render().el);
+                  tooltip.fadeIn();
                 }
               }
             }
@@ -173,7 +109,7 @@ define([
       if (!this.rightType(measure.get("type"))) return;
 
       var date = new Date(measure.get("date")).getTime(),
-        value = parseInt(measure.get("value"));
+        value = parseFloat(measure.get("value"), 2);
       this.chart.get(measure.cid).update({x: date,y: value}, true, true);
     }
   });
