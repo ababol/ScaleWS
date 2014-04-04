@@ -41,6 +41,7 @@ require([
     //Override Backbone.sync with socket
     Backbone.sync = backboneSocketSync;
     var collection = new MeasureCollection();
+    window.collection = collection;
     var app = new AppView({
       collection: collection
     });
@@ -51,18 +52,16 @@ require([
       console.log(data);
     });
     mainIO.on('change', function(data){
-      console.log(data);
+      console.log("change", data);
     });
     mainIO.on('add', function(data){
       collection.add(data);
     });
     mainIO.on('remove', function(data){
-      collection.remove(data);
+      var m = collection.where(data);
+      collection.remove(m);
     });
 
 
   });
-
-
-
 });

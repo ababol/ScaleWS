@@ -41,7 +41,7 @@ define([], function () {
         0: {
           el: "text-weight",
           title: "Weight Table",
-          type: 1
+          type: 74892
         }
       }
     }
