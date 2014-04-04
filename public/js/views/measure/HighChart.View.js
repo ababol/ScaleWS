@@ -41,7 +41,8 @@ define([
           gridLineColor: theme.yAxisColor
         },
         title: {
-          text: conf.title
+          text: conf.title,
+          style: theme.title.style
         },
         tooltip: {
           useHTML: true,
