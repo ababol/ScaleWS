@@ -46,7 +46,7 @@ module.exports = function(grunt) {
       release: {
         options: {
           script: 'app.js',
-          background: false
+          background: true
         }
       }
     },
