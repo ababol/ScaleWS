@@ -45,6 +45,11 @@ define(['styles/js/dark-light-theme.js'], function (dark) {
           el: "text-pulse",
           title: "Pulse Table",
           type: 11
+        },
+        3: {
+          el: "text-air",
+          title: "Air Table",
+          type: 35
         }
       }
     }

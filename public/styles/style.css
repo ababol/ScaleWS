@@ -11,8 +11,8 @@ header {
   position: relative;
   width: 100%;
   padding-top: 1%;
-  padding-bottom: 2%;
-  margin-bottom: 3%;
+  padding-bottom: 1%;
+  margin-bottom: 2%;
   background-color: #6F9CC7;
   font-family: 'Helvetica', sans-serif;
   text-align: center;
@@ -28,7 +28,7 @@ header {
 div.chart {
   font-family: 'Helvetica', sans-serif;
   display: inline-block;
-  width: 45%;
+  width: 40%;
   min-width: 440px;
   margin: 1%;
   border: 1px solid #1C1C1C;
@@ -42,8 +42,8 @@ table {
   display: inline-table;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
-  width: 30%;
-  margin: 2%;
+  width: 40%;
+  margin: 1%;
   color: #cbcbcb;
   font-family: 'Helvetica', sans-serif;
   box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.2); }
@@ -79,3 +79,18 @@ table {
   position: fixed;
   width: 400px;
   z-index: 10000; }
+
+#menu div.menu {
+  display: inline-block;
+  min-width: 123px;
+  margin: 10px;
+  padding: 15px;
+  color: #d47d6c;
+  border: 1px solid #d47d6c;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font: 12px helvetica;
+  cursor: pointer; }
+#menu div.menu.selected {
+  color: #c5de71;
+  border: 1px solid #c5de71; }

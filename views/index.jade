@@ -6,6 +6,12 @@ block content
     h2 Get and process data acquired from the scale (Withings WS50)
 
   section#main
+    // App View //
+    div#menu
+        div#weight.menu.selected weight
+        div#temperature.menu.selected temperature 
+        div#air.menu.selected air
+        div#pulse.menu.selected pulse
     // ToolTipForm View //
     div#tooltip
     // HighChart Views //
@@ -17,6 +23,7 @@ block content
     table#text-weight
     table#text-temperature
     table#text-pulse
+    table#text-air
 
 block bodyscripts
   script(data-main="js/main.js" src="bower_components/requirejs/require.js")

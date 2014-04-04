@@ -1,0 +1,88 @@
+/*global define*/
+'use strict';
+
+define([], function () {
+  var lineColor = "#6F9CC7";
+  var green = "#C5DE71";
+  var pink = "#D47D6C";
+  var white = "#CCC";
+
+  return {
+    bgColor: "#323232",
+    lineColor: lineColor,
+    yAxisColor: "rgba(255,255,255, 0.03)",
+    animationDuration: 2000,
+    scrollbar: {
+      barBackgroundColor: '#262626',
+      barBorderRadius: 7,
+      barBorderWidth: 0,
+      buttonBackgroundColor: '#262626',
+      buttonBorderWidth: 0,
+      buttonArrowColor: '#595959',
+      buttonBorderRadius: 7,
+      rifleColor: '#595959',
+      trackBackgroundColor: '#323232',
+      trackBorderWidth: 0,
+      trackBorderColor: '#595959'
+    },
+    title: {
+      style: {
+        color: green,
+        font: '20px "Helvetica", sans-serif'
+      }
+    },
+    rangeSelector: {
+      selected: 1,
+      inputDateFormat: '%d-%m-%Y',
+      buttons: [{
+        count: 1,
+        type: 'week',
+        text: '1w'
+      }, {
+        type: 'month',
+        count: 1,
+        text: '1m'
+      }, {
+        type: 'all',
+        text: 'All'
+      }],
+      buttonTheme: { // styles for the buttons
+        fill: 'none',
+        stroke: 'none',
+        'stroke-width': 0,
+        r: 8,
+        style: {
+          color: white
+          // fontWeight: 'bold'
+        },
+        states: {
+          hover: {
+            fill: 'none',
+            style: {
+              color: white
+            }
+          },
+          select: {
+            fill: lineColor,
+            style: {
+              fillColor: '#F00',
+              enabled: 'true'
+            }
+          },
+          fillColor:  '#00F'
+        }
+      },
+      inputBoxBorderColor: '#262626',
+      inputBoxWidth: 120,
+      inputBoxHeight: 18,
+      inputStyle: {
+        color: white
+        // fontWeight: 'bold'
+      },
+      labelStyle: {
+        color: white
+        // fontWeight: 'bold'
+      }
+    }
+  };
+});
