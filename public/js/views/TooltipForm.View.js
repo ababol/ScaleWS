@@ -23,8 +23,10 @@ define([
       var value = this.$el.find('#value').val(),
         date = this.$el.find('#date').val();
 
-      if (this.model.get("value") !== value || this.model.get("date") !== date)
+      if (this.model.get("value") !== value || this.model.get("date") !== date) {
         this.model.set({date: date, value: value});
+        this.model.save();
+      }
     },
 
     hide: function() {

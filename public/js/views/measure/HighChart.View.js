@@ -28,7 +28,7 @@ define([
                 y = e.yAxis[0].value;
 
               // Add it
-              self.collection.add({
+              self.collection.create({
                 "type": self.type,
                 "date": x,
                 "value": y
