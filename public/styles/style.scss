@@ -1,4 +1,6 @@
-$body_background_color: #101214;
+$body_background_color: #262626;
+$box_background_color: #323232;
+$green : #C5DE71;
 $text_color: rgba(255, 255, 255, 0.5);
 $trans-white: rgba(255,255,255, 0.03);
 
@@ -8,6 +10,7 @@ body {
   color: $text_color;
   background-color: $body_background_color;
   text-align: center;
+  margin: 0;
   #main{
     text-align: center;
   }
@@ -16,30 +19,57 @@ body {
 header{
   position: relative;
   width: 100%;
-  padding-top: 4%;
-  padding-bottom: 4%;
+  padding-top: 1%;
+  padding-bottom: 2%;
   margin-bottom : 3%;
-  background-color : #34495D;
+  background-color : #6F9CC7;
   font-family : 'Helvetica', sans-serif;
   text-align: center;
   color: white;
+  box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.2);
   h1{
     font-size: 400%;
-    margin-bottom: 2%;
+    margin-bottom: 1%;
+    margin-top: 1%;
   }
   h2{
     font-size:100%;
   }
 }
 
-table {
-  border:1px solid #d3d3d3;
-  background:$body_background_color;
-  display: inline-table;
-  width:70%;
-  -moz-border-radius:5px; /* FF1+ */
-  -webkit-border-radius:5px; /* Saf3-4 */
+div.chart{
+  font-family : 'Helvetica', sans-serif;
+  display: inline-block;
+  width : 45%;
+  min-width: 440px;
+  margin : 1%;
+  border:1px solid #1C1C1C;
   border-radius:5px;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+table {
+  caption{
+    color: $green; 
+    font: 20px helvetica;
+    border:1px solid #1C1C1C;
+    border-bottom : none;
+    background:$box_background_color;
+    border-top-left-radius:5px;
+    border-top-right-radius:5px;
+    padding: 7px;
+  }
+  border:1px solid #1C1C1C;
+  border-top : none; 
+  background:$box_background_color;
+  display: inline-table;
+  border-bottom-left-radius:5px;
+  border-bottom-right-radius:5px;
+  width:30%;
+  margin: 2%;
+  color: #cbcbcb;
+  font-family : 'Helvetica', sans-serif;
+  box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.2);
 
   th, td {
     padding:18px 28px 18px;
@@ -48,7 +78,6 @@ table {
 
   th {
     padding-top:22px;
-    text-shadow: 1px 1px 1px $text-color;
     background:$trans-white;
   }
 

@@ -25,27 +25,28 @@ module.exports = function(socketio, Backbone, _){
       socketio.of('/create').on('connection', _.bind(function(socket){
         socket.on('ask', _.bind(
           function (obj){
-            this.collection.add(obj, function (result) {
+            this.collection.create(obj, function (result) {
               socket.emit('answer', result);
             });
-          }, {collection: this.collection}) 
-        )
+          }, {collection: this.collection})
+        );
       },this));
       
       socketio.of('/read').on('connection', _.bind(function(socket){
         socket.on('ask', _.bind(
           function (query){
             socket.emit('answer', this.collection.toJSON());
-          }, {collection: this.collection}) 
-        )
+          }, {collection: this.collection})
+        );
       },this));
 
       socketio.of('/update').on('connection',_.bind(function(socket){
         socket.on('ask', _.bind(
           function (query){
-            console.log("update", query);
-            this.collection.remove(this.collection.get(query._id));
-            this.collection.add(query);
+            var m = this.collection.get(query._id);
+            m.destroy();
+            this.collection.remove(m);
+            this.collection.create(query);
           }, this) 
         )
       },this));
@@ -53,9 +54,10 @@ module.exports = function(socketio, Backbone, _){
       socketio.of('/delete').on('connection',_.bind(function(socket){
         socket.on('ask', _.bind(
           function (query){
+            query.destroy();
             socket.emit('answer',this.collection.remove(query));
           }, {collection: this.collection}) 
-        )
+        );
       },this));
     },
     
@@ -69,7 +71,7 @@ module.exports = function(socketio, Backbone, _){
     },
 
     add: function(model, collection){
-      this.main.emit("remove", model.toJSON());
+      this.main.emit("add", model.toJSON());
     },
 
     remove: function(model, collection){

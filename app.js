@@ -1,5 +1,4 @@
 
-
 /**
  * Module dependencies.
  */
@@ -37,7 +36,6 @@ var modelDb = require('./app/models/modelDB')(mongoose, model);
 // Override Backbone.sync :
 Backbone.sync = require('./app/controllers/backboneServerSync')(modelDb);
 collection.fetch(); //Sync the collection with the db
-// console.log(collection);
 //
 //Views
 //create a Backbone.ServerView
@@ -51,6 +49,6 @@ var scaleView  = new (require('./app/networkView/scaleView')(app, Backbone))({co
 /**
  * Routes configuration.
  */
-//Client
+//Client (index.html)
 var client = require('./app/routes');
 client.init(app);

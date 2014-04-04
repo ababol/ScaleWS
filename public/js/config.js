@@ -1,7 +1,7 @@
 /*global define*/
 'use strict';
 
-define(['styles/js/dark-theme.js'], function (dark) {
+define(['styles/js/dark-light-theme.js'], function (dark) {
   return {
     views: {
       chart: {

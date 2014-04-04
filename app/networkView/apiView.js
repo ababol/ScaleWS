@@ -38,7 +38,7 @@ module.exports = function(app, path, Backbone, _, categoriesMasks){
             };
 
             app.post(path, _.bind(function(req, res){
-                httpCallback.call({req : req, res: res},null,this.collection.add(req.body));
+                httpCallback.call({req : req, res: res},null,this.collection.create(req.body));
             }, this));
 
             app.get(path, _.bind(function(req, res){
@@ -52,16 +52,17 @@ module.exports = function(app, path, Backbone, _, categoriesMasks){
             }, this);
 
             app.get(pathWithId, _.bind(function(req, res){
-                console.log(req.params.id);
                 httpCallback.call({req : req, res: res},null,getWhere(this.collection,{_id: req.params.id}));
             }, this));
 
             app.put(pathWithId, _.bind(function(req, res){
-                httpCallback.call({req : req, res: res},null,this.collection.add(req.body));
+                httpCallback.call({req : req, res: res},null,this.collection.create(req.body));
             }, this));
 
             app.del(pathWithId, _.bind(function(req, res){
-                httpCallback.call({req : req, res: res},null,this.collection.remove({_id: req.params.id}));
+                var m = this.collection.get(req.params.id);
+                m.destroy();//remove from the db
+                httpCallback.call({req : req, res: res},null,this.collection.remove(m));
             }, this));
         }
 
