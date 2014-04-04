@@ -10,7 +10,8 @@ define([
     template: _.template(TooltipFormTemplate),
     events: {
       'click #updateValue': 'update',
-      'click #removeValue': 'remove'
+      'click #removeValue': 'remove',
+      'click #close': 'hide'
     },
 
     render: function () {
@@ -22,12 +23,18 @@ define([
       var value = this.$el.find('#value').val(),
         date = this.$el.find('#date').val();
 
-      if (this.model.get("value") != value || this.model.get("date") != date)
+      if (this.model.get("value") !== value || this.model.get("date") !== date)
         this.model.set({date: date, value: value});
+    },
+
+    hide: function() {
+      this.$el.parent().fadeOut();
+      this.$el.remove();
     },
 
     remove: function() {
       this.model.destroy();
+      this.hide();
     }
   });
 });

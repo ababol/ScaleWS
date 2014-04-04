@@ -1,39 +1,32 @@
 /*global define*/
 'use strict';
 
-define([], function () {
-  var chartBgColor = "#101214",
-    chartLineColor = "#3e6288";
-
+define(['styles/js/dark-theme.js'], function (dark) {
   return {
     views: {
       chart: {
         0: {
           el: "chart-weight",
           title: "Weight Chart",
-          backgroundColor: chartBgColor,
-          chartLineColor: chartLineColor,
+          theme: dark,
           type: 1
         },
         1: {
           el: "chart-temperature",
           title: "Temperature Chart",
-          backgroundColor: chartBgColor,
-          chartLineColor: chartLineColor,
+          theme: dark,
           type: 12
         },
         2: {
           el: "chart-air",
           title: "Air Chart",
-          backgroundColor: chartBgColor,
-          chartLineColor: chartLineColor,
+          theme: dark,
           type: 35
         },
         3: {
           el: "chart-pulse",
           title: "Pulse Chart",
-          backgroundColor: chartBgColor,
-          chartLineColor: chartLineColor,
+          theme: dark,
           type: 11
         }
       },
@@ -41,7 +34,17 @@ define([], function () {
         0: {
           el: "text-weight",
           title: "Weight Table",
-          type: 74892
+          type: 1
+        },
+        1: {
+          el: "text-temperature",
+          title: "Temperature Table",
+          type: 12
+        },
+        2: {
+          el: "text-pulse",
+          title: "Pulse Table",
+          type: 11
         }
       }
     }

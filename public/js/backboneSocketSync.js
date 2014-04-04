@@ -1,7 +1,7 @@
 define([
   'jquery',
   'backbone',
-  "socketio"
+  'socketio'
   ], function ($, Backbone, io) {
 
     var createIO = io.connect('/create');
