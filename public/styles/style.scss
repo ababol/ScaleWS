@@ -4,6 +4,8 @@ $green : #C5DE71;
 $pink : #D47D6C;
 $text_color: rgba(255, 255, 255, 0.5);
 $trans-white: rgba(255,255,255, 0.03);
+$break-small : 460px;
+$break-big : 1090px;
 
 
 body {
@@ -41,12 +43,19 @@ header{
 div.chart{
   font-family : 'Helvetica', sans-serif;
   display: inline-block;
-  width : 40%;
-  min-width: 440px;
+  width : 440px;
   margin : 1%;
   border:1px solid #1C1C1C;
   border-radius:5px;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.4);
+  @media(max-width: $break-small){
+    width: 90%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  @media(min-width: $break-big){
+    width: 40%;
+  }
 }
 
 table {
@@ -71,6 +80,12 @@ table {
   color: #cbcbcb;
   font-family : 'Helvetica', sans-serif;
   box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.2);
+
+  @media(max-width: $break-small){
+    width: 90%;
+    margin-left: 0;
+    margin-right: 0;
+  }
 
   th, td {
     padding:18px 28px 18px;
@@ -116,18 +131,8 @@ table {
     font: 12px helvetica;
     cursor: pointer;
   }
-  // div.menu:hover{
-  //   color: $green;
-  //   border: 1px solid $green;
-    
-  // }
   div.menu.selected{
     color: $green;
     border: 1px solid $green;
-  }
-  // div.menu.selected:hover{
-  //   color: $pink;
-  //   border: 1px solid $pink;
-  // }
-  
+  }  
 }
