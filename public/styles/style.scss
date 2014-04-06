@@ -134,5 +134,8 @@ table {
   div.menu.selected{
     color: $green;
     border: 1px solid $green;
-  }  
+  }
+  .menuItem {
+    display: inline;
+  }
 }

@@ -10,18 +10,15 @@ define([
 
   return AbstractMeasureView.extend({
 
-    constructor : function (conf, collection) {
-      AbstractMeasureView.prototype.constructor.call(this, conf, collection);
-
+    concreteConstructor: function(conf) {
       var self = this,
         tooltip = $('#tooltip'),
         theme = conf.theme;
-      this.chart = new Highcharts.StockChart({
+
+      var chart = {
         chart: {
           renderTo: this.el,
           zoomType: 'x',
-          type: 'line',
-          backgroundColor: theme.bgColor,
           events: {
             click: function(e) {
               var x = new Date(e.xAxis[0].value).toISOString(),
@@ -37,12 +34,8 @@ define([
             }
           }
         },
-        yAxis: {
-          gridLineColor: theme.yAxisColor
-        },
         title: {
-          text: conf.title,
-          style: theme.title.style
+          text: conf.title
         },
         tooltip: {
           useHTML: true,
@@ -54,29 +47,13 @@ define([
         plotOptions: {
           series: {
             allowPointSelect: true
-//            marker: {
-//              states: {
-//                select: {
-//                  borderColor: 'red',
-//                  color: null,
-//                  enabled: true
-//                }
-//              }
-//            }
           }
         },
-        scrollbar: theme.scrollbar,
-        rangeSelector: theme.rangeSelector,
         navigator: {
           adaptToUpdatedData: true
         },
         series:
           [{
-            name: 'Valeur',
-            color: theme.lineColor,
-            animation: {
-              duration: theme.animationDuration
-            },
             data : [],
             cursor: 'pointer',
             point: {
@@ -89,9 +66,10 @@ define([
               }
             }
           }]
-      });
+      };
+      $.extend(true, chart, theme); // true : deep extend
+      this.chart = new Highcharts.StockChart(chart);
     },
-
 
     addOne: function (measure) {
       if (!this.rightType(measure.get("type"))) return;

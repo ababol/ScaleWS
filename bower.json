@@ -7,6 +7,7 @@
     "backbone": "~1.1.2",
     "requirejs": "~2.1.11",
     "requirejs-text": "~2.0.10",
-    "highstock": "nesbert/highstock#~1.3.10"
+    "highstock": "nesbert/highstock#~1.3.10",
+    "touch-tooltip-fix-highchart": "https://github.com/Fedonono/touch-tooltip-fix-highchart.git"
   }
 }

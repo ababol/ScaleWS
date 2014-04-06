@@ -11,46 +11,29 @@ define([
       this.el = conf.el;
       this.title = conf.title;
       this.collection = collection;
+      $('#'+this.el).addClass('type'+this.type);
 
       this.collection.on('add', this.addOne, this);
       this.collection.on('all', this.render, this);
       this.collection.on('remove', this.remove, this);
       this.collection.on('change', this.update, this);
-      //this.constructorbis();
-    },
 
-    constructorbis: function() {
-      throw 'OVERRIDE!0';
+      this.concreteConstructor(conf);
     },
-
-    rightType: function(type) {
-      return type === this.type;
+    concreteConstructor: function(conf) {
+      throw "Need to override the concreteConstructor method";
     },
-
     addOne: function() {
-      throw "Need to Override the addOne method";
+      throw "Need to override the addOne method";
     },
     remove: function() {
-      throw "Need to Override the remove method";
+      throw "Need to override the remove method";
     },
     update: function() {
-      throw "Need to Override the update method";
+      throw "Need to override the update method";
     },
-    switchOn : function(){
-      if(typeof(this.el) == "string" && this.el.search("#") != 0)
-        $("#"+this.el).removeAttr('style');
-      else if(typeof(this.el) == "string" && this.el.search("#") == 0)
-        $(this.el).removeAttr('style');
-      else
-        this.el.removeAttr('style');
-    },
-    switchOff : function(){
-      if(typeof(this.el) == "string" && this.el.search("#") != 0)
-        $("#"+this.el).css("display", "none");
-      else if(typeof(this.el) == "string" && this.el.search("#") == 0)
-        $(this.el).css("display", "none");
-      else
-        this.el.css("display", "none");
+    rightType: function(type) {
+      return type === this.type;
     }
   });
 });
