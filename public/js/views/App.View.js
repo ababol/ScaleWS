@@ -10,11 +10,6 @@ define([
   'use strict';
 
   return Backbone.View.extend({
-    views :[],
-    el: $(".menu"),
-    events: {
-      'click': 'switchViews'
-    },
     initialize: function () {
       this.initViews();
       this.collection.fetch();
@@ -23,13 +18,13 @@ define([
     initViews: function() {
       // HighChart Views //
       _.each(Config.views.chart, function(c) {
-        this.views.push(new HighChartView(c, this.collection));
+        new HighChartView(c, this.collection);
       }, this);
       // MeasureView //
       _.each(Config.views.text, function(c) {
-        this.views.push(new MeasureTextView(c, this.collection));
+        new MeasureTextView(c, this.collection);
       }, this);
-      // Menu Views //
+      // Menu View //
       new MenuView(Config.views.menu);
     }
   });
