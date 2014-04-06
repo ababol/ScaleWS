@@ -4,6 +4,7 @@
   "description": "Get and process data acquired from the scale (Withings WS50)",
   "private": true,
   "scripts": {
+    "postinstall": "bower install",
     "start": "grunt dev"
   },
   "engines": {
