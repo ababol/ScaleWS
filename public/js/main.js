@@ -6,7 +6,8 @@ require.config({
     jquery: "bower_components/jquery/dist/jquery",
     text: 'bower_components/requirejs-text/text',
     socketio: "/socket.io/socket.io",
-    highstock: "bower_components/highstock/highstock"
+    highstock_orig: "bower_components/highstock/highstock",
+    highstock: "bower_components/touch-tooltip-fix-highchart/touch-tooltip-fix"
   },
   shim: {
     underscore: {
@@ -20,6 +21,7 @@ require.config({
       exports: "io"
     },
     highstock: {
+      deps: ["highstock_orig"],
       exports: "Highcharts"
     }
   }

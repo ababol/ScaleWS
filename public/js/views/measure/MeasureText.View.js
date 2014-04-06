@@ -11,9 +11,7 @@ define([
   return AbstractMeasureView.extend({
     template: _.template(MeasureTextTemplate),
 
-    constructor : function (conf, collection) {
-      AbstractMeasureView.prototype.constructor.call(this, conf, collection);
-      // METTRE CA DANS UN CONSTRUCTEUR BIS A INIT
+    concreteConstructor: function(conf) {
       this.el = $('#'+this.el);
       this.el.html(this.template({"title": conf.title}));
     },

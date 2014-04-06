@@ -51,6 +51,24 @@ define(['styles/js/dark-light-theme.js'], function (dark) {
           title: "Air Table",
           type: 35
         }
+      },
+      menu: {
+        0: {
+          title: "Weight",
+          type: 1
+        },
+        1: {
+          title: "Temperature",
+          type: 12
+        },
+        2: {
+          title: "Pulse",
+          type: 11
+        },
+        3: {
+          title: "Air",
+          type: 35
+        }
       }
     }
   };

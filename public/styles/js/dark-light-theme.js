@@ -4,14 +4,16 @@
 define([], function () {
   var lineColor = "#6F9CC7";
   var green = "#C5DE71";
-  var pink = "#D47D6C";
   var white = "#CCC";
 
   return {
-    bgColor: "#323232",
-    lineColor: lineColor,
-    yAxisColor: "rgba(255,255,255, 0.03)",
-    animationDuration: 2000,
+    chart: {
+      backgroundColor: "#323232",
+      type: 'line',
+      yAxis: {
+        gridLineColor: "rgba(255,255,255, 0.03)"
+      }
+    },
     scrollbar: {
       barBackgroundColor: '#262626',
       barBorderRadius: 7,
@@ -53,7 +55,6 @@ define([], function () {
         r: 8,
         style: {
           color: white
-          // fontWeight: 'bold'
         },
         states: {
           hover: {
@@ -77,12 +78,17 @@ define([], function () {
       inputBoxHeight: 18,
       inputStyle: {
         color: white
-        // fontWeight: 'bold'
       },
       labelStyle: {
         color: white
-        // fontWeight: 'bold'
       }
-    }
+    },
+    series: [{
+      name: 'Valeur',
+      color: lineColor,
+      animation: {
+        duration: '2000'
+      }
+    }]
   };
 });

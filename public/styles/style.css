@@ -106,3 +106,5 @@ table {
 #menu div.menu.selected {
   color: #c5de71;
   border: 1px solid #c5de71; }
+#menu .menuItem {
+  display: inline; }
