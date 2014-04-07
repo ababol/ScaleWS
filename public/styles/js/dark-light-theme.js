@@ -33,6 +33,9 @@ define([], function () {
         font: '20px "Helvetica", sans-serif'
       }
     },
+    credits: {
+      enabled: false
+    },
     rangeSelector: {
       selected: 1,
       inputDateFormat: '%d-%m-%Y',

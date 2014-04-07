@@ -48,14 +48,6 @@ div.chart{
   border:1px solid #1C1C1C;
   border-radius:5px;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.4);
-  @media(max-width: $break-small){
-    width: 90%;
-    margin-left: 0;
-    margin-right: 0;
-  }
-  @media(min-width: $break-big){
-    width: 40%;
-  }
 }
 
 table {
@@ -81,12 +73,6 @@ table {
   font-family : 'Helvetica', sans-serif;
   box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.2);
 
-  @media(max-width: $break-small){
-    width: 90%;
-    margin-left: 0;
-    margin-right: 0;
-  }
-
   th, td {
     padding:18px 28px 18px;
     text-align:center;
@@ -101,6 +87,21 @@ table {
   td {
     border-top:1px solid $trans-white;
     border-right:1px solid $trans-white;
+  }
+}
+
+#main {
+  overflow: hidden;
+}
+
+div.chart, table {
+  @media(max-width: $break-small){
+    width: 90%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  @media(min-width: $break-big){
+    width: 40%;
   }
 }
 
