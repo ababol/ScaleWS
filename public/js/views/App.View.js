@@ -4,9 +4,10 @@ define([
   'backbone',
   'js/views/measure/MeasureText.View.js',
   'js/views/measure/HighChart.View.js',
+  'js/views/measure/MeasureAverage.View.js',
   'js/views/menu/Menu.View.js',
   'js/config.js'
-], function ($, _, Backbone, MeasureTextView, HighChartView, MenuView, Config) {
+], function ($, _, Backbone, MeasureTextView, HighChartView, MeasureAverageView, MenuView, Config) {
   'use strict';
 
   return Backbone.View.extend({
@@ -19,6 +20,10 @@ define([
       // HighChart Views //
       _.each(Config.views.chart, function(c) {
         new HighChartView(c, this.collection);
+      }, this);
+      // Average Views //
+      _.each(Config.views.average, function(c) {
+        new MeasureAverageView(c, this.collection);
       }, this);
       // MeasureView //
       _.each(Config.views.text, function(c) {

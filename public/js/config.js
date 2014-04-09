@@ -52,6 +52,28 @@ define(['styles/js/dark-light-theme.js'], function (dark) {
           type: 35
         }
       },
+      average:{
+        0:{
+          el: "average-weight",
+          title: "Weight",
+          type: 1
+        },
+        1: {
+          el: "average-temperature",
+          title: "Temperature",
+          type: 12
+        },
+        2: {
+          el: "average-pulse",
+          title: "Pulse",
+          type: 11
+        },
+        3: {
+          el: "average-air",
+          title: "Air",
+          type: 35
+        }
+      },
       menu: {
         0: {
           title: "Weight",
