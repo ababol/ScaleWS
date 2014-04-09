@@ -86,11 +86,6 @@ table {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     padding: 7px; }
-  @media (max-width: 460px) {
-    table {
-      width: 90%;
-      margin-left: 0;
-      margin-right: 0; } }
   table th, table td {
     padding: 8px 8px 8px;
     text-align: center; }
@@ -100,6 +95,18 @@ table {
   table td {
     border-top: 1px solid rgba(255, 255, 255, 0.08);
     border-right: 1px solid rgba(255, 255, 255, 0.08); }
+
+#main {
+  overflow: hidden; }
+
+@media (max-width: 460px) {
+  div.chart, table {
+    width: 90%;
+    margin-left: 0;
+    margin-right: 0; } }
+@media (min-width: 1090px) {
+  div.chart, table {
+    width: 40%; } }
 
 #tooltip {
   background-color: rgba(255, 255, 255, 0.5);

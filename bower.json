@@ -8,6 +8,6 @@
     "requirejs": "~2.1.11",
     "requirejs-text": "~2.0.10",
     "highstock": "nesbert/highstock#~1.3.10",
-    "touch-tooltip-fix-highchart": "https://github.com/Fedonono/touch-tooltip-fix-highchart.git"
+    "touch-tooltip-fix-highchart": "Fedonono/touch-tooltip-fix-highchart"
   }
 }

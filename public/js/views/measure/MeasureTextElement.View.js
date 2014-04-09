@@ -11,6 +11,8 @@ define([
     template: _.template(MeasureTextElementTemplate),
 
     render: function () {
+      var date = new Date(this.model.get('date'));
+      this.model.set('date', date);
       this.$el.html(this.template(this.model.toJSON())).attr('id', 'text-cid-'+this.model.cid);
       return this;
     }

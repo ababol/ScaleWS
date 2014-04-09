@@ -42,7 +42,9 @@ define([
           formatter: function() {
             return "Date : "+Highcharts.dateFormat('%d-%m-%Y %H:%M:%S', this.x) +'<br/>'+
               "Valeur : "+Highcharts.numberFormat(this.y, 2);
-          }
+          },
+          followTouchMove: true,
+          followPointer: false
         },
         plotOptions: {
           series: {

@@ -107,12 +107,6 @@ table {
   font-family : 'Helvetica', sans-serif;
   box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.2);
 
-  @media(max-width: $break-small){
-    width: 90%;
-    margin-left: 0;
-    margin-right: 0;
-  }
-
   th, td {
     padding:8px 8px 8px;
     text-align:center;
@@ -127,6 +121,21 @@ table {
   td {
     border-top:1px solid $trans-white;
     border-right:1px solid $trans-white;
+  }
+}
+
+#main {
+  overflow: hidden;
+}
+
+div.chart, table {
+  @media(max-width: $break-small){
+    width: 90%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  @media(min-width: $break-big){
+    width: 40%;
   }
 }
 
