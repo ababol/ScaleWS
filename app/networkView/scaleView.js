@@ -1,12 +1,12 @@
 module.exports = function(app, Backbone){
   return Backbone.ServerView.extend({
     initialize:  function () {
-      app.post('/cgi-bin/once', this.once);
-      app.get('/cgi-bin/session', this.session);
-      app.post('/cgi-bin/maint', this.maint);
-      app.post('/cgi-bin/measure', this.measure);
-      app.post('/cgi-bin/v2/measure', this.measurev2);
-      app.post('/cgi-bin/v2/weather', this.weather);
+      app.post('/cgi-bin/once', this.once.bind(this));
+      app.post('/cgi-bin/session', this.session.bind(this));
+      app.post('/cgi-bin/maint', this.maint.bind(this));
+      app.post('/cgi-bin/measure', this.measure.bind(this));
+      app.post('/cgi-bin/v2/measure', this.measurev2.bind(this));
+      app.post('/cgi-bin/v2/weather', this.weather.bind(this));
 
       if(!this.collection){
         console.log("ScaleView can't access to the collection");
@@ -29,6 +29,7 @@ module.exports = function(app, Backbone){
     },
 
     measure: function(req, res){
+      // @TODO ARNAUD : FAIRE UN _.EACH
       // measure.create(Math.floor(100*Math.random()), Math.floor(10000*Math.random()));
       var measureScale = JSON.parse(req.body.measuregrps).measuregrps;
       console.log(measureScale);
@@ -52,8 +53,6 @@ module.exports = function(app, Backbone){
     },
 
     session: function(req, res){
-      console.log(this.session())
-      res.end('{"status":0}');
       if (req.body.action === 'new') {
         console.log("[DATA] Battery: "+req.body.batterylvl);
         this.saveMeasure(req.body.batterylvl, 42);
