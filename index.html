@@ -14,23 +14,24 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-	<link rel="stylesheet" href="css/reveal.min.css">
-	<link rel="stylesheet" href="css/theme/night.css" id="theme">
-	<!-- <link rel="stylesheet" href="css/mydeck.css" id="theme"> -->
+  <link rel="stylesheet" href="css/reveal.min.css">
+  <link rel="stylesheet" href="css/device.css">
+  <link rel="stylesheet" href="css/theme/night.css" id="theme">
+  <!-- <link rel="stylesheet" href="css/mydeck.css" id="theme"> -->
 
-	<!-- For syntax highlighting -->
-	<link rel="stylesheet" href="lib/css/zenburn.css">
+  <!-- For syntax highlighting -->
+  <link rel="stylesheet" href="lib/css/zenburn.css">
 
-	<!-- If the query includes 'print-pdf', include the PDF print sheet -->
-	<script>
-		if( window.location.search.match( /print-pdf/gi ) ) {
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = 'css/print/pdf.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		}
-	</script>
+  <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+  <script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+     var link = document.createElement( 'link' );
+     link.rel = 'stylesheet';
+     link.type = 'text/css';
+     link.href = 'css/print/pdf.css';
+     document.getElementsByTagName( 'head' )[0].appendChild( link );
+   }
+ </script>
 
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
@@ -43,59 +44,105 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
-				<section data-id="9bfd2bf7ec4c84b84966febefe963436">
-					<span style="font-size: 35.753578186035156px; font-style: normal; font-variant: normal;">&nbsp;</span>
-					<h1 class="absolute-element">ScaleWS</h1>
-					<h2>
-					</h2>
-				</section>
-				<section data-id="6d6f8f564d68ce1a152fd56896a7ac5d">
-					<h1 class="absolute-element" >Présentation</font>
-					</h1>
-				</section>
-				<section data-id="38f7128ee458ca3d63fad7f627595325">
-					<h2 style="font-style: normal; font-variant: normal;">
-						<img src="https://s3.amazonaws.com/media-p.slid.es/uploads/scalews/images/341951/ScaleWSHack_-_New_Page__1_.png" style="font-style: normal; font-variant: normal; font-size: 35.753578186035156px;">
-						<br>
-					</h2>
-				</section>
-				<section data-id="17ab9066e1bcd0020edc9c38cdf0b00d">
-					<h2 style="font-style: normal; font-variant: normal;">
-						<img src="https://s3.amazonaws.com/media-p.slid.es/uploads/scalews/images/341962/ScaleWSHack2_-_New_Page.png" style="font-size: 64.566px;">
-						<br>
-					</h2>
-				</section>
-				<section data-id="99d7caba729cff0d26da89379f7020f6">
-					<h2 style="font-style: normal; font-variant: normal;">
-						<img src="https://s3.amazonaws.com/media-p.slid.es/uploads/scalews/images/341967/ScaleWSHack3_-_New_Page.png" style="font-size: 64.566px;">
-						<br>
-					</h2>
-				</section>
-        <section >
-            <img src="img/goals.png">
+				<section>
+					<h1>ScaleWS</h1>
+          <p>by Arnaud Babol & Eric Allard</p>
+        </section>
+        <section>
+          <h1 class="absolute-element" >Presentation</font>
+          </h1>
+        </section>
+        <section>
+          <h1> Withings ? </h1>
+        </section>
+        <section>
+          <h2>Withings</h2>
+          <table>
+            <tr>
+              <td>
+              <img src="http://withings.com/images/bodyanalyzer/ws-50-background-kg.png" width="450px">
+              </td>
+              <td>
+                <p class="fragment" data-fragment-index="1">Weight sensors</p>
+                <p class="fragment" data-fragment-index="2">Body fat</p>
+                <p class="fragment" data-fragment-index="3">Heart rate</p>
+                <p class="fragment" data-fragment-index="4">Air quality</p>
+              </td>
+            </tr>
+          </table>
+        </section>
+        <section>
+          <h2>Withings</h2>
+          <table>
+            <tr>
+              <td>
+                <img src="https://lh5.ggpht.com/OiCG6BKmvCPdgIw7FRrGN4C5DA5GsDqp9u7t-S3Lo2m23cSCvYICWcGfneFSy3Si2eX9=h900-rw" width="350px">
+              </td>
+              <td>
+                <p class="fragment" data-fragment-index="1">Wifi connection</p>
+                <p class="fragment" data-fragment-index="2">Mobile App</p>
+              </td>
+            </tr>
+          </table>
+        </section>
+        <section>
+          <h3>How does it work ?</h3>
+        </section>
+        <section>
+          <img src="https://s3.amazonaws.com/media-p.slid.es/uploads/scalews/images/341951/ScaleWSHack_-_New_Page__1_.png" style="font-style: normal; font-variant: normal; font-size: 35.753578186035156px;">
+        </section>
+        <section>
+          <h3>What did we do ?</h3>
+        </section>
+        <section>
+          <img src="https://s3.amazonaws.com/media-p.slid.es/uploads/scalews/images/341962/ScaleWSHack2_-_New_Page.png" style="font-size: 64.566px;">
+        </section>
+        <section>
+          <img src="https://s3.amazonaws.com/media-p.slid.es/uploads/scalews/images/341967/ScaleWSHack3_-_New_Page.png" style="font-size: 64.566px;">
         </section>
         <section >
-            <img src="img/Archi-ScaleWS.png" >
+          <img src="img/goals.png">
+        </section>
+        <section>
+          <h3>How did we do that ?</h3>
         </section>
         <section >
-            <img src="img/Archi-ScaleWS-Server.png" >
+          <img src="img/Archi-ScaleWS.png" >
         </section>
         <section >
-            <img src="img/Archi-ScaleWS-Client.png" >
+          <img src="img/Archi-ScaleWS-Server.png" >
         </section>
-				<section data-id="00d50000e8c4264452809295dde3e567">
-					<iframe src="https://marvelapp.com/c55eg?emb=1" width="500px" height="1000" allowtransparency="true" frameborder="0">
-					</iframe>
-				</section>
-			</div>
+        <section >
+          <img src="img/Archi-ScaleWS-Client.png" >
+        </section>
+        <section>
+          <h3>Why it's really cool ?</h3>
+        </section>
+        <section>
+          <iframe src="https://marvelapp.com/c55eg?emb=1" width="500px" height="1000" allowtransparency="true" frameborder="0">
+          </iframe>
+        </section>
+        <section>
+         <div id="htc-one">
+          <div class="device">
+            <div class="camera"></div>
+            <div class="sensor"></div>
+            <div class="speaker"></div>
+            <div class="inner"></div>
+            <div class="screen"></div>
+            <!-- <a class="screen" href="http://marvelapp.com"></a> -->
+          </div>
+        </div>
+      </section>
+    </div>
 
 
-		</div>
+  </div>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.min.js"></script>
+  <script src="lib/js/head.min.js"></script>
+  <script src="js/reveal.min.js"></script>
 
-		<script>
+  <script>
 
 			// Full list of configuration options available here:
 			// https://github.com/hakimel/reveal.js#configuration

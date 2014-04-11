@@ -141,3 +141,10 @@ html{
   overflow-y:hidden;
   overflow-x:hidden;
 }
+
+.reveal td{
+  vertical-align: middle;
+}
+.reveal table{
+  margin: auto;
+}
