@@ -36,7 +36,7 @@ module.exports = function(grunt) {
     },
     express: {
       options: {
-        port: 3000
+        port: 80
       },
       dev: {
         options: {
