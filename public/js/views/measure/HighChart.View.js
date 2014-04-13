@@ -28,7 +28,7 @@ define([
           events: {
             click: function(e) {
               var x = new Date(e.xAxis[0].value).toISOString(),
-                y = e.yAxis[0].value;
+                y = Math.floor(e.yAxis[0].value*100)/100;
 
               // Add it
               self.collection.create({
