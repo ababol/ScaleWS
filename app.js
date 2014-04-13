@@ -9,8 +9,7 @@ var express = require('express'),
   _ = require('underscore'),
   Backbone = require('backbone');
 var mongoose = require('mongoose');
-var config = require('./config.js')(app, express, mongoose);
-
+require('./config.js')(app, express, mongoose);
 
 /**
  * Network configuration.
@@ -40,9 +39,9 @@ collection.fetch(); //Sync the collection with the db
 //create a Backbone.ServerView
 require('./app/networkView/ServerBackboneView')(Backbone, _);
 //extend from Backbone.ServerView
-var socketView = new (require('./app/networkView/socketView')(socketio, Backbone, _))({collection: collection});
-var apiView  = new (require('./app/networkView/apiView')(app, "/"+model.getCollectionName(), Backbone, _, model.getCategoriesMasks()))({collection: collection});
-var scaleView  = new (require('./app/networkView/scaleView')(app, Backbone))({collection: collection});
+new (require('./app/networkView/socketView')(socketio, Backbone, _))({collection: collection});
+new (require('./app/networkView/apiView')(app, "/"+model.getCollectionName(), Backbone, _, model.getCategoriesMasks()))({collection: collection});
+new (require('./app/networkView/scaleView')(app, _, Backbone))({collection: collection});
 
 
 /**

@@ -15,6 +15,12 @@ define([
         tooltip = $('#tooltip'),
         theme = conf.theme;
 
+      Highcharts.setOptions({
+        global: {
+          useUTC: false
+        }
+      });
+
       var chart = {
         chart: {
           renderTo: this.el,
@@ -75,8 +81,8 @@ define([
 
     addOne: function (measure) {
       if (!this.rightType(measure.get("type"))) return;
-
       var date = new Date(measure.get("date")).getTime();
+
       this.chart.series[0].addPoint({id: measure.cid, x: date,y: measure.get("value")},true, false, true);
     },
 
@@ -88,9 +94,9 @@ define([
 
     update: function(measure) {
       if (!this.rightType(measure.get("type"))) return;
-
       var date = new Date(measure.get("date")).getTime(),
         value = parseFloat(measure.get("value"), 2);
+
       this.chart.get(measure.cid).update({x: date,y: value}, true, true);
     }
   });
