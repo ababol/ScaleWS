@@ -38,15 +38,13 @@ header{
     line-height: 2em;
     font-size:1em;
     margin: 0;
-    margin-left: 0.3em;
     @media(max-width: $break-small){
-      margin-left: 0;
       display: none;
     }
   }
 }
 
-div.chart{
+div.measure{
   font-family : 'Helvetica', sans-serif;
   display: inline-block;
   vertical-align: top;
@@ -69,17 +67,17 @@ div.chart{
     vertical-align: top;
     list-style: none;
     color: $text_color;
-    font: 2em helvetica;
-    padding:1em;
+    font-size: 1.5em;
+    padding:0.5em;
     margin: 0.5em;
-    //width: 25%;
     background-color: $trans-white;
     border-radius: 5px;
     border:1px solid #1C1C1C;
   }
   h2{
     color: $green; 
-    font: 1.5em helvetica;
+    font-size: 1.5em;
+    margin: 0.2em;
   }
 }
 
