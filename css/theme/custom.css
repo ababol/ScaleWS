@@ -21,16 +21,16 @@
   font-weight: bold !important;
   list-style-type: none !important;
   position: absolute !important;
-  width: 250px !important;
+  width: 306px !important;
 }
 
 .way {
-  top: -200px;
+  top: -170px;
   right: 0%;
   -webkit-transform: rotate(30deg);
 }
 
 .demo {
-  top: 45%;
-  right: 7%;
+  top: 38%;
+  right: 5%;
 }
