@@ -145,6 +145,9 @@ html{
 .reveal td{
   vertical-align: middle;
 }
+#code table td{
+  text-align: center;
+}
 .reveal table{
   margin: auto;
 }
