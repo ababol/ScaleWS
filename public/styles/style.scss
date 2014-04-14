@@ -6,6 +6,8 @@ $text_color: rgba(255, 255, 255, 0.5);
 $trans-white: rgba(255,255,255, 0.08);
 $break-small : 460px;
 $break-big : 1090px;
+$shadow: 0 5px 4px rgba(0, 0, 0, 0.2);
+$shadow-little: 0 1px 2px rgba(0, 0, 0, 0.4);
 
 
 body {
@@ -29,7 +31,7 @@ header{
   font-family : 'Helvetica', sans-serif;
   text-align: center;
   color: white;
-  box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: $shadow;
   h1{
     font-size: 3em;
     margin: 0;
@@ -53,7 +55,7 @@ div.measure{
   background-color: $box_background_color;
   border:1px solid #1C1C1C;
   border-radius:5px;
-  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.4);
+  box-shadow: $shadow-little;
   @media(max-width: $break-small){
     width: 90%;
     margin-left: 0;
@@ -103,7 +105,7 @@ table {
   margin: 1%;
   color: #cbcbcb;
   font-family : 'Helvetica', sans-serif;
-  box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: $shadow;
 
   th, td {
     padding:8px 8px 8px;
@@ -139,17 +141,23 @@ div.chart, table {
 
 #tooltip {
   background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 3px;
+  border-radius: 5px;
   bottom: 10px;
-  color: #FFFFFF;
+  color: black;
   display: none;
   height: 101px;
   left: 50%;
-  margin-left: -200px;
+  margin-left: -125px;
   padding: 15px;
   position: fixed;
-  width: 400px;
+  width: 250px;
   z-index: 10000;
+  box-shadow: $shadow-little;
+
+  p {
+    margin: 0;
+    padding: 0;
+  }
 }
 #menu{
   div.menu{

@@ -17,7 +17,7 @@ header {
   font-family: 'Helvetica', sans-serif;
   text-align: center;
   color: white;
-  box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.2); }
+  box-shadow: 0 5px 4px rgba(0, 0, 0, 0.2); }
   header h1 {
     font-size: 3em;
     margin: 0; }
@@ -38,7 +38,7 @@ div.measure {
   background-color: #323232;
   border: 1px solid #1C1C1C;
   border-radius: 5px;
-  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.4); }
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4); }
   @media (max-width: 460px) {
     div.measure {
       width: 90%;
@@ -75,7 +75,7 @@ table {
   margin: 1%;
   color: #cbcbcb;
   font-family: 'Helvetica', sans-serif;
-  box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.2); }
+  box-shadow: 0 5px 4px rgba(0, 0, 0, 0.2); }
   table caption {
     color: #c5de71;
     font: 20px helvetica;
@@ -109,17 +109,21 @@ table {
 
 #tooltip {
   background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 3px;
+  border-radius: 5px;
   bottom: 10px;
-  color: #FFFFFF;
+  color: black;
   display: none;
   height: 101px;
   left: 50%;
-  margin-left: -200px;
+  margin-left: -125px;
   padding: 15px;
   position: fixed;
-  width: 400px;
-  z-index: 10000; }
+  width: 250px;
+  z-index: 10000;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4); }
+  #tooltip p {
+    margin: 0;
+    padding: 0; }
 
 #menu div.menu {
   display: inline-block;
