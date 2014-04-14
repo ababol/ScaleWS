@@ -1,0 +1,24 @@
+header{
+  position: relative;
+  width: 100%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  margin-bottom : 1.5%;
+  background-color : #6F9CC7;
+  font-family : 'Helvetica', sans-serif;
+  text-align: center;
+  color: white;
+  box-shadow: $shadow;
+  h1{
+    font-size: 3em;
+    margin: 0;
+  }
+  h2{
+    line-height: 2em;
+    font-size:1em;
+    margin: 0;
+    @media(max-width: $break-small){
+      display: none;
+    }
+  }
+}

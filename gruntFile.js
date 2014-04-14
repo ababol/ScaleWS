@@ -30,7 +30,7 @@ module.exports = function(grunt) {
         }
       },
       styles: {
-        files: 'public/styles/**/*.scss',
+        files: 'public/styles/style.scss',
         tasks: ['sass:dist']
       }
     },
@@ -66,4 +66,4 @@ module.exports = function(grunt) {
   grunt.registerTask('validate', ['jshint']);
   grunt.registerTask('dev', ['sass', 'express:dev', 'watch']);
   grunt.registerTask('release', ['sass', 'uglify', 'express:release']);
-}
+};

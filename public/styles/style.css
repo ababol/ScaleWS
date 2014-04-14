@@ -4,8 +4,10 @@ body {
   background-color: #262626;
   text-align: center;
   margin: 0; }
-  body #main {
-    text-align: center; }
+
+#main {
+  text-align: center;
+  overflow: hidden; }
 
 header {
   position: relative;
@@ -29,7 +31,7 @@ header {
       header h2 {
         display: none; } }
 
-div.measure {
+.measure {
   font-family: 'Helvetica', sans-serif;
   display: inline-block;
   vertical-align: top;
@@ -39,15 +41,7 @@ div.measure {
   border: 1px solid #1C1C1C;
   border-radius: 5px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4); }
-  @media (max-width: 460px) {
-    div.measure {
-      width: 90%;
-      margin-left: 0;
-      margin-right: 0; } }
-  @media (min-width: 1090px) {
-    div.measure {
-      width: 40%; } }
-  div.measure p {
+  .measure p {
     display: inline-block;
     vertical-align: top;
     list-style: none;
@@ -58,12 +52,37 @@ div.measure {
     background-color: rgba(255, 255, 255, 0.08);
     border-radius: 5px;
     border: 1px solid #1C1C1C; }
-  div.measure h2 {
+  .measure h2 {
     color: #c5de71;
     font-size: 1.5em;
     margin: 0.2em; }
+  @media (max-width: 460px) {
+    .measure {
+      width: 90%;
+      margin-left: 0;
+      margin-right: 0; } }
+  @media (min-width: 1090px) {
+    .measure {
+      width: 40%; } }
 
-table {
+#menu div.menu {
+  display: inline-block;
+  min-width: 123px;
+  margin: 10px;
+  padding: 15px;
+  color: #d47d6c;
+  border: 1px solid #d47d6c;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font: 12px helvetica;
+  cursor: pointer; }
+#menu div.menu.selected {
+  color: #c5de71;
+  border: 1px solid #c5de71; }
+#menu .menuItem {
+  display: inline; }
+
+.textView {
   vertical-align: top;
   border: 1px solid #1C1C1C;
   border-top: none;
@@ -76,7 +95,7 @@ table {
   color: #cbcbcb;
   font-family: 'Helvetica', sans-serif;
   box-shadow: 0 5px 4px rgba(0, 0, 0, 0.2); }
-  table caption {
+  .textView caption {
     color: #c5de71;
     font: 20px helvetica;
     border: 1px solid #1C1C1C;
@@ -85,27 +104,23 @@ table {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     padding: 7px; }
-  table th, table td {
+  .textView th, .textView td {
     padding: 8px 8px 8px;
     text-align: center; }
-  table th {
+  .textView th {
     padding-top: 12px;
     background: rgba(255, 255, 255, 0.08); }
-  table td {
+  .textView td {
     border-top: 1px solid rgba(255, 255, 255, 0.08);
     border-right: 1px solid rgba(255, 255, 255, 0.08); }
-
-#main {
-  overflow: hidden; }
-
-@media (max-width: 460px) {
-  div.chart, table {
-    width: 90%;
-    margin-left: 0;
-    margin-right: 0; } }
-@media (min-width: 1090px) {
-  div.chart, table {
-    width: 40%; } }
+  @media (max-width: 460px) {
+    .textView {
+      width: 90%;
+      margin-left: 0;
+      margin-right: 0; } }
+  @media (min-width: 1090px) {
+    .textView {
+      width: 40%; } }
 
 #tooltip {
   background-color: rgba(255, 255, 255, 0.5);
@@ -124,20 +139,3 @@ table {
   #tooltip p {
     margin: 0;
     padding: 0; }
-
-#menu div.menu {
-  display: inline-block;
-  min-width: 123px;
-  margin: 10px;
-  padding: 15px;
-  color: #d47d6c;
-  border: 1px solid #d47d6c;
-  border-radius: 5px;
-  text-transform: uppercase;
-  font: 12px helvetica;
-  cursor: pointer; }
-#menu div.menu.selected {
-  color: #c5de71;
-  border: 1px solid #c5de71; }
-#menu .menuItem {
-  display: inline; }
