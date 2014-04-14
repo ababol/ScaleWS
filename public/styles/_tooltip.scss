@@ -12,8 +12,15 @@
   width: 250px;
   z-index: 10000;
   box-shadow: $shadow-little;
+  form {
+    position: relative;
+    top: -6px;
+  }
   p {
     margin: 0;
+    padding: 0;
+  }
+  .field {
     padding: 0;
   }
 }

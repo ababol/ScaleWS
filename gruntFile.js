@@ -30,7 +30,7 @@ module.exports = function(grunt) {
         }
       },
       styles: {
-        files: 'public/styles/app.scss',
+        files: 'public/styles/**/*.scss',
         tasks: ['sass:dist']
       }
     },
