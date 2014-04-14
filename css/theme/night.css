@@ -141,21 +141,3 @@ html{
   overflow-y:hidden;
   overflow-x:hidden;
 }
-
-.reveal td{
-  vertical-align: middle;
-}
-#code table td{
-  text-align: center;
-}
-.reveal table{
-  margin: auto;
-}
-
-.reveal iframe {
-    max-width: 100%;
-    max-height: 101%;
-}
-.reveal img{
-  margin: 10px;
-}
