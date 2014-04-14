@@ -155,7 +155,88 @@
         </section>
 
         <section>
-          <h3>The code can be used for any sensors </h3>
+          <section>
+            <h3>The code can be used for any sensors </h3>
+          </section>
+          <section>
+            <h3>Server configuration</h3>
+            <pre><code data-trim>
+              module.exports = function (MeasureModel) {
+                'use strict';
+                MeasureModel.getSchemaLayout = function(){
+                  return {
+                    value: Number,
+                    type: Number,
+                    date: { type : Date, default : Date.now }
+                  };  
+                };
+                MeasureModel.getCollectionName = function(){
+                  return 'measure';
+                };
+
+                MeasureModel.getCategoriesMasks = function(){
+                  return {
+                    weight : {type : 1},
+                    heart : {type : 11},
+                    temperature: {type : 12},
+                    fat : {type : 16},
+                    airquality : {type : 35}
+                  };
+                };
+                return MeasureModel;
+              };
+            </code></pre>
+          </section>
+          <section>
+            <h3>Client configuration</h3>
+            <pre><code data-trim>
+              define(['styles/js/dark-light-theme.js'], function (dark) {
+                return {
+                  views: {
+                    chart: {
+                      0: {
+                        el: "chart-weight",
+                        title: "Weight Chart",
+                        theme: dark,
+                        type: 1
+                      },
+                      1: {
+                        el: "chart-temperature",
+                        title: "Temperature Chart",
+                        theme: dark,
+                        type: 12
+                      }
+                    },
+                    text: {
+                      0: {
+                        el: "text-weight",
+                        title: "Weight Table",
+                        type: 1
+                      },
+                      1: {
+                        el: "text-temperature",
+                        title: "Temperature Table",
+                        type: 12
+                      },
+            </code></pre>
+          </section>
+          <section>
+            <h3>Templates configuration</h3>
+            <pre><code>
+              &lt;caption&gt;&lt;%- title %&gt;&lt;/caption&gt;
+              &lt;tr&gt;
+                &lt;th&gt;type&lt;/th&gt;
+                &lt;th&gt;value&lt;/th&gt;
+                &lt;th&gt;date&lt;/th&gt;
+              &lt;/tr&gt;
+            </code></pre>
+            <pre><code>
+              &lt;td&gt;&lt;%- type %&gt;&lt;/td&gt;
+              &lt;td class=&quot;value&quot;&gt;&lt;%- value %&gt;&lt;/td&gt;
+              &lt;td class=&quot;date&quot;&gt;&lt;%- date %&gt;&lt;/td&gt;
+            </code></pre>
+          </section>
+
         </section>
 
         <section>
@@ -214,8 +295,8 @@
               <div class="inner"></div>
               <div class="home"></div>
               <div class="camera"></div>
-              <div class="screen"><iframe src="http://localhost" style="position: absolute;" width="768px" height="577px" allowtransparency="true" frameborder="0">
-              </iframe></div>
+              <!-- <div class="screen"><iframe src="http://localhost" style="position: absolute;" width="768px" height="577px" allowtransparency="true" frameborder="0">
+              </iframe></div> -->
               <!-- <a class="screen" href="http://marvelapp.com"></a> -->
             </div>
          </section>
@@ -225,8 +306,8 @@
             <div class="sensor"></div>
             <div class="speaker"></div>
             <div class="inner"></div>
-            <div class="screen"><iframe src="http://localhost" style="position: absolute;" width="320px" height="568px" allowtransparency="true" frameborder="0">
-            </iframe></div>
+            <!-- <div class="screen"><iframe src="http://localhost" style="position: absolute;" width="320px" height="568px" allowtransparency="true" frameborder="0">
+            </iframe></div> -->
             <!-- <a class="screen" href="http://marvelapp.com"></a> -->
           </div>
         </section>
