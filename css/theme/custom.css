@@ -1,3 +1,6 @@
+.reveal h1 {
+  font-size: 2.9em !important;
+}
 .reveal td{
   vertical-align: middle;
 }
@@ -32,4 +35,9 @@
 .demo {
   top: 38%;
   right: 5%;
+}
+
+.slidenumber {
+  top: 7px;
+  position: relative;
 }
