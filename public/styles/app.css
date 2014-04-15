@@ -121,6 +121,23 @@ header {
   @media (min-width: 1090px) {
     .textView {
       width: 40%; } }
+  .textView tr {
+    -webkit-animation: newVal 5s;
+    animation: newVal 5s; }
+
+@-webkit-keyframes newVal {
+  from {
+    background: red; }
+
+  to {
+    background: transparent; } }
+
+@keyframes newVal {
+  from {
+    background: red; }
+
+  to {
+    background: transparent; } }
 
 #tooltip {
   background-color: rgba(255, 255, 255, 0.5);
