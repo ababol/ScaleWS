@@ -44,9 +44,11 @@
 }
 
 .begin {
-  top: 30px;
-  right: 30px;
-  position: relative;
+  bottom: -330px;
+  right: -110px;
+  position: absolute !important;
+  font-family: quicksand, "sans-serif" !important;
+  font-size: 0.8em !important;
 }
 
 .slidenumber {

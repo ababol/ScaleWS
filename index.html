@@ -230,86 +230,38 @@
           </section>
 
           <section>
-            <h3>Server configuration</h3>
-            <pre><code data-trim>
-              module.exports = function (MeasureModel) {
-                'use strict';
-                MeasureModel.getSchemaLayout = function(){
-                  return {
+            <h3>A server configuration file</h3>
+            <p>Define the data :</p>
+            <pre><code >
+                  {
                     value: Number,
                     type: Number,
                     date: { type : Date, default : Date.now }
-                  };
-                };
-                MeasureModel.getCollectionName = function(){
-                  return 'measure';
-                };
-
-                MeasureModel.getCategoriesMasks = function(){
-                  return {
-                    weight : {type : 1},
-                    heart : {type : 11},
-                    temperature: {type : 12},
-                    fat : {type : 16},
-                    airquality : {type : 35}
-                  };
-                };
-                return MeasureModel;
-              };
+                  }
             </code></pre>
+            <br/>
+            <p>Define masks for categories :</p>
+            <pre><code >
+                    weight : {type : 1}
+            </code></pre>
+            <br/>
+            <p>Define the name of MongoDB Collection </p>
           </section>
 
           <section>
-            <h3>Client configuration</h3>
-            <pre><code data-trim>
-              define(['styles/js/dark-light-theme.js'], function (dark) {
-                return {
-                  views: {
-                    chart: {
-                      0: {
-                        el: "chart-weight",
-                        title: "Weight Chart",
-                        theme: dark,
-                        type: 1
-                      },
-                      1: {
-                        el: "chart-temperature",
-                        title: "Temperature Chart",
-                        theme: dark,
-                        type: 12
-                      }
-                    },
-                    text: {
-                      0: {
-                        el: "text-weight",
-                        title: "Weight Table",
-                        type: 1
-                      },
-                      1: {
-                        el: "text-temperature",
-                        title: "Temperature Table",
-                        type: 12
-                      },
-            </code></pre>
-          </section>
-
-          <section>
-            <h3>Templates configuration</h3>
+            <h3>A client configuration file</h3>
+            <br/>
+            <p>Activate some views per categories :</p>
             <pre><code>
-              &lt;caption&gt;&lt;%- title %&gt;&lt;/caption&gt;
-              &lt;tr&gt;
-                &lt;th&gt;type&lt;/th&gt;
-                &lt;th&gt;value&lt;/th&gt;
-                &lt;th&gt;date&lt;/th&gt;
-              &lt;/tr&gt;
+              text: {
+                0: {
+                  el: "text-weight",
+                  title: "Weight Table",
+                  type: 1
+                }
             </code></pre>
-            <pre><code>
-              &lt;td&gt;&lt;%- type %&gt;&lt;/td&gt;
-              &lt;td class=&quot;value&quot;&gt;&lt;%- value %&gt;&lt;/td&gt;
-              &lt;td class=&quot;date&quot;&gt;&lt;%- date %&gt;&lt;/td&gt;
-            </code></pre>
-          </section>
 
+          </section>
         </section>
 
         <!-- Arnaud -->
@@ -329,7 +281,7 @@
               <tr>
                 <td width="33%"><img src="img/bower-logo.png"></td>
                 <td width="33%"><img src="img/npm-logo.png"></td>
-                <td width="33%"><img src="img/grunt-logo.png"></td>
+                <td width="33%"><img src="img/nodejs_logo.png"></td>
               </tr>
               <tr>
                 <td width="33%"><img src="img/sass.png"></td>
@@ -342,9 +294,9 @@
                 <td width="33%"><img src="img/underscore.png"></td>
               </tr>
               <tr>
+                <td width="33%"><img src="img/grunt-logo.png"></td>
                 <td width="33%"><img src="img/redmineicon.png"></td>
                 <td width="33%"><img src="img/jquery-logo.png"></td>
-                <td width="33%"><img src="img/github-logo-transparent.png"></td>
               </tr>
             </table>
           </section>
