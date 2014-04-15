@@ -43,6 +43,12 @@
   right: 5%;
 }
 
+.begin {
+  top: -50%;
+  left: 34%;
+  position: relative;
+}
+
 .slidenumber {
   bottom: 30px;
   left: 30px;
