@@ -43,6 +43,12 @@
   right: 5%;
 }
 
+.begin {
+  top: -50%;
+  left: 34%;
+  position: relative;
+}
+
 .slidenumber {
   bottom: 30px;
   left: 30px;
@@ -84,4 +90,24 @@ body{
 .reveal h1 {
   text-transform: uppercase !important;
   text-shadow: none; 
+}
+.reveal .slides > section, .reveal .slides > section > section {
+  padding: 0 !important;
+}
+
+#techno {
+  top: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  text-align: center;
+}
+#techno tr, #techno td {
+  top: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  text-align: center;
+}
+
+#techno img {
+  height: 110px;
 }
