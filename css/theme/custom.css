@@ -44,8 +44,8 @@
 }
 
 .begin {
-  top: -50%;
-  left: 34%;
+  top: 30px;
+  right: 30px;
   position: relative;
 }
 
