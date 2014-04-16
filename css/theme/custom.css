@@ -29,7 +29,6 @@
   font-weight: bold !important;
   list-style-type: none !important;
   position: absolute !important;
-  width: 306px !important;
 }
 
 .way {
@@ -41,19 +40,21 @@
 .demo {
   top: 38%;
   right: 5%;
+  width: 306px !important;
 }
 
 .begin {
   bottom: -330px;
-  right: -110px;
+  right: -125px;
   position: absolute !important;
   font-family: quicksand, "sans-serif" !important;
-  font-size: 0.8em !important;
+  font-size: 1.5em !important;
+  width: 450px !important;
 }
 
 .slidenumber {
-  bottom: 30px;
-  left: 30px;
+  bottom: 40px;
+  left: 40px;
   position: absolute;
   font-size: 0.7em !important;
 }
