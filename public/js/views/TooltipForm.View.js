@@ -25,7 +25,7 @@ define([
 
       if (this.model.get("value") !== value || this.model.get("date") !== date) {
         this.model.set({date: date, value: value});
-        this.model.save();
+        Backbone.sync('update', this.model);
       }
     },
 
@@ -37,7 +37,6 @@ define([
     remove: function() {
       Backbone.sync('delete', this.model);
       this.model.destroy({success: function(model, response) {
-        console.log("success", model, response);
       }});
       this.hide();
     }

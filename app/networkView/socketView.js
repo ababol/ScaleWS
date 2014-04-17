@@ -58,7 +58,7 @@ module.exports = function(socketio, Backbone, _){
             var m = this.collection.get(query);
             m.destroy();
             this.collection.remove(m);
-          }, {collection: this.collection}) 
+          }, this) 
         );
       },this));
     },
