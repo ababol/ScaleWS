@@ -54,6 +54,7 @@ module.exports = function(socketio, Backbone, _){
       socketio.of('/delete').on('connection',_.bind(function(socket){
         socket.on('ask', _.bind(
           function (query){
+            console.log("remove");
             query.destroy();
             socket.emit('answer',this.collection.remove(query));
           }, {collection: this.collection}) 

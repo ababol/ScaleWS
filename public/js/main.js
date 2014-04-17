@@ -53,17 +53,38 @@ require([
     mainIO.on('news', function (data) {
       console.log(data);
     });
+
     mainIO.on('change', function(data){
       console.log("change", data);
     });
+
     mainIO.on('add', function(data){
-      collection.add(data);
+      mask = {};
+      var hasDate = false;
+      for(var attr in data){
+        if(attr != "date")
+          mask[attr] = data[attr];
+        else
+          hasDate = true;
+      }
+      var assumptions = collection.where(mask);
+      var alreadyExist = false;
+      if(!hasDate && assumptions.length == 1)
+        alreadyExist = true;
+      else{
+        for(var ass in assumptions){
+          if(assumptions[ass].get("date").toISOString() == data.date)
+            alreadyExist = true;
+        }
+      }
+      if(!alreadyExist)
+        collection.add(data);
     });
+
     mainIO.on('remove', function(data){
       var m = collection.where(data);
+      console.log("remove", data, m);
       collection.remove(m);
     });
-
-
   });
 });

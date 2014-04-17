@@ -1,0 +1,44 @@
+.textView {
+  vertical-align: top;
+  border:1px solid #1C1C1C;
+  border-top : none;
+  background:$box_background_color;
+  display: inline-table;
+  border-bottom-left-radius:5px;
+  border-bottom-right-radius:5px;
+  width:40%;
+  margin: 1%;
+  color: #cbcbcb;
+  font-family : 'Helvetica', sans-serif;
+  box-shadow: $shadow;
+  caption{
+    color: $green;
+    font: 20px helvetica;
+    border:1px solid #1C1C1C;
+    border-bottom : none;
+    background:$box_background_color;
+    border-top-left-radius:5px;
+    border-top-right-radius:5px;
+    padding: 7px;
+  }
+  th, td {
+    padding:8px 8px 8px;
+    text-align:center;
+  }
+  th {
+    padding-top:12px;
+    background:$trans-white;
+  }
+  td {
+    border-top:1px solid $trans-white;
+    border-right:1px solid $trans-white;
+  }
+  @media(max-width: $break-small){
+    width: 90%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  @media(min-width: $break-big){
+    width: 40%;
+  }
+}

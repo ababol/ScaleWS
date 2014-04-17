@@ -1,0 +1,21 @@
+#menu{
+  div.menu{
+    display: inline-block;
+    min-width: 123px;
+    margin: 10px;
+    padding: 15px;
+    color: $pink;
+    border: 1px solid $pink;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font: 12px helvetica;
+    cursor: pointer;
+  }
+  div.menu.selected{
+    color: $green;
+    border: 1px solid $green;
+  }
+  .menuItem {
+    display: inline;
+  }
+}

@@ -31,11 +31,14 @@ define([
       };
 
       var destroy = function () {
+        console.log("destroy");
         deleteIO.emit('ask',model.attributes._id);
         deleteIO.once('answer', function(data){
           console.log("delete");
         });
       };
+
+      console.log(method);
 
       switch (method) {
         case 'create':
@@ -48,6 +51,7 @@ define([
           update();
           break;
         case 'delete':
+          destroy();
           break;
       }
     };

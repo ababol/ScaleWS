@@ -35,7 +35,9 @@ define([
     },
 
     remove: function() {
-      this.model.destroy();
+      this.model.destroy({success: function(model, response) {
+        console.log("success", model, response);
+      }});
       this.hide();
     }
   });

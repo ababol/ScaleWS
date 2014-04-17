@@ -1,8 +1,15 @@
 <form onsubmit="return false">
-  <input type="text" value="<%- _id %>" disabled>
-  <input type="number" min="0" value="<%- value %>" id="value">
-  <input type="date" value="<%- date %>" id="date">
-  <input type="submit" value="Update" id="updateValue">
-  <input type="submit" value="Delete" id="removeValue">
-  <input type="submit" value="Close" id="close">
+  <p>
+    <label for="value" data-icon="u" > Value </label>
+    <input type="number" name="value" min="0" value="<%- value %>" id="value" class="field">
+  </p>
+  <p>
+    <label for="date" data-icon="u" > Date </label>
+    <input type="datetime" name="date" value="<%- date %>" id="date" class="field">
+  </p>
+  <p>
+    <input type="submit" value="Update" id="updateValue" class="button">
+    <input type="submit" value="Delete" id="removeValue" class="button">
+  </p>
+  <input type="submit" value="Close" id="close" class="button">
 </form>

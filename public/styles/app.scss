@@ -1,0 +1,28 @@
+$body_background_color: #262626;
+$box_background_color: #323232;
+$green : #C5DE71;
+$pink : #D47D6C;
+$text_color: rgba(255, 255, 255, 0.5);
+$trans-white: rgba(255,255,255, 0.08);
+$break-small : 460px;
+$break-big : 1090px;
+$shadow: 0 5px 4px rgba(0, 0, 0, 0.2);
+$shadow-little: 0 1px 2px rgba(0, 0, 0, 0.4);
+
+body {
+  font: 14px helvetica;
+  color: $text_color;
+  background-color: $body_background_color;
+  text-align: center;
+  margin: 0;
+}
+#main {
+  text-align: center;
+  overflow: hidden;
+}
+
+@import "header";
+@import "measure";
+@import "menu";
+@import "textView";
+@import "tooltip";

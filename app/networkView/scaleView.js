@@ -1,11 +1,11 @@
-module.exports = function(app, Backbone){
+module.exports = function(app, _, Backbone){
   return Backbone.ServerView.extend({
     initialize:  function () {
       app.post('/cgi-bin/once', this.once.bind(this));
       app.post('/cgi-bin/session', this.session.bind(this));
       app.post('/cgi-bin/maint', this.maint.bind(this));
       app.post('/cgi-bin/measure', this.measure.bind(this));
-      app.post('/cgi-bin/v2/measure', this.measurev2.bind(this));
+      app.post('/cgi-bin/v2/measure', this.measureAir.bind(this));
       app.post('/cgi-bin/v2/weather', this.weather.bind(this));
 
       if(!this.collection){
@@ -29,22 +29,17 @@ module.exports = function(app, Backbone){
     },
 
     measure: function(req, res){
-      // @TODO ARNAUD : FAIRE UN _.EACH
-      // measure.create(Math.floor(100*Math.random()), Math.floor(10000*Math.random()));
       var measureScale = JSON.parse(req.body.measuregrps).measuregrps;
-      console.log(measureScale);
-      for (var m in measureScale) {
-        for (var n in measureScale[m].measures) {
-          var tmp = measureScale[m].measures[n];
-          console.log(tmp.type+" value: "+ tmp.value);
-          this.saveMeasure(tmp.value, tmp.type);
-          // 0
-          // 1 value: 84216 -- weight
-          // 16 value: 522 -- BIA ou IBE => ce n'est pas la qualité de l'air -- Bioelectrical Impedance Analysis - Unit: body fat % plus le taux de graisse est élevé, plus la résistance à laquelle se heurte le signal électrique est grande.
-          // 1
-          // 11 value: 93 -- Heart
-        }
-      }
+      _.each(measureScale, function(measures) {
+        _.each(measures.measures, function(measure) {
+          this.saveMeasure(measure.value, measure.type, measures.meastime*1000);
+        }, this);
+      }, this);
+      // 0
+      // 1 value: 84216 -- weight
+      // 16 value: 522 -- BIA ou IBE => ce n'est pas la qualité de l'air -- Bioelectrical Impedance Analysis - Unit: body fat % plus le taux de graisse est élevé, plus la résistance à laquelle se heurte le signal électrique est grande.
+      // 1
+      // 11 value: 93 -- Heart
       res.end('{"status":0,"body":{"updatetime":'+Math.round(new Date().getTime()/1000)+'}}');
     },
 
@@ -64,20 +59,14 @@ module.exports = function(app, Backbone){
       }
     },
 
-    measurev2: function(req, res){
+    measureAir: function(req, res){
       var measureScale = JSON.parse(req.body.measuregrps);
-      console.log(measureScale);
-      for (var m in measureScale) {
-        for (var n in measureScale[m].measures) {
-          var tmp = measureScale[m].measures[n];
-          var value = Math.round(tmp.data.mantissa*Math.pow(10, tmp.data.exponent)*100)/100;
-          var type = tmp.type;
-          var time = Date(measureScale[m].meastime);
-          this.saveMeasure(value, type, time);
-          // type 12 => temperature
-          // type 35 => 655 => qualité air, taux CO2 en ppm
-        }
-      }
+      _.each(measureScale, function(measures) {
+        _.each(measures.measures, function(measure) {
+          var value = Math.round(measure.data.mantissa*Math.pow(10, measure.data.exponent)*100)/100;
+          this.saveMeasure(value, measure.type, measures.meastime*1000);
+        }, this);
+      }, this);
       res.end('{"status":0}');
     },
 

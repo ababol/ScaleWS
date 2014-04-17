@@ -9,10 +9,13 @@ define([], function () {
   return {
     chart: {
       backgroundColor: "#323232",
-      type: 'line',
-      yAxis: {
-        gridLineColor: "rgba(255,255,255, 0.03)"
-      }
+      type: 'line'
+    },
+    yAxis: {
+      gridLineColor: 'rgba(255,255,255, 0.1)'
+    },
+    navigator: {
+      maskFill: 'rgba(255,255,255, 0.3)'
     },
     scrollbar: {
       barBackgroundColor: '#262626',
