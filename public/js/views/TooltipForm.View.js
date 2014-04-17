@@ -35,6 +35,7 @@ define([
     },
 
     remove: function() {
+      Backbone.sync('delete', this.model);
       this.model.destroy({success: function(model, response) {
         console.log("success", model, response);
       }});

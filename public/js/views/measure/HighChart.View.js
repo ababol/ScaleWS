@@ -67,7 +67,7 @@ define([
             point: {
               events: {
                 click: function(e) {
-                  var view = new TooltipFormView({model: self.collection.get(e.currentTarget.id)});
+                  var view = new TooltipFormView({model: self.collection.get(e.currentTarget.id), collection : self.collection});
                   tooltip.html(view.render().el);
                   tooltip.fadeIn();
                 }

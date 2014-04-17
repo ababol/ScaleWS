@@ -55,8 +55,9 @@ module.exports = function(socketio, Backbone, _){
         socket.on('ask', _.bind(
           function (query){
             console.log("remove");
-            query.destroy();
-            socket.emit('answer',this.collection.remove(query));
+            var m = this.collection.get(query);
+            m.destroy();
+            this.collection.remove(m);
           }, {collection: this.collection}) 
         );
       },this));

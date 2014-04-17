@@ -73,7 +73,7 @@ require([
         alreadyExist = true;
       else{
         for(var ass in assumptions){
-          if(assumptions[ass].get("date").toISOString() == data.date)
+          if(assumptions[ass].get("date") && assumptions[ass].get("date").toISOString() == data.date)
             alreadyExist = true;
         }
       }
@@ -82,9 +82,10 @@ require([
     });
 
     mainIO.on('remove', function(data){
-      var m = collection.where(data);
+      var m = collection.where({_id : data._id});
       console.log("remove", data, m);
-      collection.remove(m);
+      if(m.length == 1)
+        collection.remove(m[0]);
     });
   });
 });
