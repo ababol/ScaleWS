@@ -55,7 +55,9 @@ require([
     });
 
     mainIO.on('change', function(data){
-      console.log("change", data);
+      var models = collection.where({value: data.value, type : data.type});
+      if(models[0])
+        models[0].set("_id", data._id);
     });
 
     mainIO.on('add', function(data){
