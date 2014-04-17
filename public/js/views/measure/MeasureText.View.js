@@ -20,7 +20,7 @@ define([
       if (!this.rightType(measure.get("type"))) return;
 
       var view = new MeasureTextElement({model: measure});
-      this.el.append(view.render().el);
+      this.el.prepend(view.render().el);
     },
 
     remove: function(measure) {
