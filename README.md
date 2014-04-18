@@ -21,14 +21,14 @@ ScaleWS
 ## Server
 
 # API
-
 ![DemoAPI GIF](https://raw.githubusercontent.com/Fedonono/ScaleWS/master/doc/demo_api.gif)
 
 # Resources
 
 ##[How does ScaleWS work](https://github.com/Fedonono/ScaleWS/blob/master/doc/README.md#how-does-scalews-work)
 ##MongoDB Dump
-Download & extract [the file](https://raw.githubusercontent.com/Fedonono/ScaleWS/master/doc/resources/dump_scalews_dev.zip) and use this command:
+Download & extract [the dump DB](https://raw.githubusercontent.com/Fedonono/ScaleWS/master/doc/resources/dump_scalews_dev.zip) and use this command to restore it:
 ```
 mongorestore --noIndexRestore
 ```
+##[Slides](http://fedonono.github.io/ScaleWS)
