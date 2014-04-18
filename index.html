@@ -2,24 +2,24 @@
 <html lang="en">
 
 <head>
-	<meta charset="utf-8">
+  <meta charset="utf-8">
 
-	<title>ScaleWS Presentation</title>
+  <title>.hack//Withings Presentation</title>
 
-	<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-	<meta name="author" content="Hakim El Hattab">
+  <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+  <meta name="author" content="Hakim El Hattab">
 
-	<meta name="apple-mobile-web-app-capable" content="yes" />
-	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
   <link rel="stylesheet" href="css/reveal.min.css">
   <link rel="stylesheet" href="css/device.css">
   <link rel="stylesheet" href="css/theme/blood-invert.css" id="theme">
   <!-- <link rel="stylesheet" href="css/print/pdf.css" media="print"> -->
   <link rel="stylesheet" href="css/theme/custom.css">
-  <!-- <link rel="stylesheet" href="css/print/pdf.css"> -->
+  <!--<link rel="stylesheet" href="css/print/pdf.css">-->
   <!-- <link rel="stylesheet" href="css/print/paper.css"> -->
   <!-- <link rel="stylesheet" href="css/mydeck.css" id="theme"> -->
 
@@ -28,445 +28,448 @@
 
   <!-- If the query includes 'print-pdf', include the PDF print sheet -->
   <script>
+    window.slidePrint = false;
     if( window.location.search.match( /print-pdf/gi ) ) {
-     var link = document.createElement( 'link' );
-     link.rel = 'stylesheet';
-     link.type = 'text/css';
-     link.href = 'css/print/pdf.css';
-     document.getElementsByTagName( 'head' )[0].appendChild( link );
-   }
- </script>
+      window.slidePrint = true;
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = 'css/print/pdf.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+  </script>
 
-		<!--[if lt IE 9]>
-		<script src="lib/js/html5shiv.js"></script>
-		<![endif]-->
-	</head>
+  <!--[if lt IE 9]>
+  <script src="lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
 
-	<body>
+<body>
 
-		<div class="reveal">
+<div class="reveal">
 
-			<!-- Any section element inside of this container is displayed as a slide -->
-			<div class="slides">
-        <!-- Arnaud -->
-        <section>
-          <ul class="list begin">
-            <li><u>SSID:</u> scalews</li>
-            <li><u>pass:</u> 727ce1871f</li>
-            <li><u>url:</u> scale.ws</li>
-          </ul>
-          <h1>.hack//Withings</h1>
-          <p>by Arnaud Babol & Eric Allard</p>
-        </section>
+<!-- Any section element inside of this container is displayed as a slide -->
+<div class="slides">
+<!-- Arnaud -->
+<section>
+  <ul class="list begin">
+    <li><u>SSID:</u> scalews</li>
+    <li><u>pass:</u> 727ce1871f</li>
+    <li><u>url:</u> scale.ws</li>
+  </ul>
+  <h1>.hack//Withings</h1>
+  <p>by Arnaud Babol & Eric Allard</p>
+</section>
 
-        <section>
-          <h2>What we want :</h2>
-          <table>
-            <tr>
-              <td>
-                <p>.hack//Withings</p>
-                <p>Withings : company, products</p>
-                <p>The Scale : how does it work</p>
-                <p>What we want</p>
-                <p>Demo</p>
-                <p>How did we do that</p>
-                <p>Why is it really cool ?</p>
-                <p>Conclusion</p>
-              </td>
-            </tr>
-          </table>
-        </section>
+<section>
+  <h2>Plan</h2>
+  <table>
+    <tr>
+      <td>
+        <p>.hack//Withings</p>
+        <p>Withings : company, products</p>
+        <p>The Scale : how does it work</p>
+        <p>What we want</p>
+        <p>Demo</p>
+        <p>How did we do that</p>
+        <p>Why is it really cool ?</p>
+        <p>Conclusion</p>
+      </td>
+    </tr>
+  </table>
+</section>
 
-        <section>
-          <h2>The quantified-self</h2>
-          <img src="img/quantified-self2.png" height="350px" style="margin-top : 20px;">
-          <p class="fragment">Data acquisition on aspects of a person's daily life</p>
-        </section>
+<section>
+  <h2>The quantified-self</h2>
+  <img src="img/quantified-self2.png" height="350px" style="margin-top : 20px;">
+  <p class="fragment">Data acquisition on aspects of a person's daily life</p>
+</section>
 
-        <section>
-          <h2> Withings ? </h2>
-        </section>
-        <section>
-          <table>
-            <tr>
-              <td width="70%">
-                 <img src="img/tensiometre.png" height="300px">
-              </td>
-              <td>
-                <p>Tensiometer</p>
-              </td>
-            </tr>
-            <tr>
-              <td width="70%">
-                 <img src="img/pulse.png" height="300px">
-              </td>
-              <td>
-                <p>Pedometer</p>
-              </td>
-            </tr>
-          </table>
-        </section>
-        <section>
-          <h3> But also ...</h3>
-        </section>
-        <section>
-          <h3>A wifi scale with many sensors</h3>
-          <table>
-            <tr>
-              <td>
-              <img src="img/withings.png" width="450px">
-              </td>
-              <td>
-                <p class="fragment" data-fragment-index="1">Weight sensors</p>
-                <p class="fragment" data-fragment-index="2">Body fat</p>
-                <p class="fragment" data-fragment-index="3">Heart rate</p>
-                <p class="fragment" data-fragment-index="4">Air quality</p>
-                <p class="fragment" data-fragment-index="5">Temperature</p>
-              </td>
-            </tr>
-          </table>
-        </section>
+<section>
+  <h2> Withings ? </h2>
+</section>
+<section>
+  <table>
+    <tr>
+      <td width="70%">
+        <img src="img/tensiometre.png" height="300px">
+      </td>
+      <td>
+        <p>Tensiometer</p>
+      </td>
+    </tr>
+    <tr>
+      <td width="70%">
+        <img src="img/pulse.png" height="300px">
+      </td>
+      <td>
+        <p>Pedometer</p>
+      </td>
+    </tr>
+  </table>
+</section>
+<section>
+  <h3> But also ...</h3>
+</section>
+<section>
+  <h3>A wifi scale with many sensors</h3>
+  <table>
+    <tr>
+      <td>
+        <img src="img/withings.png" width="450px">
+      </td>
+      <td>
+        <p class="fragment" data-fragment-index="1">Weight sensors</p>
+        <p class="fragment" data-fragment-index="2">Body fat</p>
+        <p class="fragment" data-fragment-index="3">Heart rate</p>
+        <p class="fragment" data-fragment-index="4">Air quality</p>
+        <p class="fragment" data-fragment-index="5">Temperature</p>
+      </td>
+    </tr>
+  </table>
+</section>
 
-        <section>
-          <h3>With an app to visualize data</h3>
-          <img src="img/Withings-App.png" height="600px" style="margin-top : 20px;">
-        </section>
+<section>
+  <h3>With an app to visualize data</h3>
+  <img src="img/Withings-App.png" height="600px" style="margin-top : 20px;">
+</section>
 
-        <!-- Arnaud -->
-        <section>
-          <h2>How does it work?</h2>
-        </section>
+<!-- Arnaud -->
+<section>
+  <h2>How does it work?</h2>
+</section>
 
-        <section >
-          <table>
-            <tr>
-              <td width="75%">
-                <img height="700px" src="img/ScaleWSHack1.png">
-              </td>
-              <td>
-                <h3 class="fragment" data-fragment-index="1">Cool but ...</h3>
-                <p class="fragment" data-fragment-index="2">Limited access to the data</p>
-                <p class="fragment" data-fragment-index="3">
-                  &<br/>
-                  And data stored in their server
-                </p>
-              </td>
-            </tr>
-          </table>
-        </section>
+<section >
+  <table>
+    <tr>
+      <td width="75%">
+        <img height="700px" src="img/ScaleWSHack1.png">
+      </td>
+      <td>
+        <h3 class="fragment" data-fragment-index="1">Cool but ...</h3>
+        <p class="fragment" data-fragment-index="2">Limited access to the data</p>
+        <p class="fragment" data-fragment-index="3">
+          &<br/>
+          And data stored in their server
+        </p>
+      </td>
+    </tr>
+  </table>
+</section>
 
-        <section>
-          <h2>What we want :</h2>
-          <table>
-            <tr>
-              <td>
-                <p class="fragment" data-fragment-index="1">Keep control of the data</p>
-                <p class="fragment" data-fragment-index="2">Manage our data : add/update/delete</p>
-                <p class="fragment" data-fragment-index="3">Make an application that we can use for any sensors</p>
-                <p class="fragment" data-fragment-index="4">Provide our own JSON-API for the developers</p>
-              </td>
-            </tr>
-          </table>
-        </section>
+<section>
+  <h2>What we want :</h2>
+  <table>
+    <tr>
+      <td>
+        <p class="fragment" data-fragment-index="1">Keep control of the data</p>
+        <p class="fragment" data-fragment-index="2">Manage our data : add/update/delete</p>
+        <p class="fragment" data-fragment-index="3">Make an application that we can use for any sensors</p>
+        <p class="fragment" data-fragment-index="4">Provide our own JSON-API for the developers</p>
+      </td>
+    </tr>
+  </table>
+</section>
 
-        <section>
-          <h2>So what can we do ?</h2>
-        </section>
+<section>
+  <h2>So what can we do ?</h2>
+</section>
 
-        <section >
-          <img height="700px" src="img/ScaleWSHack2.png">
-        </section>
+<section >
+  <img height="700px" src="img/ScaleWSHack2.png">
+</section>
 
-        <section >
-          <img height="700px" src="img/ScaleWSHack3.png">
-        </section>
+<section >
+  <img height="700px" src="img/ScaleWSHack3.png">
+</section>
 
-        <section >
-          <img height="700px" src="img/ScaleWSHack4.png">
-        </section>
+<section >
+  <img height="700px" src="img/ScaleWSHack4.png">
+</section>
 
-        <section>
-          <h2>How did we do that ?</h2>
-        </section>
-        <!-- Eric -->
-        <section>
-          <section >
-            <h3>The ScaleWS Server</h3>
-            <img height="600px" src="img/goals.png">
-          </section>
-           <section >
-            <h3>The ScaleWS Server</h3>
-            <img height="600px" src="img/goals-tech.png">
-          </section>
-        </section>
-
-
-      <!--   <section>
-          <img height="700px" src="img/Archi-ScaleWS.png" >
-        </section> -->
-
-        <section>
-          <!-- Eric -->
-          <section>
-            <img height="700px" src="img/Archi-ScaleWS-v21-server.png" >
-          </section>
-
-          <!-- Arnaud -->
-          <section>
-            <img src="img/Archi-ScaleWS-v21-client.png" >
-          </section>
-        </section>
+<section>
+  <h2>How did we do that ?</h2>
+</section>
+<!-- Eric -->
+<section>
+  <section >
+    <h3>The ScaleWS Server</h3>
+    <img height="600px" src="img/goals.png">
+  </section>
+  <section >
+    <h3>The ScaleWS Server</h3>
+    <img height="600px" src="img/goals-tech.png">
+  </section>
+</section>
 
 
-      <!-- Arnaud se pèse et explique que le jury peut participer en se connectant à l'ad-hoc -->
-      <section>
-        <div>
-          <h2>Demo</h2>
-          <img height="600px" src="img/demo.png">
-          <ul class="list demo">
-            <li><u>SSID:</u> scalews</li>
-            <li><u>pass:</u> 727ce1871f</li>
-            <li><u>url:</u> scale.ws</li>
-          </ul>
-        </div>
-      </section>
+<!--   <section>
+    <img height="700px" src="img/Archi-ScaleWS.png" >
+  </section> -->
 
-      <!-- Eric -->
-      <section>
-        <section>
-          <h2>The way of data</h2>
-          <img src="img/way.png" height="400px">
-        </section>
-        <section>
-          <img src="img/way1.png" height="500px">
-        </section>
-        <section>
-          <img src="img/way2.png" height="600px">
-        </section>
-        <section>
-          <img src="img/way3.png" height="700px">
-        </section>
-        <section>
-          <img src="img/way4.png" height="700px">
-        </section>
-      </section>
+<section>
+  <!-- Eric -->
+  <section>
+    <img height="700px" src="img/Archi-ScaleWS-v21-server.png" >
+  </section>
+
+  <!-- Arnaud -->
+  <section>
+    <img src="img/Archi-ScaleWS-v21-client.png" >
+  </section>
+</section>
 
 
+<!-- Arnaud se pèse et explique que le jury peut participer en se connectant à l'ad-hoc -->
+<section>
+  <div>
+    <h2>Demo</h2>
+    <img height="600px" src="img/demo.png">
+    <ul class="list demo">
+      <li><u>SSID:</u> scalews</li>
+      <li><u>pass:</u> 727ce1871f</li>
+      <li><u>url:</u> scale.ws</li>
+    </ul>
+  </div>
+</section>
 
-        <!-- Eric -->
-        <section>
-          <h2>Why is it really cool ?</h2>
-        </section>
+<!-- Eric -->
+<section>
+  <section>
+    <h2>The way of data</h2>
+    <img src="img/way.png" height="400px">
+  </section>
+  <section>
+    <img src="img/way1.png" height="500px">
+  </section>
+  <section>
+    <img src="img/way2.png" height="600px">
+  </section>
+  <section>
+    <img src="img/way3.png" height="700px">
+  </section>
+  <section>
+    <img src="img/way4.png" height="700px">
+  </section>
+</section>
 
-        <section>
-          <h2>Strong Model-View structure</h2>
-          <img src="img/backbone.png" height="200px">
-          <h4>Backbone.js shared for the client and server sides</h4>
-        </section>
 
-        <section>
 
-          <section>
-            <h3>The code can be used for any sensors </h3>
-          </section>
+<!-- Eric -->
+<section>
+  <h2>Why is it really cool ?</h2>
+</section>
 
-          <section>
-            <h3>A server configuration file</h3>
-            <p>Define the data :</p>
+<section>
+  <h2>Strong Model-View structure</h2>
+  <img src="img/backbone.png" height="200px">
+  <h4>Backbone.js shared for the client and server sides</h4>
+</section>
+
+<section>
+
+  <section>
+    <h3>The code can be used for any sensors </h3>
+  </section>
+
+  <section>
+    <h3>A server configuration file</h3>
+    <p>Define the data :</p>
             <pre><code >
-                  {
-                    value: Number,
-                    type: Number,
-                    date: { type : Date, default : Date.now }
-                  }
+              {
+              value: Number,
+              type: Number,
+              date: { type : Date, default : Date.now }
+              }
             </code></pre>
-            <br/>
-            <p>Define masks for categories :</p>
+    <br/>
+    <p>Define masks for categories :</p>
             <pre><code >
-                    weight : {type : 1}
+              weight : {type : 1}
             </code></pre>
-            <br/>
-            <p>Define the name of MongoDB Collection </p>
-          </section>
+    <br/>
+    <p>Define the name of MongoDB Collection </p>
+  </section>
 
-          <section>
-            <h3>A client configuration file</h3>
-            <br/>
-            <p>Activate some views per categories :</p>
+  <section>
+    <h3>A client configuration file</h3>
+    <br/>
+    <p>Activate some views per categories :</p>
             <pre><code>
               text: {
-                0: {
-                  el: "text-weight",
-                  title: "Weight Table",
-                  type: 1
-                }
+              0: {
+              el: "text-weight",
+              title: "Weight Table",
+              type: 1
+              }
             </code></pre>
 
-          </section>
-        </section>
+  </section>
+</section>
 
-        <!-- Arnaud -->
-        <section>
+<!-- Arnaud -->
+<section>
 
-          <section>
-            <h3>Uses the power of the latest technologies</h3>
-          </section>
+  <section>
+    <h3>Uses the power of the latest technologies</h3>
+  </section>
 
-          <section>
-            <table id="techno">
-              <tr>
-                <td height="90px"><img src="img/backbone.png"></td>
-                <td height="90px"><img src="img/require.png"></td>
-                <td height="90px"><img src="img/MongoDB_Logo.png"></td>
-              </tr>
-              <tr>
-                <td height="90px"><img src="img/bower-logo.png"></td>
-                <td height="90px"><img src="img/npm-logo.png"></td>
-                <td height="90px"><img src="img/nodejs_logo.png"></td>
-              </tr>
-              <tr>
-                <td height="90px"><img src="img/sass.png"></td>
-                <td height="90px"><img src="img/Highcharts Logo.png"></td>
-                <td height="90px"><img src="img/express-logo.png"></td>
-              </tr>
-              <tr>
-                <td height="90px"><img src="img/socket.io-logo.png"></td>
-                <td height="90px"><img src="img/jade-logo.png"></td>
-                <td height="90px"><img src="img/underscore.png"></td>
-              </tr>
-              <tr>
-                <td height="90px"><img src="img/grunt-logo.png"></td>
-                <td height="90px"><img src="img/redmineicon.png"></td>
-                <td height="90px"><img src="img/jquery-logo.png"></td>
-              </tr>
-              <tr>
-                <td height="90px"><img src="img/github-logo-transparent.png"></td>
-                <td height="90px"><img src="img/d3_logo.svg"></td>
-                <td height="90px"><img src="img/browserify_logo.png"></td>
-              </tr>
-            </table>
-          </section>
+  <section>
+    <table id="techno">
+      <tr>
+        <td height="90px"><img src="img/backbone.png"></td>
+        <td height="90px"><img src="img/require.png"></td>
+        <td height="90px"><img src="img/MongoDB_Logo.png"></td>
+      </tr>
+      <tr>
+        <td height="90px"><img src="img/bower-logo.png"></td>
+        <td height="90px"><img src="img/npm-logo.png"></td>
+        <td height="90px"><img src="img/nodejs_logo.png"></td>
+      </tr>
+      <tr>
+        <td height="90px"><img src="img/sass.png"></td>
+        <td height="90px"><img src="img/Highcharts Logo.png"></td>
+        <td height="90px"><img src="img/express-logo.png"></td>
+      </tr>
+      <tr>
+        <td height="90px"><img src="img/socket.io-logo.png"></td>
+        <td height="90px"><img src="img/jade-logo.png"></td>
+        <td height="90px"><img src="img/underscore.png"></td>
+      </tr>
+      <tr>
+        <td height="90px"><img src="img/grunt-logo.png"></td>
+        <td height="90px"><img src="img/redmineicon.png"></td>
+        <td height="90px"><img src="img/jquery-logo.png"></td>
+      </tr>
+      <tr>
+        <td height="90px"><img src="img/github-logo-transparent.png"></td>
+        <td height="90px"><img src="img/d3_logo.svg"></td>
+        <td height="90px"><img src="img/browserify_logo.png"></td>
+      </tr>
+    </table>
+  </section>
 
-          <section>
-            <h3>Easy to install</h3>
-            <img src="img/bower-npm-logo.png" height="300px">
-            <h3>Bower & npm</h3>
-            <table>
-              <tr>
-                <td>
-                  <p class="fragment" data-fragment-index="1">NPM : Server</p>
-                  <p class="fragment" data-fragment-index="1">Bower : Client</p>
-                  <p class="fragment" data-fragment-index="2">Best way to install/update a library</p>
-                </td>
-              </tr>
-            </table>
-          </section>
+  <section>
+    <h3>Easy to install</h3>
+    <img src="img/bower-npm-logo.png" height="300px">
+    <h3>Bower & npm</h3>
+    <table>
+      <tr>
+        <td>
+          <p class="fragment" data-fragment-index="1">NPM : Server</p>
+          <p class="fragment" data-fragment-index="1">Bower : Client</p>
+          <p class="fragment" data-fragment-index="2">Best way to install/update a library</p>
+        </td>
+      </tr>
+    </table>
+  </section>
 
-          <section>
-            <h3>Automatisation</h3>
-            <img src="img/grunt-logo.png" height="300px">
-            <h3>GRUNT</h3>
-            <table>
-              <tr>
-                <td>
-                  <p class="fragment" data-fragment-index="1">Transpilation of SCSS files</p>
-                  <p class="fragment" data-fragment-index="2">Automatically restart the server</p>
-                  <p class="fragment" data-fragment-index="3">Minify the source code</p>
-                  <p class="fragment" data-fragment-index="4">Choose your working environment</p>
-                </td>
-              </tr>
-            </table>
-          </section>
+  <section>
+    <h3>Automatisation</h3>
+    <img src="img/grunt-logo.png" height="300px">
+    <h3>GRUNT</h3>
+    <table>
+      <tr>
+        <td>
+          <p class="fragment" data-fragment-index="1">Transpilation of SCSS files</p>
+          <p class="fragment" data-fragment-index="2">Automatically restart the server</p>
+          <p class="fragment" data-fragment-index="3">Minify the source code</p>
+          <p class="fragment" data-fragment-index="4">Choose your working environment</p>
+        </td>
+      </tr>
+    </table>
+  </section>
 
-          <section>
-            <h3>Project Management</h3>
-            <img src="img/redmine_logo.png">
-            <table>
-              <tr>
-                <td>
-                  <p class="fragment" data-fragment-index="1">Tasks</p>
-                  <p class="fragment" data-fragment-index="2">Meeting Summary</p>
-                  <p class="fragment" data-fragment-index="3">Viewing the commit history directly in the browser</p>
-                  <p class="fragment" data-fragment-index="4">Objectives</p>
-                </td>
-              </tr>
-            </table>
-          </section>
+  <section>
+    <h3>Project Management</h3>
+    <img src="img/redmine_logo.png">
+    <table>
+      <tr>
+        <td>
+          <p class="fragment" data-fragment-index="1">Tasks</p>
+          <p class="fragment" data-fragment-index="2">Meeting Summary</p>
+          <p class="fragment" data-fragment-index="3">Viewing the commit history directly in the browser</p>
+          <p class="fragment" data-fragment-index="4">Objectives</p>
+        </td>
+      </tr>
+    </table>
+  </section>
 
-        </section>
+</section>
 
-        <!-- Eric -->
-        <section>
+<!-- Eric -->
+<section>
 
-          <section>
-            <h3>The ScaleWS App can be used by any devices</h3>
-          </section>
+  <section>
+    <h3>The ScaleWS App can be used by any devices</h3>
+  </section>
 
-          <section id="ipad" class="landscape black">
-            <div class="device">
-              <div class="inner"></div>
-              <div class="home"></div>
-              <div class="camera"></div>
-              <div class="screen"><iframe src="http://localhost" style="position: absolute;" width="768px" height="577px" allowtransparency="true" frameborder="0">
-              </iframe></div>
-            </div>
-
-         </section>
-
-         <section id="htc-one">
-          <div class="device">
-            <div class="camera"></div>
-            <div class="sensor"></div>
-            <div class="speaker"></div>
-            <div class="inner"></div>
-            <div class="screen"><iframe src="http://localhost" style="position: absolute;" width="320px" height="568px" allowtransparency="true" frameborder="0">
-            </iframe></div>
-          </div>
-        </section>
-      </section>
-
-
-      <section>
-        <!-- Arnaud -->
-        <section>
-          <h3>Conclusion</h3>
-          <table>
-            <tr>
-              <td>
-                <p class="fragment" data-fragment-index="1">Keep control of the data ✔</p>
-                <p class="fragment" data-fragment-index="1">Manage our data : add/update/delete ✔</p>
-                <p class="fragment" data-fragment-index="1">Make an application that we can use for any sensors ✔</p>
-                <p class="fragment" data-fragment-index="1">Provide our own JSON-API for the developers ✔</p>
-                <p class="fragment" data-fragment-index="2">Multi-users ✕</p>
-                <p class="fragment" data-fragment-index="2">Clever view ✕</p>
-                <p class="fragment" data-fragment-index="2">More sensors ✕</p>
-              </td>
-            </tr>
-          </table>
-        </section>
-        <section>
-          <h2>Arnaud</h2>
-          <img src="img/geckoboard.png">
-        </section>
-        <!-- Eric -->
-        <section>
-          <h2>Eric</h2>
-        </section>
-      </section>
-
-      <section>
-        <h2>Any questions ?</h2>
-      </section>
+  <section id="ipad" class="landscape black">
+    <div class="device">
+      <div class="inner"></div>
+      <div class="home"></div>
+      <div class="camera"></div>
+      <div class="screen"><iframe src="http://localhost" style="position: absolute;" width="768px" height="577px" allowtransparency="true" frameborder="0">
+      </iframe></div>
     </div>
-      <div class="slidenumber"></div>
 
-  </div>
+  </section>
 
-  <script src="lib/js/head.min.js"></script>
-  <script src="js/reveal.min.js"></script>
+  <section id="htc-one">
+    <div class="device">
+      <div class="camera"></div>
+      <div class="sensor"></div>
+      <div class="speaker"></div>
+      <div class="inner"></div>
+      <div class="screen"><iframe src="http://localhost" style="position: absolute;" width="320px" height="568px" allowtransparency="true" frameborder="0">
+      </iframe></div>
+    </div>
+  </section>
+</section>
 
-  <script>
 
+<section>
+  <!-- Arnaud -->
+  <section>
+    <h3>Conclusion</h3>
+    <table>
+      <tr>
+        <td>
+          <p class="fragment" data-fragment-index="1">Keep control of the data ✔</p>
+          <p class="fragment" data-fragment-index="1">Manage our data : add/update/delete ✔</p>
+          <p class="fragment" data-fragment-index="1">Make an application that we can use for any sensors ✔</p>
+          <p class="fragment" data-fragment-index="1">Provide our own JSON-API for the developers ✔</p>
+          <p class="fragment" data-fragment-index="2">Multi-users ✕</p>
+          <p class="fragment" data-fragment-index="2">Clever view ✕</p>
+          <p class="fragment" data-fragment-index="2">More sensors ✕</p>
+        </td>
+      </tr>
+    </table>
+  </section>
+  <section>
+    <h2>Arnaud</h2>
+    <img src="img/geckoboard.png">
+  </section>
+  <!-- Eric -->
+  <section>
+    <h2>Eric</h2>
+  </section>
+</section>
+
+<section>
+  <h2>Any questions ?</h2>
+</section>
+</div>
+<div class="slidenumber"></div>
+
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.min.js"></script>
+
+<script>
+
+  if (!slidePrint) {
     function slidenumber(event){
       var totalslides = document.querySelectorAll( '.reveal .slides section:not(.stack)' ).length;
       var current_slide = 0;
@@ -490,35 +493,31 @@
     Reveal.addEventListener('ready', function(event){
       document.querySelector(".slidenumber").innerText=slidenumber(event);
     });
+  }
+  // Full list of configuration options available here:
+  // https://github.com/hakimel/reveal.js#configuration
+  Reveal.initialize({
+    controls: true,
+    progress: true,
+    history: true,
+    rtl: false,
+    center: true,
+    width: 1020,
+    height: 765,
 
-    // Full list of configuration options available here:
-    // https://github.com/hakimel/reveal.js#configuration
-    Reveal.initialize({
-      controls: true,
-      progress: true,
-      history: true,
-      rtl: false,
-      center: true,
-      width: 1020,
-      height: 765,
+    theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+    transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
 
-      theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-      transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
-
-      // Parallax scrolling
-      // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
-      // parallaxBackgroundSize: '2100px 900px',
-
-      // Optional libraries used to extend on reveal.js
-      dependencies: [
+    // Optional libraries used to extend on reveal.js
+    dependencies: [
       { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
       { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
       { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
       { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
       { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
       { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-      ]
-    });
+    ]
+  });
 
 </script>
 

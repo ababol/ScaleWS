@@ -61,7 +61,7 @@
 
 img{
   border:none !important;
-  box-shadow:none !important; 
+  box-shadow:none !important;
 }
 
 
@@ -76,7 +76,7 @@ img{
   font-family: quicksand, "sans-serif";
   line-height: 1.1em;
   letter-spacing: 0.02em;
-  text-shadow: none; 
+  text-shadow: none;
   text-transform: none !important;
 
 }
@@ -85,20 +85,17 @@ img{
 }
 body{
   font-family: quicksand, "sans-serif" !important;
-  text-shadow: none !important 
+  text-shadow: none !important
 }
 .reveal{
   color: #383d3d !important;
-  text-shadow: none; 
-
+  text-shadow: none;
 }
 
 .reveal h1 {
   text-transform: uppercase !important;
-  text-shadow: none; 
-}
-.reveal .slides > section, .reveal .slides > section > section {
-  padding: 0 !important;
+  text-shadow: none;
+  font-size: 2.8em !important;
 }
 
 #techno {
