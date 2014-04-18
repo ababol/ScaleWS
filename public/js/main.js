@@ -1,28 +1,28 @@
 require.config({
-  baseUrl: "..",
+  baseUrl: '..',
   paths: {
-    underscore: "bower_components/underscore/underscore",
-    backbone: "bower_components/backbone/backbone",
-    jquery: "bower_components/jquery/dist/jquery",
+    underscore: 'bower_components/underscore/underscore',
+    backbone: 'bower_components/backbone/backbone',
+    jquery: 'bower_components/jquery/dist/jquery',
     text: 'bower_components/requirejs-text/text',
-    socketio: "/socket.io/socket.io",
-    highstock_orig: "bower_components/highstock/highstock",
-    highstock: "bower_components/touch-tooltip-fix-highchart/touch-tooltip-fix"
+    socketio: '/socket.io/socket.io',
+    highstock_orig: 'bower_components/highstock/highstock',
+    highstock: 'bower_components/touch-tooltip-fix-highchart/touch-tooltip-fix'
   },
   shim: {
     underscore: {
-      exports: "_"
+      exports: '_'
     },
     backbone: {
-      deps: ["underscore", "jquery"],
-      exports: "Backbone"
+      deps: ['underscore', 'jquery'],
+      exports: 'Backbone'
     },
     socketio: {
-      exports: "io"
+      exports: 'io'
     },
     highstock: {
-      deps: ["highstock_orig"],
-      exports: "Highcharts"
+      deps: ['highstock_orig'],
+      exports: 'Highcharts'
     }
   }
 });
