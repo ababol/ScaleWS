@@ -80,7 +80,7 @@ define([], function () {
         }
       },
       inputBoxBorderColor: '#262626',
-      inputBoxWidth: 120,
+      inputBoxWidth: 100,
       inputBoxHeight: 18,
       inputStyle: {
         color: white
