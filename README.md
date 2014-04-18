@@ -10,8 +10,7 @@ ScaleWS
 # Install
 
 ## Install ScaleWS
-##How to hack the scale
-![ScaleWS Hack](https://raw.githubusercontent.com/Fedonono/ScaleWS/master/doc/scalews_dns_schema.png)
+##[How to hack the scale](https://github.com/Fedonono/ScaleWS/blob/master/doc/README.md#how-to-hack-the-scale)
 
 # Configuration
 
@@ -27,7 +26,7 @@ ScaleWS
 
 # Resources
 
-##[How does ScaleWS work](https://github.com/Fedonono/ScaleWS/blob/master/doc/README.md#how-does-ScaleWS-work)
+##[How does ScaleWS work](https://github.com/Fedonono/ScaleWS/blob/master/doc/README.md#how-does-scalews-work)
 ##MongoDB Dump
 Download & extract [the file](https://raw.githubusercontent.com/Fedonono/ScaleWS/master/doc/resources/dump_scalews_dev.zip) and use this command:
 ```
