@@ -45,6 +45,7 @@ module.exports = function (modelDb) {
         update();
         break;
       case 'delete':
+        destroy();
         break;
     }
   };

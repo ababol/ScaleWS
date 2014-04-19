@@ -44,7 +44,7 @@ module.exports = function(socketio, Backbone, _){
         socket.on('ask', _.bind(
           function (query){
             var m = this.collection.get(query._id);
-            Backbone.sync('delete', m);
+            m.destroy();
             this.collection.remove(m);
             this.collection.create(query);
           }, this) 
@@ -54,9 +54,8 @@ module.exports = function(socketio, Backbone, _){
       socketio.of('/delete').on('connection',_.bind(function(socket){
         socket.on('ask', _.bind(
           function (query){
-            console.log("remove");
             var m = this.collection.get(query);
-            Backbone.sync('delete', m);
+            m.destroy();
             this.collection.remove(m);
           }, this) 
         );
