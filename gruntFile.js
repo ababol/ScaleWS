@@ -1,7 +1,6 @@
 module.exports = function(grunt) {
   ['grunt-contrib-jshint',
     'grunt-contrib-sass',
-    'grunt-contrib-uglify',
     'grunt-contrib-watch',
     'grunt-express-server'].forEach(grunt.loadNpmTasks);
 
@@ -36,7 +35,7 @@ module.exports = function(grunt) {
     },
     express: {
       options: {
-        port: 80
+        port: 1337
       },
       dev: {
         options: {
@@ -49,21 +48,9 @@ module.exports = function(grunt) {
           background: true
         }
       }
-    },
-    uglify: {
-      options: {
-        compress: true,
-        report: 'gzip'
-      },
-      my_target: {
-        files: {
-          'public/js/bundle.js': "public/js/bundle.js"
-        }
-      }
     }
   });
 
   grunt.registerTask('validate', ['jshint']);
   grunt.registerTask('dev', ['sass', 'express:dev', 'watch']);
-  grunt.registerTask('release', ['sass', 'uglify', 'express:release']);
 };
