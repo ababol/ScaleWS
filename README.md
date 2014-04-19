@@ -13,17 +13,20 @@ You can also add/update/delete directly with the user interface.
 
 1. Make sure you have [node installed](http://nodejs.org/).
 
-2. Install the required node dependencies:
+2. Make sure you have access to a [mongoDB](https://www.mongodb.org/) database.
+
+3. Install the required node dependencies:
 ```shell
 npm install
 ```
-3. Launch the Node Server: (it should install the client/bower dependencies automatically)
+
+4. (Optional) You can stock the data to a different collection by editing the [config.js](https://github.com/Fedonono/ScaleWS/blob/master/config.js) file, by default the data are stocked in <i>mongodb://localhost/scalews_dev</i>.<br/>
+You can also import [our dumped MongoDB collection](https://github.com/Fedonono/ScaleWS#mongodb-dump).
+
+5. Launch the Node Server: (it should install the client/bower dependencies automatically)
 ```shell
 grunt dev
 ```
-
-4. (Optional) You can stock the data to a different collection by editing the [config.js](https://github.com/Fedonono/ScaleWS/blob/master/config.js) file, by default the data are stocked in <i>scalews_dev</i> collection.<br/>
-You can also import [our dumped MongoDB collection](https://github.com/Fedonono/ScaleWS#mongodb-dump).
 
 ##[How to hack the scale](https://github.com/Fedonono/ScaleWS/blob/master/doc/README.md#how-to-hack-the-scale)
 
@@ -46,7 +49,7 @@ You have also to add the DOM element in the [view/index.jade](https://github.com
 
 ### Add a custom view
 You can add your own view by editing the [public/js/view/App.View.js](https://github.com/Fedonono/ScaleWS/blob/master/public/js/views/App.View.js) file.<br/>
-You need to add your views in the function below:
+You have to add your view(s) in the function below:
 ```js
 initViews: function() {
   // Here is an example with HighChart Views
