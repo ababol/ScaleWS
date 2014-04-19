@@ -7,7 +7,7 @@ ScaleWS
 
 ![Demo GIF](https://raw.githubusercontent.com/Fedonono/ScaleWS/master/doc/demo.gif)
 
-You can also add/update/delete directly with the user interface.
+You can also add/update/delete a value by using the user interface.
 
 # Install
 
