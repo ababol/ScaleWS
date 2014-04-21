@@ -67,7 +67,7 @@ initViews: function() {
 
 ## Server
 
-For this application we use a Node.JS Server. This one reuse the clent's backbone.js collection and model to process data. But here, the collection is sync with a MondoDB database. When the server starting, it fetch the collection and so get all the data from the database and when the collection detect get new data or detect anny change it repercut it on the MongoDB database with the overiden "Backbone.sync".
+For this application we use a Node.JS Server. This one reuse the client's backbone.js collection and model to process data. But here, the collection is sync with a MondoDB database. When the server starting, it fetch the collection and so get all the data from the database and when the collection detect get new data or detect anny change it repercut it on the MongoDB database with the overiden "Backbone.sync".
 
 ####Configuration
 We want to make the code independant to the data for be able to reuse it for any other sensors. So we define all specific things about the scale in a unique file : "Server.Measure.Model.js" which one add some methode to the server backbone model.
@@ -104,10 +104,30 @@ The scale post the data on with a simple HTTP Post request. New measures are in 
 `app.post('/cgi-bin/measure', this.measure.bind(this));` 
 
 * The API view : 
+This app provides a simple API REST which give access to the data using JSON. We can Create/Read/Update/Delete data using this API. The action call for the differents routes is defined in the `app/networkView/apiView.js` file.
+```js
+      app.post(path, _.bind(function(req, res){
+          httpCallback.call({req : req, res: res},null,this.collection.create(req.body));
+      }, this));
+```
+The default path is `/{MongoDB CollectionName}/[+ {id || category name}]`.
+What is possible to do :
 
-* The Scale view : 
+** Add new value : POST on /measure {new model}
 
-#### Create a Sensors View
+** Get values : Get on /measure/[id || category]
+
+** Update a value : PUT on /measure {updated model}
+
+** Delete a value : DEL on /measure/[id] {old model}
+
+
+* The Socket view :
+This server view is used by our client web application. It is an interface which let you connect on websocket using the socket.io library.so yu can do CRUD operations by connecting on the good socket namespace and emit a message. Differents socket namespaces are `"/read" "/create" "/update" "/delete"`.
+There is another namespace used to push any modification `"/main"`.
+
+
+<!-- #### Create a Sensors View -->
 
 # API
 ![DemoAPI GIF](https://raw.githubusercontent.com/Fedonono/ScaleWS/master/doc/demo_api.gif)
