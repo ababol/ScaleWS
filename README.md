@@ -64,69 +64,6 @@ initViews: function() {
 }
 ```
 
-
-## Server
-
-For this application we use a Node.JS Server. This one reuse the client's backbone.js collection and model to process data. But here, the collection is sync with a MondoDB database. When the server starting, it fetch the collection and so get all the data from the database and when the collection detect get new data or detect anny change it repercut it on the MongoDB database with the overiden "Backbone.sync".
-
-####Configuration
-We want to make the code independant to the data for be able to reuse it for any other sensors. So we define all specific things about the scale in a unique file : "Server.Measure.Model.js" which one add some methode to the server backbone model.
-
-In this file we define the stucture of a measure :
-```js   
-    MeasureModel.getSchemaLayout = function(){
-        return {
-            value: Number,
-            type: Number,
-            date: { type : Date, default : Date.now }
-        };  
-    };
-```
-With the same way we define some mask for categories which is reuse by the API :
-```js
-     MeasureModel.getCategoriesMasks = function(){
-        return {
-            weight : {type : 1},
-            heart : {type : 11},
-            temperature: {type : 12},
-            fat : {type : 16},
-            airquality : {type : 35}
-        };
-    };
-```
-
-#### The interfaces
-The Server have three differents 'Network-Views' of the Server Backbone Collection :
-
-* The Scale view :
-This one is use by the Scale. It's requested by the scale when there are new data to send.
-The scale post the data on with a simple HTTP Post request. New measures are in JSON. So we just keep the data give the correct answer to look like the withings server : 
-`app.post('/cgi-bin/measure', this.measure.bind(this));` 
-
-* The API view : 
-This app provides a simple API REST which give access to the data using JSON. We can Create/Read/Update/Delete data using this API. The action call for the differents routes is defined in the `app/networkView/apiView.js` file.
-```js
-      app.post(path, _.bind(function(req, res){
-          httpCallback.call({req : req, res: res},null,this.collection.create(req.body));
-      }, this));
-```
-The default path is `/{MongoDB CollectionName}/[+ {id || category name}]`.
-What is possible to do :
-
-** Add new value : POST on /measure {new model}
-
-** Get values : Get on /measure/[id || category]
-
-** Update a value : PUT on /measure {updated model}
-
-** Delete a value : DEL on /measure/[id] {old model}
-
-
-* The Socket view :
-This server view is used by our client web application. It is an interface which let you connect on websocket using the socket.io library.so yu can do CRUD operations by connecting on the good socket namespace and emit a message. Differents socket namespaces are `"/read" "/create" "/update" "/delete"`.
-There is another namespace used to push any modification `"/main"`.
-
-
 <!-- #### Create a Sensors View -->
 
 # API
