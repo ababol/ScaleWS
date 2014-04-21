@@ -46,6 +46,7 @@ module.exports = function(socketio, Backbone, _){
             var m = this.collection.get(query._id);
             m.destroy();
             this.collection.remove(m);
+            delete query._id;
             this.collection.create(query);
           }, this) 
         )
