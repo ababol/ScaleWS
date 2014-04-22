@@ -51,7 +51,8 @@ The Server Backbone Collection has three different 'Network-Views' :
 
 ##### 1. The Scale view :
 This one is use by the Scale. It's requested by the scale when there are new data to send.<br/>
-The scale post the data on with a simple HTTP Post request. New measures are in JSON. So we just reply to the Scale with the expected JSON message, it is an emulation of the official Withings server :<br/>
+The scale post the data on with a simple HTTP Post request.<br/>
+New measures are in JSON. So we just reply to the Scale with the expected JSON message, it is an emulation of the official Withings server :<br/>
 `app.post('/cgi-bin/measure', this.measure.bind(this));`
 
 ##### 2. The API view :
@@ -63,7 +64,7 @@ Here is an example:
       }, this));
 ```
 The default path is `/{MongoDB CollectionName}/[+ {id || category name}]`.<br/>
-What can you do :
+You can :
 
 - Add new value : POST on /measure {new model}<br/>
 - Get values : GET on /measure/[id || category]<br/>
