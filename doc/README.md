@@ -49,34 +49,29 @@ With the same way we define some mask for categories which is reuse by the API :
 #### The interfaces
 The Server Backbone Collection has three different 'Network-Views' :
 
-* The Scale view :
-This one is use by the Scale. It's requested by the scale when there are new data to send.
-The scale post the data on with a simple HTTP Post request. New measures are in JSON. So we just keep the data give the correct answer to look like the withings server :
+##### 1. The Scale view :
+This one is use by the Scale. It's requested by the scale when there are new data to send.<br/>
+The scale post the data on with a simple HTTP Post request. New measures are in JSON. So we just reply to the Scale with the expected JSON message, it is an emulation of the official Withings server :<br/>
 `app.post('/cgi-bin/measure', this.measure.bind(this));`
 
-* The API view : 
-This app provides a simple API REST which give access to the data using JSON. We can Create/Read/Update/Delete data using this API. The action call for the differents routes is defined in the `app/networkView/apiView.js` file.
+##### 2. The API view :
+This application provides a simple API REST which give access to the data using JSON. We can Create/Read/Update/Delete data using this API. The action call for the different routes is defined in the [app/networkView/apiView.js](https://github.com/Fedonono/ScaleWS/blob/master/app/networkView/apiView.js) file.<br/>
+Here is an example:
 ```js
       app.post(path, _.bind(function(req, res){
           httpCallback.call({req : req, res: res},null,this.collection.create(req.body));
       }, this));
 ```
-The default path is `/{MongoDB CollectionName}/[+ {id || category name}]`.
-What is possible to do :
+The default path is `/{MongoDB CollectionName}/[+ {id || category name}]`.<br/>
+What can you do :
 
-** Add new value : POST on /measure {new model}
+- Add new value : POST on /measure {new model}<br/>
+- Get values : GET on /measure/[id || category]<br/>
+- Update a value : PUT on /measure {updated model}<br/>
+- Delete a value : DEL on /measure/[id] {old model}
 
-** Get values : Get on /measure/[id || category]
-
-** Update a value : PUT on /measure {updated model}
-
-** Delete a value : DEL on /measure/[id] {old model}
-
-
-* The Socket view :
-This server view is used by our client web application. It is an interface which let you connect on websocket using the socket.io library.so yu can do CRUD operations by connecting on the good socket namespace and emit a message. Differents socket namespaces are `"/read" "/create" "/update" "/delete"`.
+##### 3. The Socket view :
+This server view is used by our client web application. It is an interface which let you connect on websocket using the socket.io library. So you can do CRUD operations by connecting on the good socket namespace and emit a message. Different socket namespaces are `"/read" "/create" "/update" "/delete"`.
 There is another namespace used to push any modification `"/main"`.
 
-
-
-#### Create a Sensors View
+### Create a Sensors View
