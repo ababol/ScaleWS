@@ -1,4 +1,3 @@
-
 ScaleWS
 =======
 
@@ -68,6 +67,9 @@ initViews: function() {
 
 # API
 ![DemoAPI GIF](https://raw.githubusercontent.com/Fedonono/ScaleWS/master/doc/demo_api.gif)
+
+You can also add/update/delete data thanks to the API.<br/>
+See the description of the [API View](https://github.com/Fedonono/ScaleWS/tree/master/doc#2-the-api-view-) for more details.
 
 # Resources
 
