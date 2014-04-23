@@ -11,7 +11,8 @@ module.exports = function(socketio, Backbone, _){
       this.collection.on('add', this.add, this);
       this.collection.on('remove', this.remove, this);
       this.collection.on('change', this.change, this);
-      // this.collection.on('all', this.all, this);
+      this.collection.on('change:_id', this.changeID, this);
+      this.collection.on('all', this.all, this);
 
       //Init socket listners
       this.main = socketio.of('/main');
@@ -44,10 +45,8 @@ module.exports = function(socketio, Backbone, _){
         socket.on('ask', _.bind(
           function (query){
             var m = this.collection.get(query._id);
-            m.destroy();
-            this.collection.remove(m);
-            delete query._id;
-            this.collection.create(query);
+            m.set(query)
+            m.save();
           }, this) 
         )
       },this));
@@ -67,8 +66,11 @@ module.exports = function(socketio, Backbone, _){
       console.log(event);
     },
 
+    changeID: function(model, id){
+      this.main.emit("change:_id", model.toJSON());
+    },
+
     change: function(model, collection){
-      console.log("change");
       this.main.emit("change", model.toJSON());
     },
 

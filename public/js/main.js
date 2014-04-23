@@ -54,10 +54,23 @@ require([
       console.log(data);
     });
 
-    mainIO.on('change', function(data){
+    mainIO.on('change:_id', function(data){
       var models = collection.where({value: data.value, type : data.type});
-      if(models[0])
+      if(models.length == 1)
         models[0].set("_id", data._id);
+      else if(models.length > 1){
+        for(var m in models){
+          if(models[m].get("date") && typeof(models[m].get("date")) != "string" && models[m].get("date").toISOString() == data.date)
+            models[m].set("_id", data._id);
+        }
+      }
+    });
+
+    mainIO.on('change', function(data){
+      console.log("change : " + data.value);
+      var model = collection.where({_id: data._id})[0];
+      if(model)
+        model.set(data);
     });
 
     mainIO.on('add', function(data){
