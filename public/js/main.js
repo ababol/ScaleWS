@@ -43,12 +43,9 @@ require([
     //Override Backbone.sync with socket
     Backbone.sync = backboneSocketSync;
     var collection = new MeasureCollection();
-    window.collection = collection;
     var app = new AppView({
       collection: collection
     });
-    window.app = app;
-  
 
     mainIO.on('news', function (data) {
       console.log(data);
