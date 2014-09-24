@@ -455,7 +455,6 @@
   <h2>Any questions ?</h2>
 </section>
 </div>
-<div class="slidenumber"></div>
 
 </div>
 
@@ -482,12 +481,12 @@
       return current_slide.toString()+"/"+totalslides.toString();
     }
 
-    Reveal.addEventListener('slidechanged', function(event){
-      document.querySelector(".slidenumber").innerText=slidenumber(event);
-    });
-    Reveal.addEventListener('ready', function(event){
-      document.querySelector(".slidenumber").innerText=slidenumber(event);
-    });
+    // Reveal.addEventListener('slidechanged', function(event){
+    //   document.querySelector(".slidenumber").innerText=slidenumber(event);
+    // });
+    // Reveal.addEventListener('ready', function(event){
+    //   document.querySelector(".slidenumber").innerText=slidenumber(event);
+    // });
   }
   // Full list of configuration options available here:
   // https://github.com/hakimel/reveal.js#configuration
